@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'MaruBuri-Regular';
+    /* src: url('./MaruBuri-Regular.otf') format('opentype'); */
+    src: url('./MaruBuri-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'MaruBuri-SemiBold';
+    /* src: url('./MaruBuri-Regular.otf') format('opentype'); */
+    src: url('./MaruBuri-SemiBold.ttf') format('truetype');
+}
