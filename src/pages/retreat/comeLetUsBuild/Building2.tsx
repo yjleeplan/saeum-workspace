@@ -1,149 +1,19 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
-
-const Wrapper = styled.div`
-  width: 100%;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-`;
-
-const Floor = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  // perspective: 800px;
-`;
-
-const FloorTitle = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  font-size: 18px;
-  font-weight: bold;
-`;
-
-const FloorContent = styled.div<{ height: string }>`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 100%;
-  height: ${({ height }) => height};
-  transform-style: preserve-3d;
-  transform: rotateX(10deg) rotateY(0deg);
-`;
-
-const Row = styled.div<{
-  height?: string;
-}>`
-  display: flex;
-  width: 100%;
-  height: ${({ height }) => (height ? height : '100%')};
-`;
-
-const Col = styled.div<{
-  width: string;
-}>`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: ${({ width }) => width};
-  height: 100%;
-  background: #8c8c8c;
-`;
-
-const Col2 = styled.div<{
-  width: string;
-}>`
-  position: relative;
-  top: -20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: ${({ width }) => width};
-  height: 80%;
-  background: #8c8c8c;
-`;
-
-const Room = styled.div<{
-  width: string;
-  height: string;
-  z?: number;
-  background?: string;
-}>`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1.6px solid #333;
-  width: ${({ width }) => width};
-  height: ${({ height }) => height};
-  transform: translateZ(20px);
-  transition: all 0.3s ease;
-  cursor: pointer;
-  background: ${({ background }) => (background ? background : '#fff')};
-  font-weight: bold;
-  padding: 4px;
-  z-index: 100;
-
-  &:hover {
-    background: #ffa;
-    transform: translateZ(40px) scale(1.08);
-    z-index: 200;
-  }
-`;
-
-const RoomDisabled = styled.div<{
-  width: string;
-  height: string;
-}>`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: ${({ width }) => width};
-  height: ${({ height }) => height};
-  border: 1px solid #333;
-  background: #ddd;
-  font-size: 12px;
-  padding: 4px;
-`;
-
-const Stair = styled.div<{
-  width: string;
-  height: string;
-}>`
-  width: ${({ width }) => width};
-  height: ${({ height }) => height};
-  border: 1px solid #333;
-  background-size: 1px 10px;
-  background-image: repeating-linear-gradient(0deg, #333, #333 1px, #ddd 1px, #fff);
-`;
-
-const ToiletMen = styled.img.attrs({
-  src: '/src/assets/images/icon_toilet_men.png',
-})`
-  width: 40%;
-`;
-
-const ToiletWomen = styled.img.attrs({
-  src: '/src/assets/images/icon_toilet_women.png',
-})`
-  width: 40%;
-`;
-
-const Tooltip = styled.div<{ x: number; y: number }>`
-  position: absolute;
-  left: ${({ x }) => x}px;
-  top: ${({ y }) => y}px;
-  background: #333;
-  color: #fff;
-  padding: 8px 10px;
-  border-radius: 6px;
-  pointer-events: none;
-  white-space: nowrap;
-  font-size: 14px;
-  z-index: 10;
-`;
+import {
+  Wrapper,
+  Floor,
+  FloorTitle,
+  FloorContent,
+  Row,
+  Col,
+  Col2,
+  Room,
+  RoomDisabled,
+  Stair,
+  ToiletMen,
+  ToiletWomen,
+  Tooltip,
+} from './Building2.styles';
 
 interface TooltipData {
   x: number;
