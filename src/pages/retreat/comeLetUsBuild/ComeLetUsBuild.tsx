@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Switch } from 'antd';
 import styled from 'styled-components';
 import Building1 from './Building1';
 import Building2 from './Building2';
 import Building3 from './Building3';
+
+const SwitchWrapper = styled.div`
+  display: flex;
+  justify-content: end;
+  padding-right: 10px;
+`;
 
 const Wrapper = styled.div<{ ismobile: string }>`
   display: flex;
@@ -20,18 +27,29 @@ interface ComeLetUsBuildProps {
 }
 
 const ComeLetUsBuild = ({ isMobile }: ComeLetUsBuildProps) => {
+  const [isRotate, setIsRotate] = useState<boolean>(true);
+
+  const onChange = (checked: boolean) => {
+    setIsRotate(checked);
+  };
+
   return (
-    <Wrapper ismobile={isMobile.toString()}>
-      <Section width={isMobile ? 100 : 33}>
-        <Building1 />
-      </Section>
-      <Section width={isMobile ? 100 : 35}>
-        <Building2 />
-      </Section>
-      <Section width={isMobile ? 100 : 32}>
-        <Building3 />
-      </Section>
-    </Wrapper>
+    <>
+      <SwitchWrapper>
+        <Switch defaultChecked onChange={onChange} />
+      </SwitchWrapper>
+      <Wrapper ismobile={isMobile.toString()}>
+        <Section width={isMobile ? 100 : 33}>
+          <Building1 isRotate={isRotate} />
+        </Section>
+        <Section width={isMobile ? 100 : 35}>
+          <Building2 isRotate={isRotate} />
+        </Section>
+        <Section width={isMobile ? 100 : 32}>
+          <Building3 isRotate={isRotate} />
+        </Section>
+      </Wrapper>
+    </>
   );
 };
 

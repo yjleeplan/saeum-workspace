@@ -20,7 +20,11 @@ interface TooltipData {
   text: string;
 }
 
-const Building1: React.FC = () => {
+interface BuildingProps {
+  isRotate: boolean;
+}
+
+const Building1 = ({ isRotate }: BuildingProps) => {
   const [tooltip, setTooltip] = useState<TooltipData | null>(null);
 
   const showTooltip = (event: React.MouseEvent, text: string) => {
@@ -38,9 +42,9 @@ const Building1: React.FC = () => {
     // 미스바 성전(본관)
     <Wrapper onClick={hideTooltip}>
       {/* 1층 */}
-      <Floor>
+      <Floor rotate={isRotate.toString()}>
         <FloorTitle>미스바 성전(본관) (1F)</FloorTitle>
-        <FloorContent height={'250px'}>
+        <FloorContent height={'250px'} rotate={isRotate.toString()}>
           <Row>
             <Col width={'10%'}>
               <RoomDisabled width={'100%'} height={'200px'}>
@@ -92,9 +96,9 @@ const Building1: React.FC = () => {
       </Floor>
 
       {/* 2층 */}
-      <Floor>
+      <Floor rotate={isRotate.toString()}>
         <FloorTitle>미스바 성전(본관) (2F)</FloorTitle>
-        <FloorContent height={'250px'}>
+        <FloorContent height={'250px'} rotate={isRotate.toString()}>
           <Row>
             <Room width={'100%'} height={'250px'} scale={1.02} onClick={(e) => showTooltip(e, '')}>
               네헤브릭

@@ -12,7 +12,7 @@ interface ComeLetUsBuildLayoutProps {
 const ComeLetUsBuildLayout = ({ isLoading, setIsLoading, children }: ComeLetUsBuildLayoutProps) => {
   return (
     <Spin spinning={isLoading} tip='잠시만 기다려주세요..'>
-      <div id='come-let-us-build-layout'>
+      <div id='come-let-us-build-layout' style={{ background: '#333' }}>
         <Header />
         <Content>{React.cloneElement(children, { setIsLoading })}</Content>
       </div>
