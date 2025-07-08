@@ -38,7 +38,7 @@ jobs:
         run: yarn install
 
       - name: Build
-        run: npm run build-dev
+        run: npm run build:development
         env:
           CI: ""
 
@@ -80,7 +80,7 @@ jobs:
         run: yarn install
 
       - name: Build
-        run: npm run build-prod
+        run: npm run build:production
         env:
           CI: ""
 

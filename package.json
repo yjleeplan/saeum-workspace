@@ -1,60 +1,63 @@
 {
   "name": "saeum-workspace",
   "version": "0.1.0",
-  "repository": "https://github.com/yjleeplan/saeum-workspace.git",
+  "type": "module",
   "private": true,
   "scripts": {
-    "dev": "cp-cli ./config/.env.dev ./.env",
-    "staging": "cp-cli ./config/.env.staging ./.env",
-    "prod": "cp-cli ./config/.env.prod ./.env",
-    "build": "npm run sync-assets && react-scripts build",
-    "build-dev": "npm run dev && npm run build",
-    "build-staging": "npm run staging && npm run build",
-    "build-prod": "npm run prod && npm run build",
-    "start": "react-scripts start",
-    "start-dev": "npm run dev && npm-run-all -p sync-assets watch-assets start",
-    "start-staging": "npm run staging && npm-run-all -p sync-assets watch-assets start",
-    "start-prod": "npm run prod && npm-run-all -p sync-assets watch-assets start",
-    "sync-assets": "cp -r ./src/assets/ ./public/assets",
-    "watch-assets": "chokidar \"src/assets\" -c \"npm run sync-assets\""
+    "start": "env-cmd -f .env.local vite",
+    "dev": "vite",
+    "preview": "vite preview",
+    "build:production": "env-cmd -f .env.production vite build",
+    "build:development": "env-cmd -f .env.development vite build --mode development"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "dependencies": {
     "@ant-design/icons": "^4.3.0",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
+    "@lukemorales/query-key-factory": "^1.3.4",
+    "@tanstack/query-core": "^4.32.0",
+    "@tanstack/react-query": "^4.32.0",
+    "@tanstack/react-query-devtools": "^4.32.0",
     "ag-grid-community": "^26.2.1",
     "ag-grid-react": "^26.2.0",
     "antd": "^4.8.0",
-    "axios": "^0.21.0",
-    "chokidar-cli": "^2.1.0",
-    "cp-cli": "^2.0.0",
-    "crypto": "^1.0.1",
-    "lodash": "^4.17.20",
+    "axios": "^1.9.0",
+    "env-cmd": "^10.1.0",
+    "immer": "^10.1.1",
     "moment": "^2.29.1",
-    "node-sass": "^7.0.1",
-    "npm-run-all": "^4.1.5",
-    "query-string": "^7.0.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-infinite-scroll-component": "^6.1.0",
     "react-player": "^2.9.0",
-    "react-redux": "^7.2.2",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.0",
-    "redux": "^4.0.5",
-    "redux-devtools-extension": "^2.13.8",
-    "redux-persist": "^6.0.0",
-    "redux-thunk": "^2.3.0",
-    "web-vitals": "^0.2.4",
-    "xlsx": "^0.18.2"
+    "react-router-dom": "^6.14.2",
+    "vite-tsconfig-paths": "^4.2.2",
+    "xlsx": "^0.18.2",
+    "zustand": "^5.0.4"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not op_mini all"
-  ]
+  "devDependencies": {
+    "@eslint/js": "^9.22.0",
+    "@types/lodash": "^4.17.20",
+    "@types/node": "^22.15.14",
+    "@types/react": "18.2.19",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.22.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "globals": "^16.0.0",
+    "prettier": "^3.0.0",
+    "typescript": "~5.7.2",
+    "typescript-eslint": "^8.26.1",
+    "vite": "^6.3.1"
+  }
 }
