@@ -21,7 +21,11 @@ interface TooltipData {
   text: string;
 }
 
-const Building2: React.FC = () => {
+interface BuildingProps {
+  isRotate: boolean;
+}
+
+const Building2 = ({ isRotate }: BuildingProps) => {
   const [tooltip, setTooltip] = useState<TooltipData | null>(null);
 
   const showTooltip = (event: React.MouseEvent, text: string) => {
@@ -39,9 +43,9 @@ const Building2: React.FC = () => {
     // 로뎀의 집
     <Wrapper onClick={hideTooltip}>
       {/* 1층 */}
-      <Floor>
+      <Floor rotate={isRotate.toString()}>
         <FloorTitle>로뎀의 집 (1F)</FloorTitle>
-        <FloorContent height={'220px'}>
+        <FloorContent height={'220px'} rotate={isRotate.toString()}>
           <Row>
             <Col width={'60%'}>
               <Row>
@@ -90,9 +94,9 @@ const Building2: React.FC = () => {
       </Floor>
 
       {/* 2층 */}
-      <Floor>
+      <Floor rotate={isRotate.toString()}>
         <FloorTitle>로뎀의 집 (2F)</FloorTitle>
-        <FloorContent height={'220px'}>
+        <FloorContent height={'220px'} rotate={isRotate.toString()}>
           <Row>
             <Col width={'60%'}>
               <Row>
@@ -158,9 +162,9 @@ const Building2: React.FC = () => {
       </Floor>
 
       {/* 3층 */}
-      <Floor>
+      <Floor rotate={isRotate.toString()}>
         <FloorTitle>로뎀의 집 (3F)</FloorTitle>
-        <FloorContent height={'220px'}>
+        <FloorContent height={'220px'} rotate={isRotate.toString()}>
           <Row>
             <Col width={'60%'}>
               <Row>
@@ -226,9 +230,9 @@ const Building2: React.FC = () => {
       </Floor>
 
       {/* 4층 */}
-      <Floor>
+      <Floor rotate={isRotate.toString()}>
         <FloorTitle>로뎀의 집 (4F)</FloorTitle>
-        <FloorContent height={'220px'}>
+        <FloorContent height={'220px'} rotate={isRotate.toString()}>
           <Row>
             <Col width={'60%'}>
               <Row>
