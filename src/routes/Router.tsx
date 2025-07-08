@@ -2,11 +2,16 @@ import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Admin from 'pages/admin/Admin';
 import Main from 'pages/main/Main';
+import ComeLetUsBuild from 'pages/retreat/comeLetUsBuild/ComeLetUsBuild';
 import AdminRoute from './AdminRoute';
 import MainRoute from './MainRoute';
+import ComeLetUsBuildRoute from './ComeLetUsBuildRoute';
 
 export const Router = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  // 접속 기기 체크
+  const mobileCheck = (): boolean => /Android|webOS|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
   return (
     <Routes>
@@ -17,6 +22,10 @@ export const Router = () => {
 
       <Route element={<AdminRoute isLoading={isLoading} setIsLoading={setIsLoading} />}>
         <Route path={'/admin'} element={<Admin setIsLoading={setIsLoading} />} />
+      </Route>
+
+      <Route element={<ComeLetUsBuildRoute isLoading={isLoading} setIsLoading={setIsLoading} />}>
+        <Route path={'/come-let-us-build'} element={<ComeLetUsBuild isMobile={mobileCheck()} />} />
       </Route>
 
       {/* <Route path='*' element={<NotFound />} /> */}
