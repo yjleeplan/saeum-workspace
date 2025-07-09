@@ -5,7 +5,9 @@ import MainRoute from './MainRoute';
 import NehemRoadRoute from './NehemRoadRoute';
 import Admin from 'pages/admin/Admin';
 import Main from 'pages/main/Main';
-import NehemRoad from 'pages/retreat/nehem-road/NehemRoad';
+import NehemRoadHome from 'pages/retreat/nehem-road/home/Home';
+import NehemRoadReserveTheme from 'pages/retreat/nehem-road/reserve-theme/ReserveTheme';
+import NehemRoadReservePlan from 'pages/retreat/nehem-road/reserve-plan/ReservePlan';
 
 export const Router = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -25,7 +27,9 @@ export const Router = () => {
       </Route>
 
       <Route element={<NehemRoadRoute isMobile={mobileCheck()} isLoading={isLoading} setIsLoading={setIsLoading} />}>
-        <Route path={'/nehem-road'} element={<NehemRoad isMobile={mobileCheck()} />} />
+        <Route path={'/nehem-road/home'} element={<NehemRoadHome isMobile={mobileCheck()} />} />
+        <Route path={'/nehem-road/reserve-theme'} element={<NehemRoadReserveTheme isMobile={mobileCheck()} />} />
+        <Route path={'/nehem-road/reserve-plan'} element={<NehemRoadReservePlan isMobile={mobileCheck()} />} />
       </Route>
 
       {/* <Route path='*' element={<NotFound />} /> */}

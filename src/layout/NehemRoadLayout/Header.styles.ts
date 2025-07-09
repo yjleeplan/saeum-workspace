@@ -25,7 +25,6 @@ export const Content = styled.div`
 
 export const Menu = styled.div`
   height: 100%;
-  // border: 1px solid #fff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -35,8 +34,8 @@ export const Menu = styled.div`
   cursor: pointer;
 
   &:hover {
-    background: #f0a721;
-    color: #333;
+    background: #f0a721 !important;
+    color: #333 !important;
   }
 `;
 
