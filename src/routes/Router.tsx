@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Admin from 'pages/admin/Admin';
-import Main from 'pages/main/Main';
-import ComeLetUsBuild from 'pages/retreat/comeLetUsBuild/ComeLetUsBuild';
 import AdminRoute from './AdminRoute';
 import MainRoute from './MainRoute';
-import ComeLetUsBuildRoute from './ComeLetUsBuildRoute';
+import NehemRoadRoute from './NehemRoadRoute';
+import Admin from 'pages/admin/Admin';
+import Main from 'pages/main/Main';
+import NehemRoad from 'pages/retreat/nehem-road/NehemRoad';
 
 export const Router = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -24,8 +24,8 @@ export const Router = () => {
         <Route path={'/admin'} element={<Admin setIsLoading={setIsLoading} />} />
       </Route>
 
-      <Route element={<ComeLetUsBuildRoute isLoading={isLoading} setIsLoading={setIsLoading} />}>
-        <Route path={'/come-let-us-build'} element={<ComeLetUsBuild isMobile={mobileCheck()} />} />
+      <Route element={<NehemRoadRoute isLoading={isLoading} setIsLoading={setIsLoading} />}>
+        <Route path={'/nehem-road'} element={<NehemRoad isMobile={mobileCheck()} />} />
       </Route>
 
       {/* <Route path='*' element={<NotFound />} /> */}

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { Col, Image, Row, Tag } from 'antd';
-import logo from 'assets/images/logo.png';
+import { Col, Image, Row } from 'antd';
+import logo from 'assets/images/nehem-road/title.png';
 
 const Wrapper = styled.div`
   color: #fff;
@@ -12,9 +12,11 @@ const Wrapper = styled.div`
 
 const Header = () => {
   return (
-    <Wrapper id='come-let-us-build-header'>
+    <Wrapper id='nehem-road-header'>
       <Row>
-        <Col span={24}>{/* <Image width={102} height={25} src={logo} preview={false} /> */}Come, let us build</Col>
+        <Col span={24}>
+          <Image width={200} src={logo} preview={false} />
+        </Col>
       </Row>
     </Wrapper>
   );
