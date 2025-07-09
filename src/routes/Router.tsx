@@ -24,7 +24,7 @@ export const Router = () => {
         <Route path={'/admin'} element={<Admin setIsLoading={setIsLoading} />} />
       </Route>
 
-      <Route element={<NehemRoadRoute isLoading={isLoading} setIsLoading={setIsLoading} />}>
+      <Route element={<NehemRoadRoute isMobile={mobileCheck()} isLoading={isLoading} setIsLoading={setIsLoading} />}>
         <Route path={'/nehem-road'} element={<NehemRoad isMobile={mobileCheck()} />} />
       </Route>
 

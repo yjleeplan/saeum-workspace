@@ -1,23 +1,53 @@
-import styled from 'styled-components';
-import { Col, Image, Row } from 'antd';
-import logo from 'assets/images/nehem-road/title.png';
+import { useState } from 'react';
+import { MenuOutlined } from '@ant-design/icons';
+import { Drawer, Button } from 'antd';
+import { Wrapper, Previous, Title, Content, Menu, Extra } from './Header.styles';
 
-const Wrapper = styled.div`
-  color: #fff;
-  font-size: 1.8rem;
-  font-weight: bold;
-  text-align: center;
-  padding: 20px;
-`;
+interface HeaderProps {
+  isMobile: boolean;
+}
 
-const Header = () => {
+const Header = ({ isMobile }: HeaderProps) => {
+  const [open, setOpen] = useState(false);
+
+  const showDrawer = () => {
+    setOpen(true);
+  };
+
+  const onClose = () => {
+    setOpen(false);
+  };
+
   return (
-    <Wrapper id='nehem-road-header'>
-      <Row>
-        <Col span={24}>
-          <Image width={200} src={logo} preview={false} />
-        </Col>
-      </Row>
+    <Wrapper>
+      <Previous>
+        <Title width={isMobile ? '18vw' : '5vw'} />
+      </Previous>
+      <Content>
+        {isMobile || (
+          <>
+            <Menu>홈</Menu>
+            <Menu>예약하기 (테마) </Menu>
+            <Menu>예약하기 (도면)</Menu>
+          </>
+        )}
+      </Content>
+      <Extra>
+        {isMobile && <MenuOutlined style={{ fontSize: '6vw', color: '#fff' }} onClick={showDrawer} />}
+        <Drawer
+          title='NEHEM ROAD'
+          placement='top'
+          height={230}
+          closable={false}
+          onClose={onClose}
+          open={open}
+          extra={<Button onClick={onClose}>Close</Button>}
+        >
+          <p>홈</p>
+          <p>예약하기 (테마)</p>
+          <p>예약하기 (도면)</p>
+        </Drawer>
+      </Extra>
     </Wrapper>
   );
 };
