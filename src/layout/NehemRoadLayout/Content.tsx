@@ -5,7 +5,7 @@ interface ContentProps {
 }
 
 const Content = ({ children }: ContentProps) => {
-  return <div id='come-let-us-build-content'>{children}</div>;
+  return <div id='nehem-road-content'>{children}</div>;
 };
 
 export default Content;

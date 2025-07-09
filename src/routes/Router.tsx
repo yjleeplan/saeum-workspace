@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Admin from 'pages/admin/Admin';
-import Main from 'pages/main/Main';
-import ComeLetUsBuild from 'pages/retreat/comeLetUsBuild/ComeLetUsBuild';
 import AdminRoute from './AdminRoute';
 import MainRoute from './MainRoute';
-import ComeLetUsBuildRoute from './ComeLetUsBuildRoute';
+import NehemRoadRoute from './NehemRoadRoute';
+import Admin from 'pages/admin/Admin';
+import Main from 'pages/main/Main';
+import NehemRoadHome from 'pages/retreat/nehem-road/home/Home';
+import NehemRoadReserveTheme from 'pages/retreat/nehem-road/reserve-theme/ReserveTheme';
+import NehemRoadReservePlan from 'pages/retreat/nehem-road/reserve-plan/ReservePlan';
 
 export const Router = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -24,8 +26,10 @@ export const Router = () => {
         <Route path={'/admin'} element={<Admin setIsLoading={setIsLoading} />} />
       </Route>
 
-      <Route element={<ComeLetUsBuildRoute isLoading={isLoading} setIsLoading={setIsLoading} />}>
-        <Route path={'/come-let-us-build'} element={<ComeLetUsBuild isMobile={mobileCheck()} />} />
+      <Route element={<NehemRoadRoute isMobile={mobileCheck()} isLoading={isLoading} setIsLoading={setIsLoading} />}>
+        <Route path={'/nehem-road/home'} element={<NehemRoadHome isMobile={mobileCheck()} />} />
+        <Route path={'/nehem-road/reserve-theme'} element={<NehemRoadReserveTheme isMobile={mobileCheck()} />} />
+        <Route path={'/nehem-road/reserve-plan'} element={<NehemRoadReservePlan isMobile={mobileCheck()} />} />
       </Route>
 
       {/* <Route path='*' element={<NotFound />} /> */}

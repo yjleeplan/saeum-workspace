@@ -22,11 +22,11 @@ const Section = styled.div<{ width: number }>`
   padding: 10px;
 `;
 
-interface ComeLetUsBuildProps {
+interface NehemRoadReservePlanProps {
   isMobile: boolean;
 }
 
-const ComeLetUsBuild = ({ isMobile }: ComeLetUsBuildProps) => {
+const NehemRoadReservePlan = ({ isMobile }: NehemRoadReservePlanProps) => {
   const [isRotate, setIsRotate] = useState<boolean>(true);
 
   const onChange = (checked: boolean) => {
@@ -53,4 +53,4 @@ const ComeLetUsBuild = ({ isMobile }: ComeLetUsBuildProps) => {
   );
 };
 
-export default ComeLetUsBuild;
+export default NehemRoadReservePlan;
