@@ -36,11 +36,21 @@ export const DescriptionWrapper = styled.div<{ ismobile: string }>`
   color: #ccc;
 `;
 
-export const DescriptionTitle = styled.p<{ ismobile: string }>`
+export const DescriptionCategory = styled.p<{ ismobile: string; mt?: number }>`
   width: 100%;
-  margin-top: 30px;
+  margin-top: ${({ mt }) => (mt ? mt : 30)}px;
+  margin-bottom: 4px;
+  font-size: ${({ ismobile }) => (ismobile === 'true' ? '20px' : '26px')};
+  font-weight: bold;
+  color: #f0a721;
+`;
+
+export const DescriptionTitle = styled.p<{ ismobile: string; mt?: number }>`
+  width: 100%;
+  margin-top: ${({ mt }) => (mt ? mt : 30)}px;
   margin-bottom: 4px;
   font-size: ${({ ismobile }) => (ismobile === 'true' ? '18px' : '24px')};
+  font-weight: bold;
 `;
 
 export const Description = styled.p<{ ismobile: string }>`
@@ -62,4 +72,9 @@ export const DescriptionLarge = styled.p<{ ismobile: string }>`
   margin-bottom: 4px;
   font-size: ${({ ismobile }) => (ismobile === 'true' ? '20px' : '30px')};
   color: #fff;
+`;
+
+export const Span = styled.span`
+  color: #fff !important;
+  font-weight: bold;
 `;
