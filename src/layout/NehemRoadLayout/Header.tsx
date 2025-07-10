@@ -22,7 +22,9 @@ const Header = ({ isMobile }: HeaderProps) => {
   return (
     <Wrapper>
       <Previous>
-        <Title width={isMobile ? '18vw' : '5vw'} />
+        <NavLink to='/nehem-road/home' onClick={onClose}>
+          <Title width={isMobile ? '18vw' : '5vw'} />
+        </NavLink>
       </Previous>
       <Content>
         {isMobile || (
