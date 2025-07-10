@@ -8,6 +8,7 @@ import Building3 from './Building3';
 const SwitchWrapper = styled.div`
   display: flex;
   justify-content: end;
+  padding-top: 14px;
   padding-right: 10px;
 `;
 

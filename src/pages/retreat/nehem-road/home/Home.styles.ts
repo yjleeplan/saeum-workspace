@@ -64,6 +64,7 @@ export const DescriptionTitleLarge = styled.p<{ ismobile: string }>`
   margin-top: 30px;
   margin-bottom: 4px;
   font-size: ${({ ismobile }) => (ismobile === 'true' ? '20px' : '30px')};
+  font-weight: bold;
   color: #fff;
 `;
 
@@ -71,6 +72,7 @@ export const DescriptionLarge = styled.p<{ ismobile: string }>`
   width: 100%;
   margin-bottom: 4px;
   font-size: ${({ ismobile }) => (ismobile === 'true' ? '20px' : '30px')};
+  font-weight: bold;
   color: #fff;
 `;
 

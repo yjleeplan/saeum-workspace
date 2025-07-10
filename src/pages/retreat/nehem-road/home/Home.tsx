@@ -26,7 +26,7 @@ const NehemRoadHome = ({ isMobile }: NehemRoadHomeProps) => {
           지금으로부터 약 2,469년 전 느헤미야는 성벽을 재건했다.
         </DescriptionTitle>
         <DescriptionTitle ismobile={isMobile.toString()} mt={1}>
-          그리고 올 여름 한국의 청년들이 충북 영동으로 모이게 되는데...
+          그리고 올 여름 한국의 청년들이 충북 영동으로 집결하게 되는데...
         </DescriptionTitle>
 
         <DescriptionCategory ismobile={isMobile.toString()} mt={50}>
