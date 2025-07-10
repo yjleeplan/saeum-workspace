@@ -27,7 +27,7 @@ interface NehemRoadReservePlanProps {
 }
 
 const NehemRoadReservePlan = ({ isMobile }: NehemRoadReservePlanProps) => {
-  const [isRotate, setIsRotate] = useState<boolean>(true);
+  const [isRotate, setIsRotate] = useState<boolean>(!isMobile);
 
   const onChange = (checked: boolean) => {
     setIsRotate(checked);
@@ -36,7 +36,7 @@ const NehemRoadReservePlan = ({ isMobile }: NehemRoadReservePlanProps) => {
   return (
     <>
       <SwitchWrapper>
-        <Switch defaultChecked onChange={onChange} />
+        <Switch checked={isRotate} onChange={onChange} />
       </SwitchWrapper>
       <Wrapper ismobile={isMobile.toString()}>
         <Section width={isMobile ? 100 : 33}>

@@ -1,0 +1,7 @@
+#nehem-road-layout {
+  .ant-select > .ant-select-selector {
+    height: inherit;
+    display: flex;
+    align-items: center;
+  }
+}
