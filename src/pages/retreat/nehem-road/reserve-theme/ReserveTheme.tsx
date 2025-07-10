@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Select, Button, Image } from 'antd';
 import styled from 'styled-components';
 import { dummyData } from './dummy-data';
@@ -23,7 +24,9 @@ export const SelectBoxWrapper = styled.div`
   margin-bottom: 20px;
 `;
 
-export const SelectBox = styled(Select)`
+export const SelectBox = styled(Select)<{
+  onChange: string | ((e: React.ChangeEvent<HTMLInputElement>) => void) | null;
+}>`
   display: flex;
   width: 240px;
   height: 40px;
@@ -107,6 +110,9 @@ const NehemRoadReserveTheme = ({ isMobile }: NehemRoadReserveThemeProps) => {
     { label: '미스바 성전(본관)', value: '3' },
   ];
 
+  /** State */
+  const [selected, setSelected] = useState<string>('');
+
   // 게임 포스터 이미지 소스 추출
   const getImageSource = (id: string) => {
     return {
@@ -117,45 +123,52 @@ const NehemRoadReserveTheme = ({ isMobile }: NehemRoadReserveThemeProps) => {
     }[id];
   };
 
+  // 건물 선택
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSelected(e.toString());
+  };
+
   return (
     <Wrapper ismobile={isMobile.toString()}>
       <SelectBoxWrapper>
-        건물 선택 : <SelectBox placeholder='전체' options={options} />
+        건물 선택 : <SelectBox placeholder='전체' options={options} value={selected} onChange={handleChange} />
       </SelectBoxWrapper>
       <GameCardWrapper>
-        {dummyData.map((item, index) => (
-          <GameCard key={index}>
-            <GameImage>
-              <Image width={'68%'} height={'100%'} src={getImageSource(item.id)} preview={false} />
-            </GameImage>
-            <GameContent>
-              <Row>
-                <Col width='100%' align='center' font='20px'>
-                  {item.name}
-                </Col>
-              </Row>
-              <Row>
-                <Col width='40%'>
-                  <Span>장르: </Span>
-                  {item.category}
-                </Col>
-                <Col width='30%'>
-                  <Span>인원: </Span>
-                  {item.people}명
-                </Col>
-                <Col width='30%'>
-                  <Span>시간: </Span>
-                  {item.time}분
-                </Col>
-              </Row>
-              <Row py='20px'>
-                <Col width='100%' align='center'>
-                  <ButtonStyled>예약하기</ButtonStyled>
-                </Col>
-              </Row>
-            </GameContent>
-          </GameCard>
-        ))}
+        {dummyData
+          .filter((data) => data.location === selected || selected === '')
+          .map((item, index) => (
+            <GameCard key={index}>
+              <GameImage>
+                <Image width={'68%'} height={'100%'} src={getImageSource(item.id)} preview={false} />
+              </GameImage>
+              <GameContent>
+                <Row>
+                  <Col width='100%' align='center' font='20px'>
+                    {item.name}
+                  </Col>
+                </Row>
+                <Row>
+                  <Col width='40%'>
+                    <Span>장르: </Span>
+                    {item.category}
+                  </Col>
+                  <Col width='30%'>
+                    <Span>인원: </Span>
+                    {item.people}명
+                  </Col>
+                  <Col width='30%'>
+                    <Span>시간: </Span>
+                    {item.time}분
+                  </Col>
+                </Row>
+                <Row py='20px'>
+                  <Col width='100%' align='center'>
+                    <ButtonStyled>예약하기</ButtonStyled>
+                  </Col>
+                </Row>
+              </GameContent>
+            </GameCard>
+          ))}
       </GameCardWrapper>
     </Wrapper>
   );
