@@ -1,12 +1,9 @@
 import { useState } from 'react';
 import { Image } from 'antd';
 import { dummyData } from './dummy-data';
-import posterGame1 from 'assets/images/nehem-road/poster_game1.png';
-import posterGame2 from 'assets/images/nehem-road/poster_game2.png';
-import posterGame3 from 'assets/images/nehem-road/poster_game3.png';
-import posterGame4 from 'assets/images/nehem-road/poster_game4.png';
 import ReserveModal from 'components/_modal/ReserveModal';
 import { Reserve } from 'types/reserve';
+import { getGamePoster } from 'utils/getGamePoster';
 import {
   Wrapper,
   SelectBoxWrapper,
@@ -40,16 +37,6 @@ const NehemRoadReserveTheme = ({ isMobile, setIsLoading }: NehemRoadReserveTheme
   const [reserveInfo, setReserveInfo] = useState<Reserve | undefined>(undefined);
   const [reserveModalVisible, setResrveModalVisible] = useState<boolean>(false);
 
-  // 게임 포스터 이미지 소스 추출
-  const getImageSource = (id: string) => {
-    return {
-      '1': posterGame1,
-      '2': posterGame2,
-      '3': posterGame3,
-      '4': posterGame4,
-    }[id];
-  };
-
   // 건물 선택
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelected(e.toString());
@@ -77,7 +64,7 @@ const NehemRoadReserveTheme = ({ isMobile, setIsLoading }: NehemRoadReserveTheme
           .map((item, index) => (
             <GameCard key={index} $ismobile={isMobile.toString()}>
               <GameImage>
-                <Image width={'68%'} height={'100%'} src={getImageSource(item.id)} preview={false} />
+                <Image width={'68%'} height={'100%'} src={getGamePoster(item.id)} preview={false} />
               </GameImage>
               <GameContent>
                 <Row>

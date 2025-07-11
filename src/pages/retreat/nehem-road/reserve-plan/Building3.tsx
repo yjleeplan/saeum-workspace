@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Image } from 'antd';
 import { Reserve } from 'types/reserve';
+import { getGamePoster } from 'utils/getGamePoster';
 import {
   Wrapper,
   Floor,
@@ -16,10 +17,6 @@ import {
   Tooltip,
 } from './Building3.styles';
 import { dummyData } from '../reserve-theme/dummy-data';
-import posterGame1 from 'assets/images/nehem-road/poster_game1.png';
-import posterGame2 from 'assets/images/nehem-road/poster_game2.png';
-import posterGame3 from 'assets/images/nehem-road/poster_game3.png';
-import posterGame4 from 'assets/images/nehem-road/poster_game4.png';
 
 interface TooltipData {
   x: number;
@@ -49,16 +46,6 @@ const Building1 = ({ isRotate, onClick }: BuildingProps) => {
 
   const getReserveInfo = (id: string) => {
     return dummyData.filter((data) => data.id === id)[0];
-  };
-
-  // 게임 포스터 이미지 소스 추출
-  const getImageSource = (id: string) => {
-    return {
-      '1': posterGame1,
-      '2': posterGame2,
-      '3': posterGame3,
-      '4': posterGame4,
-    }[id];
   };
 
   return (
@@ -124,7 +111,7 @@ const Building1 = ({ isRotate, onClick }: BuildingProps) => {
         <FloorContent height={'250px'} rotate={isRotate.toString()}>
           <Row>
             <Room width={'100%'} height={'250px'} scale={1.02} onClick={() => onClick(getReserveInfo('1'))}>
-              <Image width={'100%'} height={'100%'} src={getImageSource('1')} preview={false} />
+              <Image width={'100%'} height={'100%'} src={getGamePoster('1')} preview={false} />
             </Room>
           </Row>
         </FloorContent>
