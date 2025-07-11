@@ -47,6 +47,7 @@ export const GameTime = styled.div<{ $enable?: string }>`
 
 export const Row = styled.div<{ $pt?: string; $pb?: string }>`
   display: flex;
+  justify-content: space-between;
   width: 100%;
   padding-top: ${({ $pt }) => ($pt ? $pt : '0px')};
   padding-bottom: ${({ $pb }) => ($pb ? $pb : '0px')};
@@ -65,7 +66,7 @@ export const Col = styled.div<{
   height: 100%;
   font-size: ${({ $font }) => ($font ? $font : '15px')};
   font-weight: ${({ $fw }) => ($fw ? $fw : '')};
-  padding: 0 8px;
+  padding: 0 6px;
 `;
 
 export const Span = styled.span`
@@ -108,15 +109,15 @@ const ReserveModal = ({ visible, onCancel, setIsLoading, isMobile, selectedInfo 
             </Col>
           </Row>
           <Row $pt='4px'>
-            <Col width='40%'>
+            <Col width='37%' $font={isMobile ? '14px' : '16px'}>
               <Span>장르: </Span>
               {selectedInfo?.category}
             </Col>
-            <Col width='30%'>
+            <Col width='33%' $font={isMobile ? '14px' : '16px'}>
               <Span>인원: </Span>
-              {selectedInfo?.people}명
+              {selectedInfo?.people}
             </Col>
-            <Col width='30%'>
+            <Col width='30%' $font={isMobile ? '14px' : '16px'} $align='end'>
               <Span>시간: </Span>
               {selectedInfo?.time}분
             </Col>

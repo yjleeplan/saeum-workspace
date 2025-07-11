@@ -78,16 +78,16 @@ const NehemRoadReserveTheme = ({ isMobile, setIsLoading }: NehemRoadReserveTheme
                     {item.locationName}
                   </Col>
                 </Row>
-                <Row $pt='2px'>
-                  <Col width='40%'>
+                <Row $pt='2px' $justify='space-between'>
+                  <Col width='37%'>
                     <Span>장르: </Span>
                     {item.category}
                   </Col>
-                  <Col width='30%'>
+                  <Col width='33%'>
                     <Span>인원: </Span>
-                    {item.people}명
+                    {item.people}
                   </Col>
-                  <Col width='30%'>
+                  <Col width='30%' $align='end'>
                     <Span>시간: </Span>
                     {item.time}분
                   </Col>
