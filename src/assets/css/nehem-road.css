@@ -1,0 +1,16 @@
+#nehem-road-layout {
+  .ant-select > .ant-select-selector {
+    height: inherit;
+    display: flex;
+    align-items: center;
+  }
+
+  /* ReserveModal */
+  .ant-modal-wrap.reserve-modal-wrap {
+    top: -8%;
+  }
+
+  .ant-modal-wrap.reserve-modal-wrap .ant-modal-body {
+    min-height: 380px;
+  }
+}
