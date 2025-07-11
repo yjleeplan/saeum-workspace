@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Reserve } from 'types/reserve';
 import {
   Wrapper,
   Floor,
@@ -13,6 +14,7 @@ import {
   ToiletWomen,
   Tooltip,
 } from './Building1.styles';
+import { dummyData } from '../reserve-theme/dummy-data';
 
 interface TooltipData {
   x: number;
@@ -22,9 +24,10 @@ interface TooltipData {
 
 interface BuildingProps {
   isRotate: boolean;
+  onClick: (data: Reserve) => void;
 }
 
-const Building1 = ({ isRotate }: BuildingProps) => {
+const Building1 = ({ isRotate, onClick }: BuildingProps) => {
   const [tooltip, setTooltip] = useState<TooltipData | null>(null);
 
   const showTooltip = (event: React.MouseEvent, text: string) => {
@@ -37,6 +40,10 @@ const Building1 = ({ isRotate }: BuildingProps) => {
   };
 
   const hideTooltip = () => setTooltip(null);
+
+  const getReserveInfo = (id: string) => {
+    return dummyData.filter((data) => data.id === id)[0];
+  };
 
   return (
     // 벧엘의 집
