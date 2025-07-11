@@ -32,7 +32,10 @@ export const Router = () => {
           path={'/nehem-road/reserve-theme'}
           element={<NehemRoadReserveTheme isMobile={mobileCheck()} setIsLoading={setIsLoading} />}
         />
-        <Route path={'/nehem-road/reserve-plan'} element={<NehemRoadReservePlan isMobile={mobileCheck()} />} />
+        <Route
+          path={'/nehem-road/reserve-plan'}
+          element={<NehemRoadReservePlan isMobile={mobileCheck()} setIsLoading={setIsLoading} />}
+        />
       </Route>
 
       {/* <Route path='*' element={<NotFound />} /> */}

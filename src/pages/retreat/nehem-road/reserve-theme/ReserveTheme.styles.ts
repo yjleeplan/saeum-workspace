@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const Wrapper = styled.div<{ $ismobile: string }>`
   display: flex;
   flex-direction: column;
-  width: ${({ $ismobile }) => ($ismobile === 'true' ? '100%' : '60%')};
+  width: ${({ $ismobile }) => ($ismobile === 'true' ? '100%' : '70%')};
   margin: 0 auto;
   padding: 30px 20px;
   color: #fff;
@@ -30,8 +30,8 @@ export const SelectBox = styled(Select)<{
 
 export const GameCardWrapper = styled.div`
   display: flex;
-  // flex-direction: column;
   flex-flow: row wrap;
+  gap: 5%;
   width: 100%;
   padding: 20px 0;
 `;
@@ -39,7 +39,7 @@ export const GameCardWrapper = styled.div`
 export const GameCard = styled.div<{ $ismobile: string }>`
   display: flex;
   flex-direction: column;
-  width: ${({ $ismobile }) => ($ismobile === 'true' ? '100%' : '33%')};
+  width: ${({ $ismobile }) => ($ismobile === 'true' ? '100%' : '30%')};
   margin-top: 20px;
   margin-bottom: 20px;
 `;
@@ -58,8 +58,9 @@ export const GameContent = styled.div`
   padding: 10px 0;
 `;
 
-export const Row = styled.div<{ $pt?: string; $pb?: string }>`
+export const Row = styled.div<{ $pt?: string; $pb?: string; $justify?: string }>`
   display: flex;
+  justify-content: ${({ $justify }) => ($justify ? $justify : '')};
   width: 100%;
   padding-top: ${({ $pt }) => ($pt ? $pt : '0px')};
   padding-bottom: ${({ $pb }) => ($pb ? $pb : '0px')};

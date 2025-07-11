@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { Image } from 'antd';
 import { Reserve } from 'types/reserve';
+import { getGamePoster } from 'utils/getGamePoster';
 import {
   Wrapper,
   Floor,
@@ -68,11 +70,11 @@ const Building1 = ({ isRotate, onClick }: BuildingProps) => {
             </RoomDisabled>
           </Row>
           <Row>
-            <Room width={'24%'} height={'80px'} onClick={(e) => showTooltip(e, '')}>
-              네헴의 4번타자
+            <Room width={'24%'} height={'80px'} onClick={() => onClick(getReserveInfo('9'))}>
+              <Image width={'100%'} height={'100%'} src={getGamePoster('9')} preview={false} />
             </Room>
-            <Room width={'24%'} height={'80px'} onClick={(e) => showTooltip(e, '')}>
-              네헴의 4번타자
+            <Room width={'24%'} height={'80px'} onClick={() => onClick(getReserveInfo('10'))}>
+              <Image width={'100%'} height={'100%'} src={getGamePoster('10')} preview={false} />
             </Room>
             <Corridor width={'12%'} height={'80px'}></Corridor>
             <RoomDisabled width={'24%'} height={'80px'} onClick={(e) => showTooltip(e, '')}>
@@ -109,8 +111,8 @@ const Building1 = ({ isRotate, onClick }: BuildingProps) => {
               210
             </RoomDisabled>
             <Stair width={'12%'} height={'80px'} />
-            <Room width={'24%'} height={'80px'} onClick={(e) => showTooltip(e, '')}>
-              와! 성경이 들린다
+            <Room width={'24%'} height={'80px'} onClick={() => onClick(getReserveInfo('8'))}>
+              <Image width={'100%'} height={'100%'} src={getGamePoster('8')} preview={false} />
             </Room>
             <RoomDisabled width={'24%'} height={'80px'} onClick={(e) => showTooltip(e, '')}>
               212
