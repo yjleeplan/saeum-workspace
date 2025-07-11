@@ -1,11 +1,8 @@
 import React from 'react';
 import { Modal, Image, message } from 'antd';
 import styled from 'styled-components';
-import posterGame1 from 'assets/images/nehem-road/poster_game1.png';
-import posterGame2 from 'assets/images/nehem-road/poster_game2.png';
-import posterGame3 from 'assets/images/nehem-road/poster_game3.png';
-import posterGame4 from 'assets/images/nehem-road/poster_game4.png';
 import { Reserve } from 'types/reserve';
+import { getGamePoster } from 'utils/getGamePoster';
 
 export const GameCard = styled.div<{ $ismobile: string }>`
   display: flex;
@@ -50,6 +47,7 @@ export const GameTime = styled.div<{ $enable?: string }>`
 
 export const Row = styled.div<{ $pt?: string; $pb?: string }>`
   display: flex;
+  justify-content: space-between;
   width: 100%;
   padding-top: ${({ $pt }) => ($pt ? $pt : '0px')};
   padding-bottom: ${({ $pb }) => ($pb ? $pb : '0px')};
@@ -68,7 +66,7 @@ export const Col = styled.div<{
   height: 100%;
   font-size: ${({ $font }) => ($font ? $font : '15px')};
   font-weight: ${({ $fw }) => ($fw ? $fw : '')};
-  padding: 0 8px;
+  padding: 0 6px;
 `;
 
 export const Span = styled.span`
@@ -85,16 +83,6 @@ interface ModalProps {
 }
 
 const ReserveModal = ({ visible, onCancel, setIsLoading, isMobile, selectedInfo }: ModalProps) => {
-  // 게임 포스터 이미지 소스 추출
-  const getImageSource = (id: string) => {
-    return {
-      '1': posterGame1,
-      '2': posterGame2,
-      '3': posterGame3,
-      '4': posterGame4,
-    }[id];
-  };
-
   // 예약하기
   const handleClick = () => {
     message.error('준비중입니다.');
@@ -121,15 +109,15 @@ const ReserveModal = ({ visible, onCancel, setIsLoading, isMobile, selectedInfo 
             </Col>
           </Row>
           <Row $pt='4px'>
-            <Col width='40%'>
+            <Col width='37%' $font={isMobile ? '14px' : '16px'}>
               <Span>장르: </Span>
               {selectedInfo?.category}
             </Col>
-            <Col width='30%'>
+            <Col width='33%' $font={isMobile ? '14px' : '16px'}>
               <Span>인원: </Span>
-              {selectedInfo?.people}명
+              {selectedInfo?.people}
             </Col>
-            <Col width='30%'>
+            <Col width='30%' $font={isMobile ? '14px' : '16px'} $align='end'>
               <Span>시간: </Span>
               {selectedInfo?.time}분
             </Col>
@@ -145,7 +133,7 @@ const ReserveModal = ({ visible, onCancel, setIsLoading, isMobile, selectedInfo 
     >
       <GameCard $ismobile={isMobile.toString()}>
         <GameImage>
-          <Image width={'100%'} height={'100%'} src={getImageSource(selectedInfo?.id ?? '')} preview={false} />
+          <Image width={'100%'} height={'100%'} src={getGamePoster(selectedInfo?.id ?? '')} preview={false} />
         </GameImage>
         <GameContent>
           <GameTime $enable='true' onClick={handleClick}>

@@ -110,7 +110,7 @@ const Building1 = ({ isRotate, onClick }: BuildingProps) => {
             </RoomDisabled>
             <Stair width={'12%'} height={'80px'} />
             <Room width={'24%'} height={'80px'} onClick={(e) => showTooltip(e, '')}>
-              와! 성경이 들린다
+              와 성경이 들린다
             </Room>
             <RoomDisabled width={'24%'} height={'80px'} onClick={(e) => showTooltip(e, '')}>
               212
