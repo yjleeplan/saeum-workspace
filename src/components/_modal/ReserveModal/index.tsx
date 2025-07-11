@@ -1,11 +1,8 @@
 import React from 'react';
 import { Modal, Image, message } from 'antd';
 import styled from 'styled-components';
-import posterGame1 from 'assets/images/nehem-road/poster_game1.png';
-import posterGame2 from 'assets/images/nehem-road/poster_game2.png';
-import posterGame3 from 'assets/images/nehem-road/poster_game3.png';
-import posterGame4 from 'assets/images/nehem-road/poster_game4.png';
 import { Reserve } from 'types/reserve';
+import { getGamePoster } from 'utils/getGamePoster';
 
 export const GameCard = styled.div<{ $ismobile: string }>`
   display: flex;
@@ -85,16 +82,6 @@ interface ModalProps {
 }
 
 const ReserveModal = ({ visible, onCancel, setIsLoading, isMobile, selectedInfo }: ModalProps) => {
-  // 게임 포스터 이미지 소스 추출
-  const getImageSource = (id: string) => {
-    return {
-      '1': posterGame1,
-      '2': posterGame2,
-      '3': posterGame3,
-      '4': posterGame4,
-    }[id];
-  };
-
   // 예약하기
   const handleClick = () => {
     message.error('준비중입니다.');
@@ -145,7 +132,7 @@ const ReserveModal = ({ visible, onCancel, setIsLoading, isMobile, selectedInfo 
     >
       <GameCard $ismobile={isMobile.toString()}>
         <GameImage>
-          <Image width={'100%'} height={'100%'} src={getImageSource(selectedInfo?.id ?? '')} preview={false} />
+          <Image width={'100%'} height={'100%'} src={getGamePoster(selectedInfo?.id ?? '')} preview={false} />
         </GameImage>
         <GameContent>
           <GameTime $enable='true' onClick={handleClick}>
