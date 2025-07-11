@@ -116,6 +116,11 @@ const ReserveModal = ({ visible, onCancel, setIsLoading, isMobile, selectedInfo 
             </Col>
           </Row>
           <Row $pt='10px'>
+            <Col width='100%' $align='center' $font='17px'>
+              {selectedInfo?.locationName}
+            </Col>
+          </Row>
+          <Row $pt='4px'>
             <Col width='40%'>
               <Span>장르: </Span>
               {selectedInfo?.category}

@@ -6,4 +6,5 @@ export interface Reserve {
   time: number;
   description?: string | undefined | null;
   location: string;
+  locationName: string;
 }
