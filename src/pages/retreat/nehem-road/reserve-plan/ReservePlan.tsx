@@ -12,9 +12,9 @@ const SwitchWrapper = styled.div`
   padding-right: 10px;
 `;
 
-const Wrapper = styled.div<{ ismobile: string }>`
+const Wrapper = styled.div<{ $ismobile: string }>`
   display: flex;
-  flex-direction: ${({ ismobile }) => (ismobile === 'true' ? 'column' : 'row')};
+  flex-direction: ${({ $ismobile }) => ($ismobile === 'true' ? 'column' : 'row')};
   width: 100%;
 `;
 
@@ -39,7 +39,7 @@ const NehemRoadReservePlan = ({ isMobile }: NehemRoadReservePlanProps) => {
       <SwitchWrapper>
         <Switch checked={isRotate} onChange={onChange} />
       </SwitchWrapper>
-      <Wrapper ismobile={isMobile.toString()}>
+      <Wrapper $ismobile={isMobile.toString()}>
         <Section width={isMobile ? 100 : 33}>
           <Building1 isRotate={isRotate} />
         </Section>
