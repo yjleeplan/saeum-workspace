@@ -31,7 +31,7 @@ export const SelectBox = styled(Select)<{
 export const GameCardWrapper = styled.div`
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
+  gap: 5%;
   width: 100%;
   padding: 20px 0;
 `;

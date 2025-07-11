@@ -30,6 +30,7 @@ const NehemRoadReserveTheme = ({ isMobile, setIsLoading }: NehemRoadReserveTheme
     { label: '벧엘의 집', value: '1' },
     { label: '로뎀의 집', value: '2' },
     { label: '미스바 성전(본관)', value: '3' },
+    { label: '야외', value: '4' },
   ];
 
   /** State */
