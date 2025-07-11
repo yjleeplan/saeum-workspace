@@ -51,6 +51,16 @@ export const dummyData = [
   },
   {
     id: '6',
+    name: '집 밖을 나왔더니 성벽이!',
+    category: '방탈출',
+    people: '10명',
+    time: 40,
+    description: '',
+    location: '2',
+    locationName: '로뎀의 집 - 305~7호',
+  },
+  {
+    id: '7',
     name: '묵언열차',
     category: '센스',
     people: '20~30명',
@@ -60,7 +70,7 @@ export const dummyData = [
     locationName: '야외',
   },
   {
-    id: '7',
+    id: '8',
     name: '와 성경이 들린다',
     category: '기억력/지식',
     people: '10명',
@@ -70,7 +80,7 @@ export const dummyData = [
     locationName: '벧엘의 집 - 211호',
   },
   {
-    id: '8',
+    id: '9',
     name: '네헴의 4번 타자',
     category: '순발력/센스',
     people: '10명',
@@ -78,5 +88,15 @@ export const dummyData = [
     description: '',
     location: '1',
     locationName: '벧엘의 집 - 101호',
+  },
+  {
+    id: '10',
+    name: '네헴의 4번 타자',
+    category: '순발력/센스',
+    people: '10명',
+    time: 30,
+    description: '',
+    location: '1',
+    locationName: '벧엘의 집 - 102호',
   },
 ];

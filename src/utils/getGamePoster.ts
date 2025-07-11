@@ -15,8 +15,10 @@ export const getGamePoster = (id: string) => {
     '3': posterGame3,
     '4': posterGame4,
     '5': posterGame5,
-    '6': posterGame6,
-    '7': posterGame7,
-    '8': posterGame8,
+    '6': posterGame5,
+    '7': posterGame6,
+    '8': posterGame7,
+    '9': posterGame8,
+    '10': posterGame8,
   }[id];
 };

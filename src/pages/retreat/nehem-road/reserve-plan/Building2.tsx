@@ -215,16 +215,16 @@ const Building2 = ({ isRotate, onClick }: BuildingProps) => {
                 <RoomDisabled width={'25%'} height={'80px'}>
                   311
                 </RoomDisabled>
-                <Room width={'75%'} height={'80px'}>
-                  집 밖을 나왔더니 성벽이!
+                <Room width={'75%'} height={'80px'} onClick={() => onClick(getReserveInfo('5'))}>
+                  <Image width={'100%'} height={'100%'} src={getGamePoster('5')} preview={false} />
                 </Room>
               </Row>
               <Row height='initial'>
                 <RoomDisabled width={'25%'} height={'80px'}>
                   304
                 </RoomDisabled>
-                <Room width={'75%'} height={'80px'}>
-                  집 밖을 나왔더니 성벽이!
+                <Room width={'75%'} height={'80px'} onClick={() => onClick(getReserveInfo('6'))}>
+                  <Image width={'100%'} height={'100%'} src={getGamePoster('6')} preview={false} />
                 </Room>
               </Row>
             </Col2>
