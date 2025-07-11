@@ -1,110 +1,32 @@
 import { useState } from 'react';
-import { Select, Button, Image } from 'antd';
-import styled from 'styled-components';
+import { Image } from 'antd';
 import { dummyData } from './dummy-data';
 import posterGame1 from 'assets/images/nehem-road/poster_game1.png';
 import posterGame2 from 'assets/images/nehem-road/poster_game2.png';
 import posterGame3 from 'assets/images/nehem-road/poster_game3.png';
 import posterGame4 from 'assets/images/nehem-road/poster_game4.png';
-
-export const Wrapper = styled.div<{ ismobile: string }>`
-  display: flex;
-  flex-direction: column;
-  width: ${({ ismobile }) => (ismobile === 'true' ? '100%' : '60%')};
-  margin: 0 auto;
-  padding: 30px 20px;
-  color: #fff;
-`;
-
-export const SelectBoxWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  width: 100%;
-  font-size: 18px;
-  margin-bottom: 20px;
-`;
-
-export const SelectBox = styled(Select)<{
-  onChange: string | ((e: React.ChangeEvent<HTMLInputElement>) => void) | null;
-}>`
-  display: flex;
-  width: 240px;
-  height: 40px;
-  margin-left: 10px;
-  font-size: 18px;
-`;
-
-export const GameCardWrapper = styled.div`
-  display: flex;
-  // flex-direction: column;
-  flex-flow: row wrap;
-  width: 100%;
-  padding: 20px 0;
-`;
-
-export const GameCard = styled.div<{ ismobile: string }>`
-  display: flex;
-  flex-direction: column;
-  width: ${({ ismobile }) => (ismobile === 'true' ? '100%' : '33%')};
-  margin-top: 20px;
-  margin-bottom: 20px;
-`;
-
-export const GameImage = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: 300px;
-`;
-
-export const GameContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 10px 0;
-`;
-
-export const Row = styled.div<{ py?: string }>`
-  display: flex;
-  width: 100%;
-  padding-top: ${({ py }) => (py ? py : '0px')};
-  padding-bottom: ${({ py }) => (py ? py : '0px')};
-`;
-
-export const Col = styled.div<{
-  width: string;
-  align?: string;
-  font?: string;
-  fw?: string;
-}>`
-  display: flex;
-  justify-content: ${({ align }) => (align ? align : 'start')};
-  align-items: center;
-  width: ${({ width }) => width};
-  height: 100%;
-  font-size: ${({ font }) => (font ? font : '15px')};
-  font-weight: ${({ fw }) => (fw ? fw : '')};
-  padding: 0 8px;
-`;
-
-export const Span = styled.span`
-  color: #ccc;
-  margin-right: 4px;
-`;
-
-export const ButtonStyled = styled(Button)`
-  width: 60%;
-  height: 40px;
-  background: #000;
-  font-size: 18px;
-  color: #fff;
-`;
+import ReserveModal from 'components/_modal/ReserveModal';
+import { Reserve } from 'types/reserve';
+import {
+  Wrapper,
+  SelectBoxWrapper,
+  SelectBox,
+  GameCardWrapper,
+  GameCard,
+  GameImage,
+  GameContent,
+  Row,
+  Col,
+  Span,
+  ButtonStyled,
+} from './ReserveTheme.styles';
 
 interface NehemRoadReserveThemeProps {
   isMobile: boolean;
+  setIsLoading: (data: boolean) => void;
 }
 
-const NehemRoadReserveTheme = ({ isMobile }: NehemRoadReserveThemeProps) => {
+const NehemRoadReserveTheme = ({ isMobile, setIsLoading }: NehemRoadReserveThemeProps) => {
   // 건물 리스트
   const options = [
     { label: '전체', value: '' },
@@ -115,6 +37,8 @@ const NehemRoadReserveTheme = ({ isMobile }: NehemRoadReserveThemeProps) => {
 
   /** State */
   const [selected, setSelected] = useState<string>('');
+  const [reserveInfo, setReserveInfo] = useState<Reserve | undefined>(undefined);
+  const [reserveModalVisible, setResrveModalVisible] = useState<boolean>(false);
 
   // 게임 포스터 이미지 소스 추출
   const getImageSource = (id: string) => {
@@ -131,8 +55,19 @@ const NehemRoadReserveTheme = ({ isMobile }: NehemRoadReserveThemeProps) => {
     setSelected(e.toString());
   };
 
+  // 예약하기 상세 모달 오픈
+  const handleReserveModalOpen = (data: Reserve) => {
+    setReserveInfo(data);
+    setResrveModalVisible(true);
+  };
+
+  // 예약하기 상세 모달 닫기
+  const handleReserveModalClose = () => {
+    setResrveModalVisible(false);
+  };
+
   return (
-    <Wrapper ismobile={isMobile.toString()}>
+    <Wrapper $ismobile={isMobile.toString()}>
       <SelectBoxWrapper>
         건물 선택 : <SelectBox placeholder='전체' options={options} value={selected} onChange={handleChange} />
       </SelectBoxWrapper>
@@ -140,17 +75,17 @@ const NehemRoadReserveTheme = ({ isMobile }: NehemRoadReserveThemeProps) => {
         {dummyData
           .filter((data) => data.location === selected || selected === '')
           .map((item, index) => (
-            <GameCard key={index} ismobile={isMobile.toString()}>
+            <GameCard key={index} $ismobile={isMobile.toString()}>
               <GameImage>
                 <Image width={'68%'} height={'100%'} src={getImageSource(item.id)} preview={false} />
               </GameImage>
               <GameContent>
                 <Row>
-                  <Col width='100%' align='center' font='20px' fw='bold'>
+                  <Col width='100%' $align='center' $font='20px' $fw='bold'>
                     {item.name}
                   </Col>
                 </Row>
-                <Row>
+                <Row $pt='2px'>
                   <Col width='40%'>
                     <Span>장르: </Span>
                     {item.category}
@@ -164,15 +99,26 @@ const NehemRoadReserveTheme = ({ isMobile }: NehemRoadReserveThemeProps) => {
                     {item.time}분
                   </Col>
                 </Row>
-                <Row py='20px'>
-                  <Col width='100%' align='center'>
-                    <ButtonStyled>예약하기</ButtonStyled>
+                <Row $pt='20px' $pb='20px'>
+                  <Col width='100%' $align='center'>
+                    <ButtonStyled onClick={() => handleReserveModalOpen(item)}>예약하기</ButtonStyled>
                   </Col>
                 </Row>
               </GameContent>
             </GameCard>
           ))}
       </GameCardWrapper>
+
+      {/* 예약하기 상세 모달 */}
+      <div id='reserveModal'>
+        <ReserveModal
+          visible={reserveModalVisible}
+          onCancel={handleReserveModalClose}
+          setIsLoading={setIsLoading}
+          isMobile={isMobile}
+          selectedInfo={reserveInfo}
+        />
+      </div>
     </Wrapper>
   );
 };
