@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Image } from 'antd';
+import { Reserve } from 'types/reserve';
 import {
   Wrapper,
   Floor,
@@ -14,6 +16,11 @@ import {
   ToiletWomen,
   Tooltip,
 } from './Building2.styles';
+import { dummyData } from '../reserve-theme/dummy-data';
+import posterGame1 from 'assets/images/nehem-road/poster_game1.png';
+import posterGame2 from 'assets/images/nehem-road/poster_game2.png';
+import posterGame3 from 'assets/images/nehem-road/poster_game3.png';
+import posterGame4 from 'assets/images/nehem-road/poster_game4.png';
 
 interface TooltipData {
   x: number;
@@ -23,9 +30,10 @@ interface TooltipData {
 
 interface BuildingProps {
   isRotate: boolean;
+  onClick: (data: Reserve) => void;
 }
 
-const Building2 = ({ isRotate }: BuildingProps) => {
+const Building2 = ({ isRotate, onClick }: BuildingProps) => {
   const [tooltip, setTooltip] = useState<TooltipData | null>(null);
 
   const showTooltip = (event: React.MouseEvent, text: string) => {
@@ -38,6 +46,20 @@ const Building2 = ({ isRotate }: BuildingProps) => {
   };
 
   const hideTooltip = () => setTooltip(null);
+
+  const getReserveInfo = (id: string) => {
+    return dummyData.filter((data) => data.id === id)[0];
+  };
+
+  // 게임 포스터 이미지 소스 추출
+  const getImageSource = (id: string) => {
+    return {
+      '1': posterGame1,
+      '2': posterGame2,
+      '3': posterGame3,
+      '4': posterGame4,
+    }[id];
+  };
 
   return (
     // 로뎀의 집
@@ -71,15 +93,15 @@ const Building2 = ({ isRotate }: BuildingProps) => {
                 <RoomDisabled width={'30%'} height={'100%'}>
                   보일러실
                 </RoomDisabled>
-                <Room width={'43%'} height={'100%'}>
-                  벽돌을 지켜라
+                <Room width={'43%'} height={'110px'} onClick={() => onClick(getReserveInfo('2'))}>
+                  <Image width={'100%'} height={'100%'} src={getImageSource('2')} preview={false} />
                 </Room>
               </Row>
             </Col>
             <Col2 width={'40%'}>
               <Row>
-                <Room width={'100%'} height={'100%'}>
-                  경로를 재탐색합니다
+                <Room width={'100%'} height={'176px'} onClick={() => onClick(getReserveInfo('3'))}>
+                  <Image width={'100%'} height={'100%'} src={getImageSource('3')} preview={false} />
                 </Room>
               </Row>
             </Col2>
@@ -122,8 +144,8 @@ const Building2 = ({ isRotate }: BuildingProps) => {
                 <RoomDisabled width={'30%'} height={'100%'}>
                   202
                 </RoomDisabled>
-                <Room width={'43%'} height={'100%'}>
-                  파수꾼의 계산법
+                <Room width={'43%'} height={'110px'} onClick={() => onClick(getReserveInfo('4'))}>
+                  <Image width={'100%'} height={'100%'} src={getImageSource('4')} preview={false} />
                 </Room>
               </Row>
             </Col>

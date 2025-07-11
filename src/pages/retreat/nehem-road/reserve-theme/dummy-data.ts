@@ -7,7 +7,7 @@ export const dummyData = [
     time: 60,
     description: '',
     location: '3',
-    locationName: '미스바 성전(본관) - 2층',
+    locationName: '미스바 성전(본관) - 2층 강당',
   },
   {
     id: '2',
