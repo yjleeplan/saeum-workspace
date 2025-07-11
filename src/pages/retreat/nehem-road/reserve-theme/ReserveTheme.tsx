@@ -81,8 +81,14 @@ const NehemRoadReserveTheme = ({ isMobile, setIsLoading }: NehemRoadReserveTheme
               </GameImage>
               <GameContent>
                 <Row>
-                  <Col width='100%' $align='center' $font='20px' $fw='bold'>
+                  <Col width='100%' $align='center' $font='22px' $fw='bold'>
                     {item.name}
+                  </Col>
+                </Row>
+                <Row $pt='2px'>
+                  <Col width='100%' $align='center'>
+                    <Span>장소: </Span>
+                    {item.locationName}
                   </Col>
                 </Row>
                 <Row $pt='2px'>
