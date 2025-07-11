@@ -36,15 +36,16 @@ export const SelectBox = styled(Select)<{
 
 export const GameCardWrapper = styled.div`
   display: flex;
-  flex-direction: column;
+  // flex-direction: column;
+  flex-flow: row wrap;
   width: 100%;
   padding: 20px 0;
 `;
 
-export const GameCard = styled.div`
+export const GameCard = styled.div<{ ismobile: string }>`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: ${({ ismobile }) => (ismobile === 'true' ? '100%' : '33%')};
   margin-top: 20px;
   margin-bottom: 20px;
 `;
@@ -74,6 +75,7 @@ export const Col = styled.div<{
   width: string;
   align?: string;
   font?: string;
+  fw?: string;
 }>`
   display: flex;
   justify-content: ${({ align }) => (align ? align : 'start')};
@@ -81,6 +83,7 @@ export const Col = styled.div<{
   width: ${({ width }) => width};
   height: 100%;
   font-size: ${({ font }) => (font ? font : '15px')};
+  font-weight: ${({ fw }) => (fw ? fw : '')};
   padding: 0 8px;
 `;
 
@@ -137,13 +140,13 @@ const NehemRoadReserveTheme = ({ isMobile }: NehemRoadReserveThemeProps) => {
         {dummyData
           .filter((data) => data.location === selected || selected === '')
           .map((item, index) => (
-            <GameCard key={index}>
+            <GameCard key={index} ismobile={isMobile.toString()}>
               <GameImage>
                 <Image width={'68%'} height={'100%'} src={getImageSource(item.id)} preview={false} />
               </GameImage>
               <GameContent>
                 <Row>
-                  <Col width='100%' align='center' font='20px'>
+                  <Col width='100%' align='center' font='20px' fw='bold'>
                     {item.name}
                   </Col>
                 </Row>
