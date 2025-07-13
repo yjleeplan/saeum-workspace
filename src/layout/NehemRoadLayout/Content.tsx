@@ -5,7 +5,11 @@ interface ContentProps {
 }
 
 const Content = ({ children }: ContentProps) => {
-  return <div id='nehem-road-content'>{children}</div>;
+  return (
+    <div id='nehem-road-content' style={{ paddingTop: '55px' }}>
+      {children}
+    </div>
+  );
 };
 
 export default Content;

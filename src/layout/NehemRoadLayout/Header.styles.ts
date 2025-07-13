@@ -4,6 +4,9 @@ import title from 'assets/images/nehem-road/title_gold.png';
 import titleBlack from 'assets/images/nehem-road/title_black.png';
 
 export const Wrapper = styled.div`
+  position: fixed;
+  z-index: 1000;
+  background: rgb(51, 51, 51);
   display: flex;
   flex-direction: row;
   width: 100%;
