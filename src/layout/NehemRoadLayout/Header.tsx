@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { MenuOutlined } from '@ant-design/icons';
 import { Drawer, Button } from 'antd';
-import { Wrapper, Previous, Title, Content, Menu, Extra } from './Header.styles';
+import { Wrapper, Previous, Title, TitleBlack, Content, Menu, Extra } from './Header.styles';
 
 interface HeaderProps {
   isMobile: boolean;
@@ -44,7 +44,7 @@ const Header = ({ isMobile }: HeaderProps) => {
       <Extra>
         {isMobile && <MenuOutlined style={{ fontSize: '6vw', color: '#fff' }} onClick={showDrawer} />}
         <Drawer
-          title='NEHEM ROAD'
+          title={<TitleBlack width='18vw' />}
           placement='top'
           height={230}
           closable={false}

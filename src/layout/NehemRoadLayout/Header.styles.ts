@@ -1,6 +1,7 @@
 import { Image } from 'antd';
 import styled from 'styled-components';
-import title from 'assets/images/nehem-road/title.png';
+import title from 'assets/images/nehem-road/title_gold.png';
+import titleBlack from 'assets/images/nehem-road/title_black.png';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -49,5 +50,11 @@ export const Extra = styled.div`
 export const Title = styled(Image).attrs((props) => ({
   width: props.width,
   src: title,
+  preview: false,
+}))``;
+
+export const TitleBlack = styled(Image).attrs((props) => ({
+  width: props.width,
+  src: titleBlack,
   preview: false,
 }))``;
