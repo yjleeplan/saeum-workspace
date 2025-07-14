@@ -117,17 +117,3 @@ export const ToiletWomen = styled(Image).attrs((props) => ({
   src: IconTolietWomen,
   preview: false,
 }))``;
-
-export const Tooltip = styled.div<{ x: number; y: number }>`
-  position: absolute;
-  left: ${({ x }) => x}px;
-  top: ${({ y }) => y}px;
-  background: #333;
-  color: #fff;
-  padding: 8px 10px;
-  border-radius: 6px;
-  pointer-events: none;
-  white-space: nowrap;
-  font-size: 14px;
-  z-index: 10;
-`;
