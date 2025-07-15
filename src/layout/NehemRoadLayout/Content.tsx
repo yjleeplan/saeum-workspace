@@ -7,7 +7,7 @@ export const Wrapper = styled.div<{ height?: number }>`
   top: ${({ height }) => (height ? height : '78')}px;
   width: 100%;
   height: ${({ height }) => (height ? `calc(var(--vh) - ${height}px)` : 'calc(100vh - 78px)')};
-  overflow-y: scroll;
+  overflow-y: auto;
 `;
 
 interface ContentProps {
