@@ -8,8 +8,10 @@ export const GameCard = styled.div<{ $ismobile: string }>`
   display: flex;
   flex-direction: column;
   width: ${({ $ismobile }) => ($ismobile === 'true' ? '100%' : '100%')};
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+  // max-height: calc(var(--vh) - 200px);
+  // overflow-y: auto;
+  // padding: 0 24px;
 `;
 
 export const GameImage = styled.div`
@@ -128,7 +130,7 @@ const ReserveModal = ({ visible, onCancel, setIsLoading, isMobile, selectedInfo 
       onCancel={handleCancel}
       footer={false}
       maskClosable={false}
-      getContainer={document.getElementById('reserveModal') ?? false}
+      // getContainer={document.getElementById('reserveModal') ?? false}
       destroyOnClose
     >
       <GameCard $ismobile={isMobile.toString()}>
