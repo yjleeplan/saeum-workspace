@@ -19,7 +19,7 @@ const IconWrapper = styled.div<{
   $bottom?: string;
   $z?: number;
 }>`
-  position: absolute;
+  // position: absolute;
   display: flex;
   top: ${({ $top }) => $top};
   left: ${({ $left }) => $left};
@@ -53,7 +53,7 @@ const NehemRoadReserveMap = ({ isMobile, setIsLoading }: NehemRoadReserveSkyView
         <IconWrapper width={isMobile ? '30%' : '18%'} $left='35%' $bottom='33%'>
           <Image width={'100%'} src={IconRodem} preview={false} />
         </IconWrapper>
-        <IconWrapper width={isMobile ? '30%' : '12%'} $top='4%' $left='34%'>
+        <IconWrapper width={isMobile ? '25%' : '10%'} $top='4%' $left='38%'>
           <Image width={'100%'} src={IconBethel} preview={false} />
         </IconWrapper>
         <IconWrapper width={isMobile ? '30%' : '25%'} $right='15%' $bottom='12%'>
