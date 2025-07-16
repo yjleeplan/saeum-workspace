@@ -26,17 +26,9 @@ const NehemRoadReserveMap = ({ isMobile, setIsLoading }: NehemRoadReserveSkyView
   return (
     <>
       {isMobile ? (
-        <NehemRoadReserveMapMobile
-          setIsLoading={setIsLoading}
-          openModal={handleBuildingModalOpen}
-          closeModal={handleBuildingModalClose}
-        />
+        <NehemRoadReserveMapMobile setIsLoading={setIsLoading} openModal={handleBuildingModalOpen} />
       ) : (
-        <NehemRoadReserveMapPc
-          setIsLoading={setIsLoading}
-          openModal={handleBuildingModalOpen}
-          closeModal={handleBuildingModalClose}
-        />
+        <NehemRoadReserveMapPc setIsLoading={setIsLoading} openModal={handleBuildingModalOpen} />
       )}
 
       {/* 건물 상세 모달 */}
