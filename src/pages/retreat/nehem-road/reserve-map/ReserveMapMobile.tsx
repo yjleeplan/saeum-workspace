@@ -5,12 +5,25 @@ import IconMizpah from 'assets/images/nehem-road/icon_mizpah.png';
 import IconRodem from 'assets/images/nehem-road/icon_rodem.png';
 import IconBethel from 'assets/images/nehem-road/icon_bethel.png';
 import IconPlayground from 'assets/images/nehem-road/icon_playground.png';
+import IconBackground from 'assets/images/nehem-road/icon_background.png';
+
+const BgWrapper = styled.div`
+  position: absolute;
+  top: 25%;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  width: 100%;
+  // height: 100%;
+`;
 
 const Wrapper = styled.div`
+  position: relative;
+  top: 25%;
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-top: 30px;
+  // margin-top: 30px;
 `;
 
 const Section = styled.div`
@@ -55,28 +68,30 @@ const IconWrapper = styled.div<{
 interface NehemRoadReserveMobileProps {
   setIsLoading: (data: boolean) => void;
   openModal: (key: string) => void;
-  closeModal: () => void;
 }
 
-const NehemRoadReserveMapMobile = ({ setIsLoading, openModal, closeModal }: NehemRoadReserveMobileProps) => {
+const NehemRoadReserveMapMobile = ({ setIsLoading, openModal }: NehemRoadReserveMobileProps) => {
   return (
     <>
+      <BgWrapper>
+        <Image width={'100%'} height={'75%'} src={IconBackground} preview={false} />
+      </BgWrapper>
       <Wrapper>
         <Section>
-          <IconWrapper $position='relative' width={'25%'} $top='30px' $ml='25%' onClick={() => openModal('1')}>
+          <IconWrapper $position='relative' width={'15%'} $top='22px' $ml='23%' onClick={() => openModal('1')}>
             <Image width={'100%'} src={IconBethel} preview={false} />
           </IconWrapper>
         </Section>
         <Section>
-          <IconWrapper $position='relative' width={'30%'} $top='70px' $ml='25%' onClick={() => openModal('2')}>
+          <IconWrapper $position='relative' width={'16%'} $top='27px' $ml='20%' onClick={() => openModal('2')}>
             <Image width={'100%'} src={IconRodem} preview={false} />
           </IconWrapper>
         </Section>
         <Section>
-          <IconWrapper width={'40%'} $left='26%' $bottom='15%' $z={100} $ml='5%' onClick={() => openModal('3')}>
+          <IconWrapper $position='relative' width={'20%'} $top='-9px' $z={100} $ml='10%' onClick={() => openModal('3')}>
             <Image width={'100%'} src={IconMizpah} preview={false} />
           </IconWrapper>
-          <IconWrapper $position='relative' width={'40%'} $top='20px' $mr='5%'>
+          <IconWrapper $position='relative' width={'24%'} $mr='19%'>
             <Image width={'100%'} src={IconPlayground} preview={false} />
           </IconWrapper>
         </Section>

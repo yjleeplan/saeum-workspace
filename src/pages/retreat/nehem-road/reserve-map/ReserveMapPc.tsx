@@ -5,6 +5,15 @@ import IconMizpah from 'assets/images/nehem-road/icon_mizpah.png';
 import IconRodem from 'assets/images/nehem-road/icon_rodem.png';
 import IconBethel from 'assets/images/nehem-road/icon_bethel.png';
 import IconPlayground from 'assets/images/nehem-road/icon_playground.png';
+import IconBackground from 'assets/images/nehem-road/icon_background.png';
+
+const BgWrapper = styled.div`
+  position: absolute;
+  width: 80%;
+  height: 100%;
+  left: 10%;
+  padding: 20px 0px;
+`;
 
 const Wrapper = styled.div`
   display: flex;
@@ -41,23 +50,25 @@ const IconWrapper = styled.div<{
 interface NehemRoadReservePcProps {
   setIsLoading: (data: boolean) => void;
   openModal: (key: string) => void;
-  closeModal: () => void;
 }
 
-const NehemRoadReserveMapPc = ({ setIsLoading, openModal, closeModal }: NehemRoadReservePcProps) => {
+const NehemRoadReserveMapPc = ({ setIsLoading, openModal }: NehemRoadReservePcProps) => {
   return (
     <>
+      <BgWrapper>
+        <Image width={'100%'} height={'100%'} src={IconBackground} preview={false} />
+      </BgWrapper>
       <Wrapper>
-        <IconWrapper width={'24%'} $left='23%' $bottom='10%' $z={100} onClick={() => openModal('3')}>
+        <IconWrapper width={'18%'} $left='17%' $top='40%' $z={100} onClick={() => openModal('3')}>
           <Image width={'100%'} src={IconMizpah} preview={false} />
         </IconWrapper>
-        <IconWrapper width={'18%'} $left='35%' $bottom='33%' onClick={() => openModal('2')}>
+        <IconWrapper width={'13%'} $left='26%' $top='31%' onClick={() => openModal('2')}>
           <Image width={'100%'} src={IconRodem} preview={false} />
         </IconWrapper>
-        <IconWrapper width={'10%'} $top='4%' $left='38%' onClick={() => openModal('1')}>
+        <IconWrapper width={'8%'} $top='15%' $left='30%' onClick={() => openModal('1')}>
           <Image width={'100%'} src={IconBethel} preview={false} />
         </IconWrapper>
-        <IconWrapper width={'25%'} $right='15%' $bottom='5%'>
+        <IconWrapper width={'20%'} $right='25%' $bottom='11%'>
           <Image width={'100%'} src={IconPlayground} preview={false} />
         </IconWrapper>
       </Wrapper>
