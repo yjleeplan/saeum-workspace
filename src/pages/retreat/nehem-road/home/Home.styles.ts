@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { Image } from 'antd';
-import PosterMain from 'assets/images/nehem-road/poster_main.png';
-import PosterMainPc from 'assets/images/nehem-road/poster_main_pc.png';
+import PosterMainV2 from 'assets/images/nehem-road/poster_main_v2.jpg';
 
 export const Wrapper = styled.div<{ $ismobile: string }>`
   display: flex;
@@ -18,13 +17,13 @@ export const PosterWrapper = styled.div`
 
 export const Poster = styled(Image).attrs((props) => ({
   width: '100%',
-  src: PosterMain,
+  src: PosterMainV2,
   preview: false,
 }))``;
 
 export const PosterPc = styled(Image).attrs((props) => ({
   width: '100%',
-  src: PosterMainPc,
+  src: PosterMainV2,
   preview: false,
 }))``;
 

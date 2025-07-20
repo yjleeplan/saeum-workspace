@@ -6,7 +6,7 @@ import titleBlack from 'assets/images/nehem-road/title_black.png';
 export const Wrapper = styled.div`
   position: fixed;
   z-index: 1000;
-  background: rgb(51, 51, 51);
+  background: #0d0a09;
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -39,7 +39,7 @@ export const Menu = styled.div`
 
   &:hover {
     background: #f0a721 !important;
-    color: #333 !important;
+    color: #0d0a09 !important;
   }
 `;
 
