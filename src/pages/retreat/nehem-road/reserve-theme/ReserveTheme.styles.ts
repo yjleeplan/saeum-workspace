@@ -6,26 +6,40 @@ export const Wrapper = styled.div<{ $ismobile: string }>`
   flex-direction: column;
   width: ${({ $ismobile }) => ($ismobile === 'true' ? '100%' : '70%')};
   margin: 0 auto;
-  padding: 30px 20px;
+  padding: 20px 20px;
   color: #fff;
 `;
 
-export const SelectBoxWrapper = styled.div`
+export const TitleWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 40px;
+`;
+
+export const Title = styled.div`
+  font-size: 2rem;
+  border-bottom: 1px solid #f0a721;
+`;
+
+export const SelectBoxWrapper = styled.div<{ $ismobile: string }>`
   display: flex;
   align-items: center;
   width: 100%;
-  font-size: 18px;
+  font-size: ${({ $ismobile }) => ($ismobile === 'true' ? '16px' : '18px')};
   margin-bottom: 20px;
 `;
 
 export const SelectBox = styled(Select)<{
+  $ismobile: string;
   onChange: string | ((e: React.ChangeEvent<HTMLInputElement>) => void) | null;
 }>`
   display: flex;
   width: 240px;
-  height: 40px;
+  height: ${({ $ismobile }) => ($ismobile === 'true' ? '34px' : '40px')};
   margin-left: 10px;
-  font-size: 18px;
+  font-size: ${({ $ismobile }) => ($ismobile === 'true' ? '16px' : '18px')};
 `;
 
 export const GameCardWrapper = styled.div`
