@@ -26,3 +26,37 @@
     /* padding: 24px 0; */
   }
 }
+
+/* 건물 상세 모달 */
+.ant-modal-wrap.building-modal-wrap {
+  > .ant-modal {
+    top: 10px;
+    padding-bottom: 0;
+    z-index: 1004;
+  }
+
+  .ant-modal-content {
+    max-height: calc(var(--vh) - 30px);
+    overflow-y: hidden;
+
+    .ant-modal-close-x {
+      color: #fff;
+    }
+  }
+
+  .ant-modal-header {
+    background: #333;
+
+    > .ant-modal-title {
+      font-weight: bold;
+      color: #fff;
+    }
+  }
+
+  .ant-modal-body {
+    max-height: calc(var(--vh) - 120px);
+    overflow-y: auto;
+    padding-bottom: 40px;
+    background: #333;
+  }
+}

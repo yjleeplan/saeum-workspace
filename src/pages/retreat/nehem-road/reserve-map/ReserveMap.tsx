@@ -122,7 +122,7 @@ const NehemRoadReserveMap = ({ isMobile, setIsLoading }: NehemRoadReserveSkyView
       </Content>
       {isMobile && (
         <Comment>
-          ※ 위 이미지는 '구세군 백화산 수련원 조감도'를 참고하여 제작했습니다. 실제와는 다소 차이가 있을 수 있습니다.
+          ※ 위 이미지는 '구세군 백화산 수련원 조감도'를 참고하여 제작했습니다. 실제와는 다소 차이가 있습니다.
         </Comment>
       )}
 

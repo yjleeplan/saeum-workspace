@@ -34,7 +34,7 @@ const Building3 = ({ isRotate, onClick }: BuildingProps) => {
     <Wrapper>
       {/* 2층 */}
       <Floor rotate={isRotate.toString()}>
-        <FloorTitle>미스바 성전(본관) (2F)</FloorTitle>
+        <FloorTitle>2층</FloorTitle>
         <FloorContent height={'250px'} rotate={isRotate.toString()}>
           <Row>
             <Room width={'100%'} height={'250px'} scale={1.02} onClick={() => onClick(getReserveInfo('1'))}>
@@ -46,7 +46,7 @@ const Building3 = ({ isRotate, onClick }: BuildingProps) => {
 
       {/* 1층 */}
       <Floor rotate={isRotate.toString()}>
-        <FloorTitle>미스바 성전(본관) (1F)</FloorTitle>
+        <FloorTitle>1층</FloorTitle>
         <FloorContent height={'250px'} rotate={isRotate.toString()}>
           <Row>
             <Col width={'10%'}>

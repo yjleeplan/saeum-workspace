@@ -34,7 +34,7 @@ const Building2 = ({ isRotate, onClick }: BuildingProps) => {
     <Wrapper>
       {/* 4층 */}
       <Floor rotate={isRotate.toString()}>
-        <FloorTitle>로뎀의 집 (4F)</FloorTitle>
+        <FloorTitle>4층</FloorTitle>
         <FloorContent height={'220px'} rotate={isRotate.toString()}>
           <Row>
             <Col width={'60%'}>
@@ -108,7 +108,7 @@ const Building2 = ({ isRotate, onClick }: BuildingProps) => {
 
       {/* 3층 */}
       <Floor rotate={isRotate.toString()}>
-        <FloorTitle>로뎀의 집 (3F)</FloorTitle>
+        <FloorTitle>3층</FloorTitle>
         <FloorContent height={'220px'} rotate={isRotate.toString()}>
           <Row>
             <Col width={'60%'}>
@@ -170,7 +170,7 @@ const Building2 = ({ isRotate, onClick }: BuildingProps) => {
 
       {/* 2층 */}
       <Floor rotate={isRotate.toString()}>
-        <FloorTitle>로뎀의 집 (2F)</FloorTitle>
+        <FloorTitle>2층</FloorTitle>
         <FloorContent height={'220px'} rotate={isRotate.toString()}>
           <Row>
             <Col width={'60%'}>
@@ -232,7 +232,7 @@ const Building2 = ({ isRotate, onClick }: BuildingProps) => {
 
       {/* 1층 */}
       <Floor rotate={isRotate.toString()}>
-        <FloorTitle>로뎀의 집 (1F)</FloorTitle>
+        <FloorTitle>1층</FloorTitle>
         <FloorContent height={'220px'} rotate={isRotate.toString()}>
           <Row>
             <Col width={'60%'}>
