@@ -2,13 +2,14 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { MenuOutlined } from '@ant-design/icons';
 import { Drawer, Button } from 'antd';
-import { Wrapper, Previous, Title, Content, Menu, Extra } from './Header.styles';
+import { Wrapper, Previous, Title, TitleBlack, Content, Menu, Extra } from './Header.styles';
 
 interface HeaderProps {
   isMobile: boolean;
+  headerRef: React.RefObject<HTMLDivElement>;
 }
 
-const Header = ({ isMobile }: HeaderProps) => {
+const Header = ({ isMobile, headerRef }: HeaderProps) => {
   const [open, setOpen] = useState(false);
 
   const showDrawer = () => {
@@ -20,10 +21,10 @@ const Header = ({ isMobile }: HeaderProps) => {
   };
 
   return (
-    <Wrapper>
+    <Wrapper id='nehem-road-header' ref={headerRef}>
       <Previous>
         <NavLink to='/nehem-road/home' onClick={onClose}>
-          <Title width={isMobile ? '18vw' : '5vw'} />
+          <Title width={isMobile ? '22vw' : '7vw'} />
         </NavLink>
       </Previous>
       <Content>
@@ -44,7 +45,7 @@ const Header = ({ isMobile }: HeaderProps) => {
       <Extra>
         {isMobile && <MenuOutlined style={{ fontSize: '6vw', color: '#fff' }} onClick={showDrawer} />}
         <Drawer
-          title='NEHEM ROAD'
+          title={<TitleBlack width='22vw' />}
           placement='top'
           height={230}
           closable={false}

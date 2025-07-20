@@ -8,6 +8,7 @@ import Main from 'pages/main/Main';
 import NehemRoadHome from 'pages/retreat/nehem-road/home/Home';
 import NehemRoadReserveTheme from 'pages/retreat/nehem-road/reserve-theme/ReserveTheme';
 import NehemRoadReservePlan from 'pages/retreat/nehem-road/reserve-plan/ReservePlan';
+import NehemRoadReserveMap from 'pages/retreat/nehem-road/reserve-map/ReserveMap';
 
 export const Router = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -35,6 +36,10 @@ export const Router = () => {
         <Route
           path={'/nehem-road/reserve-plan'}
           element={<NehemRoadReservePlan isMobile={mobileCheck()} setIsLoading={setIsLoading} />}
+        />
+        <Route
+          path={'/nehem-road/reserve-map'}
+          element={<NehemRoadReserveMap isMobile={mobileCheck()} setIsLoading={setIsLoading} />}
         />
       </Route>
 
