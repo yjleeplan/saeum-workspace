@@ -90,7 +90,8 @@ export const Span = styled.span`
 export const ButtonStyled = styled(Button)`
   width: 60%;
   height: 40px;
-  background: #000;
+  background: #333;
   font-size: 18px;
   color: #fff;
+  border: 1px solid #fff;
 `;

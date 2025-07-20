@@ -8,7 +8,7 @@ import 'assets/css/nehem-road.css';
 const Wrapper = styled.div`
   width: 100%;
   height: 100%;
-  background: #333;
+  background: #0d0a09;
   position: fixed;
   // overflow-y: scroll;
   bottom: 0;
@@ -60,7 +60,7 @@ const NehemRoadLayout = ({ isMobile, isLoading, setIsLoading, children }: NehemR
   return (
     <Wrapper>
       <Spin spinning={isLoading} tip='잠시만 기다려주세요..'>
-        <div id='nehem-road-layout' style={{ background: '#333' }}>
+        <div id='nehem-road-layout' style={{ background: '#0d0a09' }}>
           <Header isMobile={isMobile} headerRef={headerRef} />
           <Content headerHeight={headerHeight}>{React.cloneElement(children, { setIsLoading })}</Content>
         </div>

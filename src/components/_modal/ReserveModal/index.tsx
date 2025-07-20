@@ -42,7 +42,7 @@ export const GameTime = styled.div<{ $enable?: string }>`
     props.$enable === 'true' &&
     `&:hover {
     background: #fff !important;
-    color: #333 !important;
+    color: #0d0a09 !important;
     border: 1px solid;
   }`}
 `;
