@@ -6,6 +6,8 @@ import { Reserve } from 'types/reserve';
 import { getGamePoster } from 'utils/getGamePoster';
 import {
   Wrapper,
+  TitleWrapper,
+  Title,
   SelectBoxWrapper,
   SelectBox,
   GameCardWrapper,
@@ -56,8 +58,18 @@ const NehemRoadReserveTheme = ({ isMobile, setIsLoading }: NehemRoadReserveTheme
 
   return (
     <Wrapper $ismobile={isMobile.toString()}>
-      <SelectBoxWrapper>
-        건물 선택 : <SelectBox placeholder='전체' options={options} value={selected} onChange={handleChange} />
+      <TitleWrapper>
+        <Title>Reservation</Title>
+      </TitleWrapper>
+      <SelectBoxWrapper $ismobile={isMobile.toString()}>
+        건물 선택 :{' '}
+        <SelectBox
+          placeholder='전체'
+          options={options}
+          value={selected}
+          onChange={handleChange}
+          $ismobile={isMobile.toString()}
+        />
       </SelectBoxWrapper>
       <GameCardWrapper>
         {dummyData
