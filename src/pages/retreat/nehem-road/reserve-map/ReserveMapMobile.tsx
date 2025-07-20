@@ -1,11 +1,12 @@
 import React from 'react';
 import { Image } from 'antd';
 import styled from 'styled-components';
+import Map from 'assets/images/nehem-road/map_background.png';
 import IconMizpah from 'assets/images/nehem-road/icon_mizpah.png';
 import IconRodem from 'assets/images/nehem-road/icon_rodem.png';
 import IconBethel from 'assets/images/nehem-road/icon_bethel.png';
 import IconPlayground from 'assets/images/nehem-road/icon_playground.png';
-import IconBackground from 'assets/images/nehem-road/icon_background.png';
+import IconBasketball from 'assets/images/nehem-road/icon_basketball.png';
 
 const BgWrapper = styled.div`
   position: absolute;
@@ -74,7 +75,7 @@ const NehemRoadReserveMapMobile = ({ setIsLoading, openModal }: NehemRoadReserve
   return (
     <>
       <BgWrapper>
-        <Image width={'100%'} height={'75%'} src={IconBackground} preview={false} />
+        <Image width={'100%'} height={'75%'} src={Map} preview={false} />
       </BgWrapper>
       <Wrapper>
         <Section>

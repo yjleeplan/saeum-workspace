@@ -1,18 +1,20 @@
 import React from 'react';
 import { Image } from 'antd';
 import styled from 'styled-components';
+import Map from 'assets/images/nehem-road/map_background.png';
 import IconMizpah from 'assets/images/nehem-road/icon_mizpah.png';
 import IconRodem from 'assets/images/nehem-road/icon_rodem.png';
 import IconBethel from 'assets/images/nehem-road/icon_bethel.png';
 import IconPlayground from 'assets/images/nehem-road/icon_playground.png';
-import IconBackground from 'assets/images/nehem-road/icon_background.png';
+import IconBasketball from 'assets/images/nehem-road/icon_basketball.png';
 
 const BgWrapper = styled.div`
   position: absolute;
-  width: 80%;
+  width: 100%;
   height: 100%;
-  left: 10%;
-  padding: 20px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Wrapper = styled.div`
@@ -22,6 +24,7 @@ const Wrapper = styled.div`
 
 const IconWrapper = styled.div<{
   width: string;
+  height?: string;
   $top?: string;
   $left?: string;
   $right?: string;
@@ -35,7 +38,7 @@ const IconWrapper = styled.div<{
   right: ${({ $right }) => $right};
   bottom: ${({ $bottom }) => $bottom};
   width: ${({ width }) => width};
-  height: fit-content;
+  height: ${({ height }) => (height ? height : 'fit-content')};
   cursor: pointer;
   z-index: ${({ $z }) => $z};
   transform: translateZ(20px);
@@ -56,20 +59,23 @@ const NehemRoadReserveMapPc = ({ setIsLoading, openModal }: NehemRoadReservePcPr
   return (
     <>
       <BgWrapper>
-        <Image width={'100%'} height={'100%'} src={IconBackground} preview={false} />
+        <Image width={'70%'} src={Map} preview={false} />
       </BgWrapper>
       <Wrapper>
-        <IconWrapper width={'18%'} $left='17%' $top='40%' $z={100} onClick={() => openModal('3')}>
+        <IconWrapper width={'32%'} $left='14%' $top='45%' $z={100} onClick={() => openModal('3')}>
           <Image width={'100%'} src={IconMizpah} preview={false} />
         </IconWrapper>
-        <IconWrapper width={'13%'} $left='26%' $top='31%' onClick={() => openModal('2')}>
+        <IconWrapper width={'23%'} $left='32%' $top='24%' onClick={() => openModal('2')}>
           <Image width={'100%'} src={IconRodem} preview={false} />
         </IconWrapper>
-        <IconWrapper width={'8%'} $top='15%' $left='30%' onClick={() => openModal('1')}>
+        <IconWrapper width={'14%'} $top='6%' $left='33%' onClick={() => openModal('1')}>
           <Image width={'100%'} src={IconBethel} preview={false} />
         </IconWrapper>
-        <IconWrapper width={'20%'} $right='25%' $bottom='11%'>
+        <IconWrapper width={'28%'} $right='15%' $bottom='9%'>
           <Image width={'100%'} src={IconPlayground} preview={false} />
+        </IconWrapper>
+        <IconWrapper width={'10%'} $left='47%' $top='17%' $z={100}>
+          <Image width={'100%'} src={IconBasketball} preview={false} />
         </IconWrapper>
       </Wrapper>
     </>
