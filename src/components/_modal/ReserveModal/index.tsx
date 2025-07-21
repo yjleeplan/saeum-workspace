@@ -1,7 +1,8 @@
-import React from 'react';
-import { Modal, Image, message } from 'antd';
+import { useState, useMemo, useEffect } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { Modal, Image, message, Spin } from 'antd';
 import styled from 'styled-components';
-import { Reserve } from 'types/reserve';
+import { queries } from 'api/queries';
 import { getGamePoster } from 'utils/getGamePoster';
 
 export const GameCard = styled.div<{ $ismobile: string }>`
@@ -28,18 +29,18 @@ export const GameContent = styled.div`
   padding: 10px 0;
 `;
 
-export const GameTime = styled.div<{ $enable?: string }>`
+export const GameTime = styled.div<{ $enable?: number }>`
   display: flex;
   flex-direction: column;
   width: 33%;
   height: 100%;
   padding: 8px;
-  background: ${({ $enable }) => ($enable === 'true' ? '#F0A721' : '#808080')};
-  border: ${({ $enable }) => ($enable === 'true' ? '1px solid #F0A721' : '1px solid #808080')};
+  background: ${({ $enable }) => ($enable === 1 ? '#F0A721' : '#808080')};
+  border: ${({ $enable }) => ($enable === 1 ? '1px solid #F0A721' : '1px solid #808080')};
   cursor: pointer;
 
   ${(props) =>
-    props.$enable === 'true' &&
+    props.$enable === 1 &&
     `&:hover {
     background: #fff !important;
     color: #0d0a09 !important;
@@ -79,12 +80,37 @@ export const Span = styled.span`
 interface ModalProps {
   visible: boolean;
   onCancel: () => void;
-  setIsLoading: (data: boolean) => void;
   isMobile: boolean;
-  selectedInfo: Reserve | undefined;
+  selectedId: number | undefined;
 }
 
-const ReserveModal = ({ visible, onCancel, setIsLoading, isMobile, selectedInfo }: ModalProps) => {
+const ReserveModal = ({ visible, onCancel, isMobile, selectedId }: ModalProps) => {
+  /** State */
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  // 게임 상세 정보 조회 API
+  const {
+    data: gameInfoQueryData,
+    refetch: refetchGameInfo,
+    isSuccess: gameInfoQuerySuccess,
+    isFetching: gameInfoFetching,
+  } = useQuery({
+    ...queries.game.info({
+      id: selectedId,
+    }),
+    staleTime: 500,
+    cacheTime: 1000,
+    enabled: selectedId !== undefined,
+  });
+
+  // 게임 상세 정보 데이터 세팅
+  const gameInfo = useMemo(() => {
+    if (gameInfoQuerySuccess) {
+      return gameInfoQueryData;
+    }
+  }, [gameInfoQueryData]);
+
   // 예약하기
   const handleClick = () => {
     message.error('준비중입니다.');
@@ -95,6 +121,21 @@ const ReserveModal = ({ visible, onCancel, setIsLoading, isMobile, selectedInfo 
     onCancel();
   };
 
+  /** Effect */
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+
+  useEffect(() => {
+    if (isLoaded) {
+      if (gameInfoFetching) {
+        setIsLoading(true);
+      } else {
+        setIsLoading(false);
+      }
+    }
+  }, [isLoaded, gameInfoFetching]);
+
   return (
     <Modal
       wrapClassName='reserve-modal-wrap'
@@ -102,26 +143,26 @@ const ReserveModal = ({ visible, onCancel, setIsLoading, isMobile, selectedInfo 
         <>
           <Row>
             <Col width='100%' $align='center' $font='20px' $fw='bold'>
-              {selectedInfo?.name}
+              {gameInfo?.name}
             </Col>
           </Row>
           <Row $pt='10px'>
             <Col width='100%' $align='center' $font='17px'>
-              {selectedInfo?.locationName}
+              {gameInfo?.location_name_display}
             </Col>
           </Row>
           <Row $pt='4px'>
             <Col width='37%' $font={isMobile ? '14px' : '16px'}>
               <Span>장르: </Span>
-              {selectedInfo?.category}
+              {gameInfo?.category}
             </Col>
             <Col width='33%' $font={isMobile ? '14px' : '16px'}>
               <Span>인원: </Span>
-              {selectedInfo?.people}
+              {gameInfo?.people}
             </Col>
             <Col width='30%' $font={isMobile ? '14px' : '16px'} $align='end'>
               <Span>시간: </Span>
-              {selectedInfo?.time}분
+              {gameInfo?.play_time}분
             </Col>
           </Row>
         </>
@@ -133,49 +174,31 @@ const ReserveModal = ({ visible, onCancel, setIsLoading, isMobile, selectedInfo 
       // getContainer={document.getElementById('reserveModal') ?? false}
       destroyOnClose
     >
-      <GameCard $ismobile={isMobile.toString()}>
-        <GameImage>
-          <Image width={'100%'} height={'100%'} src={getGamePoster(selectedInfo?.id ?? '')} preview={false} />
-        </GameImage>
-        <GameContent>
-          <GameTime $enable='true' onClick={handleClick}>
-            <Row>
-              <Col width='100%' $align='center' $font='20px' $fw='bold'>
-                08 : 30
-              </Col>
-            </Row>
-            <Row>
-              <Col width='100%' $align='center' $font='16px'>
-                예약가능
-              </Col>
-            </Row>
-          </GameTime>
-          <GameTime $enable='true' onClick={handleClick}>
-            <Row>
-              <Col width='100%' $align='center' $font='20px' $fw='bold'>
-                09 : 30
-              </Col>
-            </Row>
-            <Row>
-              <Col width='100%' $align='center' $font='16px'>
-                예약가능
-              </Col>
-            </Row>
-          </GameTime>
-          <GameTime $enable='false'>
-            <Row>
-              <Col width='100%' $align='center' $font='20px' $fw='bold'>
-                10 : 30
-              </Col>
-            </Row>
-            <Row>
-              <Col width='100%' $align='center' $font='16px'>
-                예약마감
-              </Col>
-            </Row>
-          </GameTime>
-        </GameContent>
-      </GameCard>
+      <Spin spinning={isLoading} tip='잠시만 기다려주세요..'>
+        <GameCard $ismobile={isMobile.toString()}>
+          <GameImage>
+            <Image width={'100%'} height={'100%'} src={getGamePoster(gameInfo?.id ?? 0)} preview={false} />
+          </GameImage>
+          <GameContent>
+            {gameInfo?.time_list?.map((item, index) => {
+              return (
+                <GameTime key={index} $enable={item.is_possible} onClick={handleClick}>
+                  <Row>
+                    <Col width='100%' $align='center' $font='20px' $fw='bold'>
+                      {item.game_time}
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col width='100%' $align='center' $font='16px'>
+                      {item.is_possible ? '예약가능' : '예약마감'}
+                    </Col>
+                  </Row>
+                </GameTime>
+              );
+            })}
+          </GameContent>
+        </GameCard>
+      </Spin>
     </Modal>
   );
 };

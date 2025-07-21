@@ -36,7 +36,7 @@ const Header = ({ isMobile, headerRef }: HeaderProps) => {
             <NavLink to='/nehem-road/reserve-theme'>
               {(props) => <Menu style={{ color: props.isActive ? '#f0a721' : '#fff' }}>예약 (테마)</Menu>}
             </NavLink>
-            <NavLink to='/nehem-road/reserve-map'>
+            <NavLink to='/nehem-road/reserve-location'>
               {(props) => <Menu style={{ color: props.isActive ? '#f0a721' : '#fff' }}>예약 (위치)</Menu>}
             </NavLink>
           </>
@@ -64,7 +64,7 @@ const Header = ({ isMobile, headerRef }: HeaderProps) => {
             </NavLink>
           </p>
           <p>
-            <NavLink to='/nehem-road/reserve-map' onClick={onClose} style={{ color: '#000' }}>
+            <NavLink to='/nehem-road/reserve-location' onClick={onClose} style={{ color: '#000' }}>
               <div>예약 (위치)</div>
             </NavLink>
           </p>
