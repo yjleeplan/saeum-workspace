@@ -38,7 +38,7 @@ export const Router = () => {
           element={<NehemRoadReservePlan isMobile={mobileCheck()} setIsLoading={setIsLoading} />}
         />
         <Route
-          path={'/nehem-road/reserve-map'}
+          path={'/nehem-road/reserve-location'}
           element={<NehemRoadReserveMap isMobile={mobileCheck()} setIsLoading={setIsLoading} />}
         />
       </Route>
