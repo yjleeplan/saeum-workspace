@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState, useMemo, useEffect } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import { Image } from 'antd';
-import { dummyData } from './dummy-data';
+import { queries } from 'api/queries';
 import ReserveModal from 'components/_modal/ReserveModal';
-import { Reserve } from 'types/reserve';
 import { getGamePoster } from 'utils/getGamePoster';
 import {
   Wrapper,
@@ -28,26 +28,49 @@ interface NehemRoadReserveThemeProps {
 const NehemRoadReserveTheme = ({ isMobile, setIsLoading }: NehemRoadReserveThemeProps) => {
   // 건물 리스트
   const options = [
-    { label: '전체', value: '' },
-    { label: '벧엘의 집', value: '1' },
-    { label: '로뎀의 집', value: '2' },
-    { label: '미스바 성전(본관)', value: '3' },
-    { label: '야외', value: '4' },
+    { label: '전체', value: 0 },
+    { label: '벧엘의 집', value: 1 },
+    { label: '로뎀의 집', value: 2 },
+    { label: '미스바 성전(본관)', value: 3 },
+    { label: '운동장', value: 4 },
+    { label: '농구장', value: 5 },
   ];
 
   /** State */
-  const [selected, setSelected] = useState<string>('');
-  const [reserveInfo, setReserveInfo] = useState<Reserve | undefined>(undefined);
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
+  const [selected, setSelected] = useState<number>(0);
+  const [selectedGameId, setSelectedGameId] = useState<number | undefined>(undefined);
   const [reserveModalVisible, setResrveModalVisible] = useState<boolean>(false);
+
+  // 게임 목록 조회 API
+  const {
+    data: gameListQueryData = [],
+    refetch: refetchGameList,
+    isSuccess: gameListQuerySuccess,
+    isFetching: gameListFetching,
+  } = useQuery({
+    ...queries.game.list({
+      location_id: '',
+    }),
+    staleTime: 500,
+    cacheTime: 1000,
+  });
+
+  // 게임 목록 데이터 세팅
+  const gameList = useMemo(() => {
+    if (gameListQuerySuccess) {
+      return gameListQueryData;
+    }
+  }, [gameListQueryData]);
 
   // 건물 선택
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSelected(e.toString());
+    setSelected(Number(e));
   };
 
   // 예약하기 상세 모달 오픈
-  const handleReserveModalOpen = (data: Reserve) => {
-    setReserveInfo(data);
+  const handleReserveModalOpen = (id: number) => {
+    setSelectedGameId(id);
     setResrveModalVisible(true);
   };
 
@@ -55,6 +78,21 @@ const NehemRoadReserveTheme = ({ isMobile, setIsLoading }: NehemRoadReserveTheme
   const handleReserveModalClose = () => {
     setResrveModalVisible(false);
   };
+
+  /** Effect */
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+
+  useEffect(() => {
+    if (isLoaded) {
+      if (gameListFetching) {
+        setIsLoading(true);
+      } else {
+        setIsLoading(false);
+      }
+    }
+  }, [isLoaded, gameListFetching]);
 
   return (
     <Wrapper $ismobile={isMobile.toString()}>
@@ -72,9 +110,9 @@ const NehemRoadReserveTheme = ({ isMobile, setIsLoading }: NehemRoadReserveTheme
         />
       </SelectBoxWrapper>
       <GameCardWrapper>
-        {dummyData
-          .filter((data) => data.location === selected || selected === '')
-          .map((item, index) => (
+        {gameList
+          ?.filter((data) => data?.location_parent_id === selected || selected === 0)
+          ?.map((item, index) => (
             <GameCard key={index} $ismobile={isMobile.toString()}>
               <GameImage>
                 <Image width={'68%'} height={'100%'} src={getGamePoster(item.id)} preview={false} />
@@ -88,26 +126,26 @@ const NehemRoadReserveTheme = ({ isMobile, setIsLoading }: NehemRoadReserveTheme
                 <Row $pt='2px'>
                   <Col width='100%' $align='center'>
                     <Span>장소: </Span>
-                    {item.locationName}
+                    {item?.location_name_display}
                   </Col>
                 </Row>
                 <Row $pt='2px' $justify='space-between'>
                   <Col width='37%'>
                     <Span>장르: </Span>
-                    {item.category}
+                    {item?.category}
                   </Col>
                   <Col width='33%'>
                     <Span>인원: </Span>
-                    {item.people}
+                    {item?.people}
                   </Col>
                   <Col width='30%' $align='end'>
                     <Span>시간: </Span>
-                    {item.time}분
+                    {item?.play_time}분
                   </Col>
                 </Row>
                 <Row $pt='20px' $pb='20px'>
                   <Col width='100%' $align='center'>
-                    <ButtonStyled onClick={() => handleReserveModalOpen(item)}>예약하기</ButtonStyled>
+                    <ButtonStyled onClick={() => handleReserveModalOpen(item.id)}>예약하기</ButtonStyled>
                   </Col>
                 </Row>
               </GameContent>
@@ -120,9 +158,8 @@ const NehemRoadReserveTheme = ({ isMobile, setIsLoading }: NehemRoadReserveTheme
         <ReserveModal
           visible={reserveModalVisible}
           onCancel={handleReserveModalClose}
-          setIsLoading={setIsLoading}
           isMobile={isMobile}
-          selectedInfo={reserveInfo}
+          selectedId={selectedGameId}
         />
       </div>
     </Wrapper>

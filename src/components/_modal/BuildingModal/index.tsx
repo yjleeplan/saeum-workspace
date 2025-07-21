@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, message } from 'antd';
-import { Reserve } from 'types/reserve';
+import { Modal, Spin } from 'antd';
 import ReserveModal from 'components/_modal/ReserveModal';
 import Building1 from 'pages/retreat/nehem-road/reserve-plan/Building1';
 import Building2 from 'pages/retreat/nehem-road/reserve-plan/Building2';
@@ -9,14 +8,15 @@ import Building3 from 'pages/retreat/nehem-road/reserve-plan/Building3';
 interface ModalProps {
   visible: boolean;
   onCancel: () => void;
-  setIsLoading: (data: boolean) => void;
   isMobile: boolean;
   selectedKey: string | undefined;
 }
 
-const BuildingModal = ({ visible, onCancel, setIsLoading, isMobile, selectedKey }: ModalProps) => {
-  const [reserveInfo, setReserveInfo] = useState<Reserve | undefined>(undefined);
+const BuildingModal = ({ visible, onCancel, isMobile, selectedKey }: ModalProps) => {
+  /** State */
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [reserveModalVisible, setResrveModalVisible] = useState<boolean>(false);
+  const [selectedId, setSelectedId] = useState<number | undefined>(undefined);
 
   // 닫기
   const handleCancel = () => {
@@ -24,8 +24,8 @@ const BuildingModal = ({ visible, onCancel, setIsLoading, isMobile, selectedKey 
   };
 
   // 예약하기 상세 모달 오픈
-  const handleReserveModalOpen = (data: Reserve) => {
-    setReserveInfo(data);
+  const handleReserveModalOpen = (id: number) => {
+    setSelectedId(id);
     setResrveModalVisible(true);
   };
 
@@ -54,11 +54,17 @@ const BuildingModal = ({ visible, onCancel, setIsLoading, isMobile, selectedKey 
         // getContainer={document.getElementById('reserveModal') ?? false}
         destroyOnClose
       >
-        <>
-          {selectedKey === '1' && <Building1 isRotate={true} onClick={handleReserveModalOpen} />}
-          {selectedKey === '2' && <Building2 isRotate={true} onClick={handleReserveModalOpen} />}
-          {selectedKey === '3' && <Building3 isRotate={true} onClick={handleReserveModalOpen} />}
-        </>
+        <Spin spinning={isLoading} tip='잠시만 기다려주세요..'>
+          {selectedKey === '1' && (
+            <Building1 isRotate={true} onClick={handleReserveModalOpen} setIsLoading={setIsLoading} />
+          )}
+          {selectedKey === '2' && (
+            <Building2 isRotate={true} onClick={handleReserveModalOpen} setIsLoading={setIsLoading} />
+          )}
+          {selectedKey === '3' && (
+            <Building3 isRotate={true} onClick={handleReserveModalOpen} setIsLoading={setIsLoading} />
+          )}
+        </Spin>
       </Modal>
 
       {/* 예약하기 상세 모달 */}
@@ -66,9 +72,8 @@ const BuildingModal = ({ visible, onCancel, setIsLoading, isMobile, selectedKey 
         <ReserveModal
           visible={reserveModalVisible}
           onCancel={handleReserveModalClose}
-          setIsLoading={setIsLoading}
           isMobile={isMobile}
-          selectedInfo={reserveInfo}
+          selectedId={selectedId}
         />
       </div>
     </>

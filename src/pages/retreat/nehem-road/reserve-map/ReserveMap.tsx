@@ -131,7 +131,6 @@ const NehemRoadReserveMap = ({ isMobile, setIsLoading }: NehemRoadReserveSkyView
         <BuildingModal
           visible={buildingModalVisible}
           onCancel={handleBuildingModalClose}
-          setIsLoading={setIsLoading}
           isMobile={isMobile}
           selectedKey={buildingKey}
         />

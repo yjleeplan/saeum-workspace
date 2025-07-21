@@ -8,17 +8,18 @@ import posterGame7 from 'assets/images/nehem-road/poster_game7.png';
 import posterGame8 from 'assets/images/nehem-road/poster_game8.png';
 
 // 게임 포스터 이미지 소스 추출
-export const getGamePoster = (id: string) => {
+export const getGamePoster = (id: number) => {
   return {
-    '1': posterGame1,
-    '2': posterGame2,
-    '3': posterGame3,
-    '4': posterGame4,
-    '5': posterGame5,
-    '6': posterGame5,
-    '7': posterGame6,
-    '8': posterGame7,
-    '9': posterGame8,
-    '10': posterGame8,
+    1: posterGame1,
+    2: posterGame2,
+    3: posterGame3,
+    4: posterGame3,
+    5: posterGame4,
+    6: posterGame4,
+    7: posterGame5,
+    8: posterGame6,
+    9: posterGame7,
+    10: posterGame8,
+    11: posterGame8,
   }[id];
 };

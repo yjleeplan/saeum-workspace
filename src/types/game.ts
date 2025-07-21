@@ -9,6 +9,7 @@ export interface Game {
 }
 
 export interface GameAndLocation extends Game {
+  location_parent_id?: number | undefined | null;
   location_name?: string | undefined | null;
   location_name_display?: string | undefined | null;
 }
@@ -31,4 +32,4 @@ export type GetGameListRequest = {
 
 export type GetGameListResponse = GameAndLocation[];
 
-export type GetGameInfoResponse = GameAndLocationAndTime[];
+export type GetGameInfoResponse = GameAndLocationAndTime;
