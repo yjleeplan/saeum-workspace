@@ -17,7 +17,7 @@ const Wrapper = styled.div<{ $ismobile: string }>`
   padding: 20px 20px;
 `;
 
-export const TitleWrapper = styled.div`
+const TitleWrapper = styled.div`
   display: flex;
   width: 100%;
   justify-content: center;
@@ -25,7 +25,7 @@ export const TitleWrapper = styled.div`
   padding-bottom: 40px;
 `;
 
-export const Title = styled.div`
+const Title = styled.div`
   font-size: 2rem;
   color: #fff;
   border-bottom: 1px solid #f0a721;
