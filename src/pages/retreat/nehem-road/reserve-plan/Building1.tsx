@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import { Image } from 'antd';
-import { Reserve } from 'types/reserve';
+import { queries } from 'api/queries';
 import { getGamePoster } from 'utils/getGamePoster';
 import {
   Wrapper,
@@ -15,19 +16,53 @@ import {
   ToiletMen,
   ToiletWomen,
 } from './Building1.styles';
-import { dummyData } from '../reserve-theme/dummy-data';
 
 interface BuildingProps {
   isRotate: boolean;
-  onClick: (data: Reserve) => void;
+  onClick: (id: number) => void;
+  setIsLoading: (data: boolean) => void;
 }
 
 // 벧엘의 집
-const Building1 = ({ isRotate, onClick }: BuildingProps) => {
-  // 예약정보 조회
-  const getReserveInfo = (id: string) => {
-    return dummyData.filter((data) => data.id === id)[0];
-  };
+const Building1 = ({ isRotate, onClick, setIsLoading }: BuildingProps) => {
+  /** State */
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
+
+  // 위치 목록 조회 API
+  const {
+    data: locationListQueryData = [],
+    refetch: refetchLocationList,
+    isSuccess: locationListQuerySuccess,
+    isFetching: locationListFetching,
+  } = useQuery({
+    ...queries.location.list({
+      parent_id: 1,
+    }),
+    staleTime: 500,
+    cacheTime: 1000,
+  });
+
+  // 위치 목록 데이터 세팅
+  const locationList = useMemo(() => {
+    if (locationListQuerySuccess) {
+      return locationListQueryData;
+    }
+  }, [locationListQueryData]);
+
+  /** Effect */
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+
+  useEffect(() => {
+    if (isLoaded) {
+      if (locationListFetching) {
+        setIsLoading(true);
+      } else {
+        setIsLoading(false);
+      }
+    }
+  }, [isLoaded, locationListFetching]);
 
   return (
     <Wrapper>
@@ -49,8 +84,8 @@ const Building1 = ({ isRotate, onClick }: BuildingProps) => {
               210
             </RoomDisabled>
             <Stair width={'12%'} height={'80px'} />
-            <Room width={'24%'} height={'80px'} onClick={() => onClick(getReserveInfo('8'))}>
-              <Image width={'100%'} height={'100%'} src={getGamePoster('8')} preview={false} />
+            <Room width={'24%'} height={'80px'} onClick={() => onClick(11)}>
+              <Image width={'100%'} height={'100%'} src={getGamePoster(11)} preview={false} />
             </Room>
             <RoomDisabled width={'24%'} height={'80px'}>
               212
@@ -88,8 +123,8 @@ const Building1 = ({ isRotate, onClick }: BuildingProps) => {
         <FloorTitle>1층</FloorTitle>
         <FloorContent height={'200px'} rotate={isRotate.toString()}>
           <Row>
-            <Room width={'36%'} height={'80px'}>
-              믿.소.사.예~
+            <Room width={'36%'} height={'80px'} onClick={() => onClick(3)}>
+              <Image width={'100%'} height={'100%'} src={getGamePoster(3)} preview={false} />
             </Room>
             <RoomDisabled width={'12%'} height={'80px'}>
               <ToiletWomen />
@@ -103,19 +138,31 @@ const Building1 = ({ isRotate, onClick }: BuildingProps) => {
             </RoomDisabled>
           </Row>
           <Row>
-            <Room width={'24%'} height={'80px'} onClick={() => onClick(getReserveInfo('9'))}>
-              <Image width={'100%'} height={'100%'} src={getGamePoster('9')} preview={false} />
-            </Room>
-            <Room width={'24%'} height={'80px'} onClick={() => onClick(getReserveInfo('10'))}>
-              <Image width={'100%'} height={'100%'} src={getGamePoster('10')} preview={false} />
+            <RoomDisabled width={'24%'} height={'80px'}>
+              101
+            </RoomDisabled>
+            <Room width={'24%'} height={'80px'}>
+              믿음의 타이밍
             </Room>
             <Corridor width={'12%'} height={'80px'}></Corridor>
-            <RoomDisabled width={'24%'} height={'80px'}>
-              103
-            </RoomDisabled>
-            <RoomDisabled width={'24%'} height={'80px'}>
+            <Room width={'48%'} height={'80px'}>
+              기억나니..? 우리가 쌓았던 그 벽돌..
+            </Room>
+            {/* <RoomDisabled width={'24%'} height={'80px'}>
               104
-            </RoomDisabled>
+            </RoomDisabled> */}
+          </Row>
+        </FloorContent>
+      </Floor>
+
+      {/* 1층 외부 */}
+      <Floor rotate={isRotate.toString()}>
+        <FloorTitle>1층 외부 컨테이너</FloorTitle>
+        <FloorContent height={'200px'} rotate={isRotate.toString()}>
+          <Row>
+            <Room width={'100%'} height={'200px'} onClick={() => onClick(8)}>
+              <Image width={'100%'} height={'100%'} src={getGamePoster(8)} preview={false} />
+            </Room>
           </Row>
         </FloorContent>
       </Floor>

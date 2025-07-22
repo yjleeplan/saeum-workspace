@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Switch } from 'antd';
 import styled from 'styled-components';
 import ReserveModal from 'components/_modal/ReserveModal';
-import { Reserve } from 'types/reserve';
 import Building1 from './Building1';
 import Building2 from './Building2';
 import Building3 from './Building3';
@@ -32,7 +31,7 @@ interface NehemRoadReservePlanProps {
 
 const NehemRoadReservePlan = ({ isMobile, setIsLoading }: NehemRoadReservePlanProps) => {
   const [isRotate, setIsRotate] = useState<boolean>(!isMobile);
-  const [reserveInfo, setReserveInfo] = useState<Reserve | undefined>(undefined);
+  const [selectedGameId, setSelectedGameId] = useState<number | undefined>(undefined);
   const [reserveModalVisible, setResrveModalVisible] = useState<boolean>(false);
 
   // 도면 토글
@@ -41,8 +40,8 @@ const NehemRoadReservePlan = ({ isMobile, setIsLoading }: NehemRoadReservePlanPr
   };
 
   // 예약하기 상세 모달 오픈
-  const handleReserveModalOpen = (data: Reserve) => {
-    setReserveInfo(data);
+  const handleReserveModalOpen = (id: number) => {
+    setSelectedGameId(id);
     setResrveModalVisible(true);
   };
 
@@ -58,13 +57,13 @@ const NehemRoadReservePlan = ({ isMobile, setIsLoading }: NehemRoadReservePlanPr
       </SwitchWrapper>
       <Wrapper $ismobile={isMobile.toString()}>
         <Section width={isMobile ? 100 : 33}>
-          <Building1 isRotate={isRotate} onClick={handleReserveModalOpen} />
+          <Building1 isRotate={isRotate} onClick={handleReserveModalOpen} setIsLoading={setIsLoading} />
         </Section>
         <Section width={isMobile ? 100 : 35}>
-          <Building2 isRotate={isRotate} onClick={handleReserveModalOpen} />
+          <Building2 isRotate={isRotate} onClick={handleReserveModalOpen} setIsLoading={setIsLoading} />
         </Section>
         <Section width={isMobile ? 100 : 32}>
-          <Building3 isRotate={isRotate} onClick={handleReserveModalOpen} />
+          <Building3 isRotate={isRotate} onClick={handleReserveModalOpen} setIsLoading={setIsLoading} />
         </Section>
 
         {/* 예약하기 상세 모달 */}
@@ -72,9 +71,8 @@ const NehemRoadReservePlan = ({ isMobile, setIsLoading }: NehemRoadReservePlanPr
           <ReserveModal
             visible={reserveModalVisible}
             onCancel={handleReserveModalClose}
-            setIsLoading={setIsLoading}
             isMobile={isMobile}
-            selectedInfo={reserveInfo}
+            selectedId={selectedGameId}
           />
         </div>
       </Wrapper>

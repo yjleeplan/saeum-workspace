@@ -1,22 +1,25 @@
 import React, { useState } from 'react';
-import { Modal, message } from 'antd';
-import { Reserve } from 'types/reserve';
+import { Modal, Spin } from 'antd';
+import { LOCATION_LIST } from 'context/Context';
 import ReserveModal from 'components/_modal/ReserveModal';
 import Building1 from 'pages/retreat/nehem-road/reserve-plan/Building1';
 import Building2 from 'pages/retreat/nehem-road/reserve-plan/Building2';
 import Building3 from 'pages/retreat/nehem-road/reserve-plan/Building3';
+import Building4 from 'pages/retreat/nehem-road/reserve-plan/Building4';
+import Building5 from 'pages/retreat/nehem-road/reserve-plan/Building5';
 
 interface ModalProps {
   visible: boolean;
   onCancel: () => void;
-  setIsLoading: (data: boolean) => void;
   isMobile: boolean;
-  selectedKey: string | undefined;
+  selectedKey: number | undefined;
 }
 
-const BuildingModal = ({ visible, onCancel, setIsLoading, isMobile, selectedKey }: ModalProps) => {
-  const [reserveInfo, setReserveInfo] = useState<Reserve | undefined>(undefined);
+const BuildingModal = ({ visible, onCancel, isMobile, selectedKey }: ModalProps) => {
+  /** State */
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [reserveModalVisible, setResrveModalVisible] = useState<boolean>(false);
+  const [selectedId, setSelectedId] = useState<number | undefined>(undefined);
 
   // 닫기
   const handleCancel = () => {
@@ -24,8 +27,8 @@ const BuildingModal = ({ visible, onCancel, setIsLoading, isMobile, selectedKey 
   };
 
   // 예약하기 상세 모달 오픈
-  const handleReserveModalOpen = (data: Reserve) => {
-    setReserveInfo(data);
+  const handleReserveModalOpen = (id: number) => {
+    setSelectedId(id);
     setResrveModalVisible(true);
   };
 
@@ -38,15 +41,7 @@ const BuildingModal = ({ visible, onCancel, setIsLoading, isMobile, selectedKey 
     <>
       <Modal
         wrapClassName='building-modal-wrap'
-        title={
-          selectedKey === '1'
-            ? '벧엘의 집'
-            : selectedKey === '2'
-              ? '로뎀의 집'
-              : selectedKey === '3'
-                ? '미스바 성전(본관)'
-                : '기타'
-        }
+        title={LOCATION_LIST?.filter((data) => data.value === selectedKey)[0]?.label}
         open={visible}
         onCancel={handleCancel}
         footer={false}
@@ -54,11 +49,23 @@ const BuildingModal = ({ visible, onCancel, setIsLoading, isMobile, selectedKey 
         // getContainer={document.getElementById('reserveModal') ?? false}
         destroyOnClose
       >
-        <>
-          {selectedKey === '1' && <Building1 isRotate={true} onClick={handleReserveModalOpen} />}
-          {selectedKey === '2' && <Building2 isRotate={true} onClick={handleReserveModalOpen} />}
-          {selectedKey === '3' && <Building3 isRotate={true} onClick={handleReserveModalOpen} />}
-        </>
+        <Spin spinning={isLoading} tip='잠시만 기다려주세요..'>
+          {selectedKey === 1 && (
+            <Building1 isRotate={true} onClick={handleReserveModalOpen} setIsLoading={setIsLoading} />
+          )}
+          {selectedKey === 2 && (
+            <Building2 isRotate={true} onClick={handleReserveModalOpen} setIsLoading={setIsLoading} />
+          )}
+          {selectedKey === 3 && (
+            <Building3 isRotate={true} onClick={handleReserveModalOpen} setIsLoading={setIsLoading} />
+          )}
+          {selectedKey === 4 && (
+            <Building4 isRotate={true} onClick={handleReserveModalOpen} setIsLoading={setIsLoading} />
+          )}
+          {selectedKey === 5 && (
+            <Building5 isRotate={true} onClick={handleReserveModalOpen} setIsLoading={setIsLoading} />
+          )}
+        </Spin>
       </Modal>
 
       {/* 예약하기 상세 모달 */}
@@ -66,9 +73,8 @@ const BuildingModal = ({ visible, onCancel, setIsLoading, isMobile, selectedKey 
         <ReserveModal
           visible={reserveModalVisible}
           onCancel={handleReserveModalClose}
-          setIsLoading={setIsLoading}
           isMobile={isMobile}
-          selectedInfo={reserveInfo}
+          selectedId={selectedId}
         />
       </div>
     </>

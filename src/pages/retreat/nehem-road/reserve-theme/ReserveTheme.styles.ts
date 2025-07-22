@@ -33,7 +33,7 @@ export const SelectBoxWrapper = styled.div<{ $ismobile: string }>`
 
 export const SelectBox = styled(Select)<{
   $ismobile: string;
-  onChange: string | ((e: React.ChangeEvent<HTMLInputElement>) => void) | null;
+  onChange: number | ((e: React.ChangeEvent<HTMLInputElement>) => void) | null;
 }>`
   display: flex;
   width: 240px;
