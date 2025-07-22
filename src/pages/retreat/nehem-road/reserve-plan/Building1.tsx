@@ -84,8 +84,8 @@ const Building1 = ({ isRotate, onClick, setIsLoading }: BuildingProps) => {
               210
             </RoomDisabled>
             <Stair width={'12%'} height={'80px'} />
-            <Room width={'24%'} height={'80px'} onClick={() => onClick(9)}>
-              <Image width={'100%'} height={'100%'} src={getGamePoster(9)} preview={false} />
+            <Room width={'24%'} height={'80px'} onClick={() => onClick(11)}>
+              <Image width={'100%'} height={'100%'} src={getGamePoster(11)} preview={false} />
             </Room>
             <RoomDisabled width={'24%'} height={'80px'}>
               212
@@ -123,8 +123,8 @@ const Building1 = ({ isRotate, onClick, setIsLoading }: BuildingProps) => {
         <FloorTitle>1층</FloorTitle>
         <FloorContent height={'200px'} rotate={isRotate.toString()}>
           <Row>
-            <Room width={'36%'} height={'80px'}>
-              믿.소.사.예~
+            <Room width={'36%'} height={'80px'} onClick={() => onClick(3)}>
+              <Image width={'100%'} height={'100%'} src={getGamePoster(3)} preview={false} />
             </Room>
             <RoomDisabled width={'12%'} height={'80px'}>
               <ToiletWomen />
@@ -138,19 +138,31 @@ const Building1 = ({ isRotate, onClick, setIsLoading }: BuildingProps) => {
             </RoomDisabled>
           </Row>
           <Row>
-            <Room width={'24%'} height={'80px'} onClick={() => onClick(10)}>
-              <Image width={'100%'} height={'100%'} src={getGamePoster(10)} preview={false} />
-            </Room>
-            <Room width={'24%'} height={'80px'} onClick={() => onClick(11)}>
-              <Image width={'100%'} height={'100%'} src={getGamePoster(11)} preview={false} />
+            <RoomDisabled width={'24%'} height={'80px'}>
+              101
+            </RoomDisabled>
+            <Room width={'24%'} height={'80px'}>
+              믿음의 타이밍
             </Room>
             <Corridor width={'12%'} height={'80px'}></Corridor>
-            <RoomDisabled width={'24%'} height={'80px'}>
-              103
-            </RoomDisabled>
-            <RoomDisabled width={'24%'} height={'80px'}>
+            <Room width={'48%'} height={'80px'}>
+              기억나니..? 우리가 쌓았던 그 벽돌..
+            </Room>
+            {/* <RoomDisabled width={'24%'} height={'80px'}>
               104
-            </RoomDisabled>
+            </RoomDisabled> */}
+          </Row>
+        </FloorContent>
+      </Floor>
+
+      {/* 1층 외부 */}
+      <Floor rotate={isRotate.toString()}>
+        <FloorTitle>1층 외부 컨테이너</FloorTitle>
+        <FloorContent height={'200px'} rotate={isRotate.toString()}>
+          <Row>
+            <Room width={'100%'} height={'200px'} onClick={() => onClick(8)}>
+              <Image width={'100%'} height={'100%'} src={getGamePoster(8)} preview={false} />
+            </Room>
           </Row>
         </FloorContent>
       </Floor>
