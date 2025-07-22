@@ -40,3 +40,25 @@ export const IS_NOT_COMPLETE = (index: number, today: number) => {
       return false;
   }
 };
+
+// 장소 목록
+export const LOCATION_LIST = [
+  { label: '전체', value: 0 },
+  { label: '벧엘의 집', value: 1 },
+  { label: '로뎀의 집', value: 2 },
+  { label: '미스바 성전(본관)', value: 3 },
+  { label: '운동장', value: 4 },
+  { label: '농구장', value: 5 },
+];
+
+// 사용자 목록
+export const USER_LIST = [
+  { name: '1조', id: '' },
+  { name: '2조', id: '' },
+];
+
+// 사용자 목록 (개발)
+export const USER_LIST_DEV = [
+  { name: '1조', id: '' },
+  { name: '2조', id: '' },
+];

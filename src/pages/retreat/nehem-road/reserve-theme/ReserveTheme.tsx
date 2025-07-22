@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Image } from 'antd';
 import { queries } from 'api/queries';
 import ReserveModal from 'components/_modal/ReserveModal';
+import { LOCATION_LIST } from 'context/Context';
 import { getGamePoster } from 'utils/getGamePoster';
 import {
   Wrapper,
@@ -26,16 +27,6 @@ interface NehemRoadReserveThemeProps {
 }
 
 const NehemRoadReserveTheme = ({ isMobile, setIsLoading }: NehemRoadReserveThemeProps) => {
-  // 건물 리스트
-  const options = [
-    { label: '전체', value: 0 },
-    { label: '벧엘의 집', value: 1 },
-    { label: '로뎀의 집', value: 2 },
-    { label: '미스바 성전(본관)', value: 3 },
-    { label: '운동장', value: 4 },
-    { label: '농구장', value: 5 },
-  ];
-
   /** State */
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const [selected, setSelected] = useState<number>(0);
@@ -103,7 +94,7 @@ const NehemRoadReserveTheme = ({ isMobile, setIsLoading }: NehemRoadReserveTheme
         건물 선택 :{' '}
         <SelectBox
           placeholder='전체'
-          options={options}
+          options={LOCATION_LIST}
           value={selected}
           onChange={handleChange}
           $ismobile={isMobile.toString()}
