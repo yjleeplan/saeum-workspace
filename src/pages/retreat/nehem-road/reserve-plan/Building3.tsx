@@ -91,23 +91,23 @@ const Building3 = ({ isRotate, onClick, setIsLoading }: BuildingProps) => {
             <Col width={'80%'}>
               <Row>
                 <Room width={'24%'} height={'80px'}>
-                  기억나니? ...
-                </Room>
-                <Room width={'24%'} height={'80px'}>
-                  기억나니? ...
-                </Room>
-                <Room width={'24%'} height={'80px'}>
                   장인의 손길
                 </Room>
-                <Room width={'24%'} height={'80px'}>
-                  장인의 손길
+                <Room width={'24%'} height={'80px'} onClick={() => onClick(10)}>
+                  <Image width={'100%'} height={'100%'} src={getGamePoster(10)} preview={false} />
                 </Room>
+                <RoomDisabled width={'24%'} height={'80px'}>
+                  103
+                </RoomDisabled>
+                <RoomDisabled width={'24%'} height={'80px'}>
+                  104
+                </RoomDisabled>
                 <RoomDisabled width={'4%'} height={'80px'}></RoomDisabled>
               </Row>
               <Row>
-                <RoomDisabled width={'100%'} height={'170px'}>
-                  식당
-                </RoomDisabled>
+                <Room width={'100%'} height={'170px'}>
+                  장인의 손길
+                </Room>
               </Row>
             </Col>
             <Col width={'10%'}>
