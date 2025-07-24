@@ -1,6 +1,6 @@
 export interface Reserve {
   id: number;
-  user_id: number;
+  user_id: string;
   game_time_id: number;
   created_at: string;
   updated_at: string;
@@ -24,13 +24,13 @@ export interface ReserveData extends Reserve {
 }
 
 export type GetReserveListRequest = {
-  user_id?: number | undefined | null;
+  user_id?: string | undefined | null;
 };
 
 export type GetReserveListResponse = ReserveData[];
 
 export type PostReserveRequest = {
-  user_id?: number | undefined | null;
+  user_id?: string | undefined | null;
   game_time_id?: number | undefined | null;
 };
 
