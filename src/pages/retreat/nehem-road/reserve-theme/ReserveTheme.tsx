@@ -91,7 +91,7 @@ const NehemRoadReserveTheme = ({ isMobile, setIsLoading }: NehemRoadReserveTheme
         <Title>Reservation</Title>
       </TitleWrapper>
       <SelectBoxWrapper $ismobile={isMobile.toString()}>
-        건물 선택 :{' '}
+        건물 선택 :
         <SelectBox
           placeholder='전체'
           options={LOCATION_LIST}
