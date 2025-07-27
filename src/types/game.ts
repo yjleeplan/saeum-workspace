@@ -17,7 +17,7 @@ export interface GameAndLocation extends Game {
 export interface GameTime {
   id: number;
   game_date: string;
-  game_time: string;
+  game_start_time: string;
   game_id: number;
   is_possible: number;
 }
