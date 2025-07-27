@@ -185,7 +185,7 @@ const ReserveModal = ({ visible, onCancel, isMobile, selectedId }: ModalProps) =
                 <GameTime key={index} $enable={item.is_possible} onClick={handleClick}>
                   <Row>
                     <Col width='100%' $align='center' $font='20px' $fw='bold'>
-                      {item.game_time}
+                      {item.game_start_time}
                     </Col>
                   </Row>
                   <Row>

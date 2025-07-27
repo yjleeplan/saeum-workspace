@@ -144,7 +144,7 @@ const NehemRoadCheck = ({ isMobile, setIsLoading }: NehemRoadCheckProps) => {
     },
     {
       headerName: '시작 시간',
-      field: 'game_time',
+      field: 'game_start_time',
       cellStyle: {
         display: 'flex',
         justifyContent: 'center',
@@ -277,7 +277,7 @@ const NehemRoadCheck = ({ isMobile, setIsLoading }: NehemRoadCheckProps) => {
                       </div>
                     </div>
                   ),
-                  icon: <div style={{ color: '#f0a721' }}>{item.game_time}</div>,
+                  icon: <div style={{ color: '#f0a721' }}>{item.game_start_time}</div>,
                 };
               })}
             />
