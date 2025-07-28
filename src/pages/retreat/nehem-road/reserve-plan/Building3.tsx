@@ -90,8 +90,8 @@ const Building3 = ({ isRotate, onClick, setIsLoading }: BuildingProps) => {
             </Col>
             <Col width={'80%'}>
               <Row>
-                <Room width={'24%'} height={'80px'}>
-                  장인의 손길
+                <Room width={'24%'} height={'80px'} onClick={() => onClick(14)}>
+                  <Image width={'100%'} height={'100%'} src={getGamePoster(14)} preview={false} />
                 </Room>
                 <Room width={'24%'} height={'80px'} onClick={() => onClick(10)}>
                   <Image width={'100%'} height={'100%'} src={getGamePoster(10)} preview={false} />
@@ -105,8 +105,8 @@ const Building3 = ({ isRotate, onClick, setIsLoading }: BuildingProps) => {
                 <RoomDisabled width={'4%'} height={'80px'}></RoomDisabled>
               </Row>
               <Row>
-                <Room width={'100%'} height={'170px'}>
-                  장인의 손길
+                <Room width={'100%'} height={'170px'} onClick={() => onClick(13)}>
+                  <Image width={'100%'} height={'100%'} src={getGamePoster(13)} preview={false} />
                 </Room>
               </Row>
             </Col>

@@ -59,8 +59,8 @@ const Building5 = ({ isRotate, onClick, setIsLoading }: BuildingProps) => {
         <FloorTitle>농구장</FloorTitle>
         <FloorContent height={'250px'} rotate={isRotate.toString()}>
           <Row>
-            <Room width={'100%'} height={'250px'}>
-              믿음의 한줄
+            <Room width={'100%'} height={'250px'} onClick={() => onClick(12)}>
+              <Image width={'100%'} height={'100%'} src={getGamePoster(12)} preview={false} />
             </Room>
           </Row>
         </FloorContent>
@@ -71,8 +71,8 @@ const Building5 = ({ isRotate, onClick, setIsLoading }: BuildingProps) => {
         <FloorTitle>농구장 뒷편</FloorTitle>
         <FloorContent height={'250px'} rotate={isRotate.toString()}>
           <Row>
-            <Room width={'100%'} height={'250px'}>
-              믿.소.사.예~
+            <Room width={'100%'} height={'250px'} onClick={() => onClick(16)}>
+              <Image width={'100%'} height={'100%'} src={getGamePoster(16)} preview={false} />
             </Room>
           </Row>
         </FloorContent>
@@ -83,8 +83,8 @@ const Building5 = ({ isRotate, onClick, setIsLoading }: BuildingProps) => {
         <FloorTitle>빨간 트랙 1</FloorTitle>
         <FloorContent height={'250px'} rotate={isRotate.toString()}>
           <Row>
-            <Room width={'100%'} height={'250px'}>
-              벽돌 업고 튀어
+            <Room width={'100%'} height={'250px'} onClick={() => onClick(21)}>
+              <Image width={'100%'} height={'100%'} src={getGamePoster(21)} preview={false} />
             </Room>
           </Row>
         </FloorContent>
@@ -95,8 +95,8 @@ const Building5 = ({ isRotate, onClick, setIsLoading }: BuildingProps) => {
         <FloorTitle>빨간 트랙 2</FloorTitle>
         <FloorContent height={'250px'} rotate={isRotate.toString()}>
           <Row>
-            <Room width={'100%'} height={'250px'}>
-              벽돌 업고 튀어
+            <Room width={'100%'} height={'250px'} onClick={() => onClick(22)}>
+              <Image width={'100%'} height={'100%'} src={getGamePoster(22)} preview={false} />
             </Room>
           </Row>
         </FloorContent>

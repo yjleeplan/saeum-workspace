@@ -59,8 +59,8 @@ const Building4 = ({ isRotate, onClick, setIsLoading }: BuildingProps) => {
         <FloorTitle>단상 앞편</FloorTitle>
         <FloorContent height={'250px'} rotate={isRotate.toString()}>
           <Row>
-            <Room width={'100%'} height={'250px'}>
-              후프의 칼날
+            <Room width={'100%'} height={'250px'} onClick={() => onClick(20)}>
+              <Image width={'100%'} height={'100%'} src={getGamePoster(20)} preview={false} />
             </Room>
           </Row>
         </FloorContent>
@@ -71,8 +71,8 @@ const Building4 = ({ isRotate, onClick, setIsLoading }: BuildingProps) => {
         <FloorTitle>끝편</FloorTitle>
         <FloorContent height={'250px'} rotate={isRotate.toString()}>
           <Row>
-            <Room width={'100%'} height={'250px'}>
-              어? 당겨지네
+            <Room width={'100%'} height={'250px'} onClick={() => onClick(15)}>
+              <Image width={'100%'} height={'100%'} src={getGamePoster(15)} preview={false} />
             </Room>
           </Row>
         </FloorContent>
