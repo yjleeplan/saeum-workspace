@@ -82,17 +82,17 @@ const Building2 = ({ isRotate, onClick, setIsLoading }: BuildingProps) => {
                 <Room width={'32%'} height={'80px'} onClick={() => onClick(5)}>
                   <Image width={'100%'} height={'100%'} src={getGamePoster(5)} preview={false} />
                 </Room>
-                <Room width={'32%'} height={'80px'}>
-                  어디로 가야헴 {'>o<'}
+                <Room width={'32%'} height={'80px'} onClick={() => onClick(17)}>
+                  <Image width={'100%'} height={'100%'} src={getGamePoster(17)} preview={false} />
                 </Room>
               </Row>
               <Row>
                 <RoomDisabled width={'17%'} height={'100%'}>
                   401-1
                 </RoomDisabled>
-                <RoomDisabled width={'17%'} height={'100%'}>
-                  와 성경이 들린다
-                </RoomDisabled>
+                <Room width={'17%'} height={'100%'} onClick={() => onClick(9)}>
+                  <Image width={'100%'} height={'100%'} src={getGamePoster(9)} preview={false} />
+                </Room>
                 <RoomDisabled width={'17%'} height={'100%'}>
                   402-1
                 </RoomDisabled>
@@ -123,8 +123,11 @@ const Building2 = ({ isRotate, onClick, setIsLoading }: BuildingProps) => {
                 </RoomDisabled>
               </Row>
               <Row height='initial'>
-                <Room width={'50%'} height={'80px'} onClick={() => onClick(7)}>
+                <Room width={'25%'} height={'80px'} onClick={() => onClick(7)}>
                   <Image width={'100%'} height={'100%'} src={getGamePoster(7)} preview={false} />
+                </Room>
+                <Room width={'25%'} height={'80px'} onClick={() => onClick(25)}>
+                  <Image width={'100%'} height={'100%'} src={getGamePoster(25)} preview={false} />
                 </Room>
                 <RoomDisabled width={'25%'} height={'80px'}>
                   406
@@ -158,8 +161,8 @@ const Building2 = ({ isRotate, onClick, setIsLoading }: BuildingProps) => {
                 </RoomDisabled>
               </Row>
               <Row>
-                <Room width={'100%'} height={'100%'}>
-                  코이노니아 카페
+                <Room width={'100%'} height={'110px'} onClick={() => onClick(24)}>
+                  <Image width={'100%'} height={'100%'} src={getGamePoster(24)} preview={false} />
                 </Room>
               </Row>
             </Col>
@@ -300,8 +303,8 @@ const Building2 = ({ isRotate, onClick, setIsLoading }: BuildingProps) => {
                 </Room>
               </Row>
               <Row>
-                <Room width={'100%'} height={'87px'}>
-                  어디로 가야헴 {'>o<'}
+                <Room width={'100%'} height={'87px'} onClick={() => onClick(18)}>
+                  <Image width={'100%'} height={'100%'} src={getGamePoster(18)} preview={false} />
                 </Room>
               </Row>
             </Col2>

@@ -141,12 +141,12 @@ const Building1 = ({ isRotate, onClick, setIsLoading }: BuildingProps) => {
             <RoomDisabled width={'24%'} height={'80px'}>
               101
             </RoomDisabled>
-            <Room width={'24%'} height={'80px'}>
-              믿음의 타이밍
+            <Room width={'24%'} height={'80px'} onClick={() => onClick(23)}>
+              <Image width={'100%'} height={'100%'} src={getGamePoster(23)} preview={false} />
             </Room>
             <Corridor width={'12%'} height={'80px'}></Corridor>
-            <Room width={'48%'} height={'80px'}>
-              기억나니..? 우리가 쌓았던 그 벽돌..
+            <Room width={'48%'} height={'80px'} onClick={() => onClick(19)}>
+              <Image width={'100%'} height={'100%'} src={getGamePoster(19)} preview={false} />
             </Room>
             {/* <RoomDisabled width={'24%'} height={'80px'}>
               104
