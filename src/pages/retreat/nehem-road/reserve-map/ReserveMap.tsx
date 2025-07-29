@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Image } from 'antd';
 import styled from 'styled-components';
-import Map from 'assets/images/nehem-road/map_background.png';
+import Map from 'assets/images/nehem-road/map_background.jpg';
 import IconMizpah from 'assets/images/nehem-road/icon_mizpah.png';
 import IconRodem from 'assets/images/nehem-road/icon_rodem.png';
 import IconBethel from 'assets/images/nehem-road/icon_bethel.png';
@@ -104,19 +104,19 @@ const NehemRoadReserveMap = ({ isMobile, setIsLoading }: NehemRoadReserveSkyView
         <BgWrapper>
           <Image width={'100%'} src={Map} preview={false} />
         </BgWrapper>
-        <IconWrapper width={'43%'} $left='2%' $top='46%' $z={100} onClick={() => handleBuildingModalOpen(3)}>
+        <IconWrapper width={'40%'} $left='4%' $top='49%' $z={100} onClick={() => handleBuildingModalOpen(3)}>
           <Image width={'100%'} src={IconMizpah} preview={false} />
         </IconWrapper>
-        <IconWrapper width={'32%'} $left='25%' $top='21%' onClick={() => handleBuildingModalOpen(2)}>
+        <IconWrapper width={'33%'} $left='26%' $top='29%' onClick={() => handleBuildingModalOpen(2)}>
           <Image width={'100%'} src={IconRodem} preview={false} />
         </IconWrapper>
-        <IconWrapper width={'20%'} $top='-2%' $left='26%' onClick={() => handleBuildingModalOpen(1)}>
+        <IconWrapper width={'23%'} $top='3%' $left='23%' onClick={() => handleBuildingModalOpen(1)}>
           <Image width={'100%'} src={IconBethel} preview={false} />
         </IconWrapper>
-        <IconWrapper width={'40%'} $right='0%' $bottom='3%' onClick={() => handleBuildingModalOpen(4)}>
+        <IconWrapper width={'45%'} $right='0%' $bottom='3%' onClick={() => handleBuildingModalOpen(4)}>
           <Image width={'100%'} src={IconPlayground} preview={false} />
         </IconWrapper>
-        <IconWrapper width={'13%'} $left='47%' $top='13%' $z={100} onClick={() => handleBuildingModalOpen(5)}>
+        <IconWrapper width={'22%'} $left='43%' $top='15%' $z={100} onClick={() => handleBuildingModalOpen(5)}>
           <Image width={'100%'} src={IconBasketball} preview={false} />
         </IconWrapper>
       </Content>

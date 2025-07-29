@@ -75,6 +75,7 @@ export const Col = styled.div<{
 
 export const Span = styled.span`
   color: #ccc;
+  font-size: 13px;
   margin-right: 4px;
 `;
 
@@ -153,15 +154,15 @@ const ReserveModal = ({ visible, onCancel, isMobile, selectedId }: ModalProps) =
             </Col>
           </Row>
           <Row $pt='4px'>
-            <Col width='37%' $font={isMobile ? '14px' : '16px'}>
+            <Col width='39%' $font={isMobile ? '14px' : '16px'} $align='center'>
               <Span>장르: </Span>
               {gameInfo?.category}
             </Col>
-            <Col width='33%' $font={isMobile ? '14px' : '16px'}>
+            <Col width='31%' $font={isMobile ? '14px' : '16px'} $align='center'>
               <Span>인원: </Span>
               {gameInfo?.people}
             </Col>
-            <Col width='30%' $font={isMobile ? '14px' : '16px'} $align='end'>
+            <Col width='30%' $font={isMobile ? '14px' : '16px'} $align='center'>
               <Span>시간: </Span>
               {gameInfo?.play_time}분
             </Col>
