@@ -93,11 +93,12 @@ export const Col = styled.div<{
   height: 100%;
   font-size: ${({ $font }) => ($font ? $font : '15px')};
   font-weight: ${({ $fw }) => ($fw ? $fw : '')};
-  padding: 0 8px;
+  padding: 0 4px;
 `;
 
 export const Span = styled.span`
   color: #ccc;
+  font-size: 14px;
   margin-right: 4px;
 `;
 
