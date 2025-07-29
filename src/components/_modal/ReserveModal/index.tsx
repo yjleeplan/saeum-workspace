@@ -24,7 +24,7 @@ export const GameImage = styled.div`
 export const GameContent = styled.div`
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
+  gap: 0.5%;
   width: 100%;
   padding: 10px 0;
 `;
@@ -38,6 +38,7 @@ export const GameTime = styled.div<{ $enable?: number }>`
   background: ${({ $enable }) => ($enable === 1 ? '#F0A721' : '#808080')};
   border: ${({ $enable }) => ($enable === 1 ? '1px solid #F0A721' : '1px solid #808080')};
   cursor: pointer;
+  margin-bottom: 0.5%;
 
   ${(props) =>
     props.$enable === 1 &&

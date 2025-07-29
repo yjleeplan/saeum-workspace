@@ -121,15 +121,15 @@ const NehemRoadReserveTheme = ({ isMobile, setIsLoading }: NehemRoadReserveTheme
                   </Col>
                 </Row>
                 <Row $pt='2px' $justify='space-between'>
-                  <Col width='37%'>
+                  <Col width='39%' $align='center'>
                     <Span>장르: </Span>
                     {item?.category}
                   </Col>
-                  <Col width='33%'>
+                  <Col width='31%' $align='center'>
                     <Span>인원: </Span>
                     {item?.people}
                   </Col>
-                  <Col width='30%' $align='end'>
+                  <Col width='30%' $align='center'>
                     <Span>시간: </Span>
                     {item?.play_time}분
                   </Col>
