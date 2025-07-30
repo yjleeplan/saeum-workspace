@@ -32,6 +32,8 @@ export type GetReserveListResponse = ReserveData[];
 export type PostReserveRequest = {
   user_id?: string | undefined | null;
   game_time_id?: number | undefined | null;
+  game_start_time?: string | undefined | null;
+  game_end_time?: string | undefined | null;
 };
 
 export type PostReserveResponse = ReserveData[];
