@@ -1,7 +1,7 @@
 import { createQueryKeys } from '@lukemorales/query-key-factory';
 import { useMutation } from '@tanstack/react-query';
 import { BaseAxiosInstance } from 'api/requestApi';
-import { GetReserveListRequest, GetReserveListResponse, PostReserveRequest, DeleteReserveRequest } from 'types';
+import type { GetReserveListRequest, GetReserveListResponse, PostReserveRequest, DeleteReserveRequest } from 'types';
 
 const { request } = BaseAxiosInstance();
 

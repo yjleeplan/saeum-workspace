@@ -1,6 +1,6 @@
 import { createQueryKeys } from '@lukemorales/query-key-factory';
 import { BaseAxiosInstance } from 'api/requestApi';
-import { GetLocationListRequest, GetLocationListResponse } from 'types';
+import type { GetLocationListRequest, GetLocationListResponse } from 'types';
 
 const { request } = BaseAxiosInstance();
 
