@@ -1,6 +1,6 @@
 import { createQueryKeys } from '@lukemorales/query-key-factory';
 import { BaseAxiosInstance } from 'api/requestApi';
-import { GetGameListRequest, GetGameListResponse, GetGameInfoResponse } from 'types';
+import type { GetGameListRequest, GetGameListResponse, GetGameInfoResponse } from 'types';
 
 const { request } = BaseAxiosInstance();
 

@@ -18,6 +18,7 @@ export interface GameTime {
   id: number;
   game_date: string;
   game_start_time: string;
+  game_end_time: string;
   game_id: number;
   is_possible: number;
 }
