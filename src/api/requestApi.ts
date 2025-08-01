@@ -1,4 +1,4 @@
-import { Modal } from 'antd';
+import { Modal, message } from 'antd';
 import axios, { AxiosInstance } from 'axios';
 // import { useAuthStore } from 'store';
 
@@ -64,11 +64,7 @@ export const BaseAxiosInstance = (): RequestApiOptions => {
     },
     (error) => {
       if (error?.response?.data?.message) {
-        Modal.error({
-          title: 'ERROR',
-          content: error?.response?.data?.message,
-          okText: '확인',
-        });
+        message.error(error?.response?.data?.message);
       } else {
         if (error.response.status === 400) {
           Modal.error({

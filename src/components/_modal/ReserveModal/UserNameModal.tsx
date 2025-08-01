@@ -64,7 +64,7 @@ const UserNameModal = ({ visible, onOk, onCancel, isMobile, gameTimeData }: User
     onOk({
       user_id: userId,
       user_name: `${userNameValue}조`,
-      game_time_id: gameTimeData?.id,
+      game_time_id: gameTimeData?.game_time_id,
       game_start_time: gameTimeData?.game_start_time,
       game_end_time: gameTimeData?.game_end_time,
     });
