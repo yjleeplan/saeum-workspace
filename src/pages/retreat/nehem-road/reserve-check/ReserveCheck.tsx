@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
 import { AgGridReact } from 'ag-grid-react';
 import { Input, Steps, message } from 'antd';
-import { isEmpty } from 'lodash';
+import { isEmpty, sortBy } from 'lodash';
 import styled from 'styled-components';
 import { queries } from 'api/queries';
 import { ReserveData } from 'types';
@@ -233,7 +233,7 @@ const NehemRoadCheck = ({ isMobile, setIsLoading }: NehemRoadCheckProps) => {
       if (isEmpty(result)) {
         setResultList([]);
       } else {
-        setResultList(result);
+        setResultList(sortBy(result, ['game_date', 'game_start_time']));
       }
     } catch (error: any) {
       // 공통 처리
