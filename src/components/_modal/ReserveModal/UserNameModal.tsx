@@ -79,7 +79,7 @@ const UserNameModal = ({ visible, onOk, onCancel, isMobile, gameTimeData }: User
 
   return (
     <Modal
-      wrapClassName=''
+      wrapClassName='reserve-username-modal-wrap'
       title='예약하기'
       open={visible}
       onOk={handleReserve}
@@ -87,6 +87,7 @@ const UserNameModal = ({ visible, onOk, onCancel, isMobile, gameTimeData }: User
       okText='예약'
       cancelText='취소'
       maskClosable={false}
+      maskStyle={{ zIndex: 1006, backgroundColor: 'rgba(0, 0, 0, 0.8)' }}
       destroyOnClose
     >
       <Wrapper>
