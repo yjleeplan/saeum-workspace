@@ -121,18 +121,18 @@ const ReserveModal = ({ visible, onCancel, isMobile, selectedId }: ModalProps) =
   // 예약하기 API
   const { mutate: postReserve } = usePostReserve();
   const handlePostReserve = async (payload: PostReserveRequest) => {
+    handleUserNameModalClose();
     setIsLoading(true);
 
     postReserve(payload, {
       onSuccess: () => {
+        message.success('정상적으로 예약되었습니다');
         refetchGameInfo();
       },
       onError: (error: any) => {
         // 공통 처리
       },
       onSettled(data, error, variables, context) {
-        handleUserNameModalClose();
-        onCancel();
         setIsLoading(false);
       },
     });
