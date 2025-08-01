@@ -141,6 +141,7 @@ const ReserveModal = ({ visible, onCancel, isMobile, selectedId }: ModalProps) =
   // 예약하기
   const handleReserve = async (data: PostReserveRequest & { user_name: string }) => {
     Modal.confirm({
+      wrapClassName: 'reserve-confirm-modal-wrap',
       title: '예약 확인',
       content: (
         <div>
@@ -172,6 +173,7 @@ const ReserveModal = ({ visible, onCancel, isMobile, selectedId }: ModalProps) =
           game_end_time: data.game_end_time,
         });
       },
+      maskStyle: { zIndex: 1008, backgroundColor: 'rgba(0, 0, 0, 0.8)' },
     });
   };
 
