@@ -127,12 +127,12 @@ const ReserveModal = ({ visible, onCancel, isMobile, selectedId }: ModalProps) =
     postReserve(payload, {
       onSuccess: () => {
         message.success('정상적으로 예약되었습니다');
-        refetchGameInfo();
       },
       onError: (error: any) => {
         // 공통 처리
       },
       onSettled(data, error, variables, context) {
+        refetchGameInfo();
         setIsLoading(false);
       },
     });
