@@ -52,7 +52,8 @@ const UserNameModal = ({ visible, onOk, onCancel, isMobile, gameTimeData }: User
       return;
     }
 
-    const userList = process.env.NODE_ENV === 'production' ? USER_LIST : USER_LIST_DEV;
+    const env = `${import.meta.env.VITE_APP_ENV}`;
+    const userList = env === 'production' ? USER_LIST : USER_LIST_DEV;
     const userId = userList.filter((item) => item.name === `${userNameValue}조`)[0]?.id;
 
     if (!userId) {
