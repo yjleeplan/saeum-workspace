@@ -52,7 +52,7 @@ interface NehemRoadContactProps {
 }
 
 const NehemRoadContact = ({ isMobile }: NehemRoadContactProps) => {
-  const contactList = ['010-XXXX-XXXX', '010-XXXX-XXXX', '010-XXXX-XXXX'];
+  const contactList = ['010-7471-5520', '010-3018-3848'];
 
   return (
     <Wrapper $ismobile={isMobile.toString()}>
@@ -78,16 +78,6 @@ const NehemRoadContact = ({ isMobile }: NehemRoadContactProps) => {
             </NavLink>
           ) : (
             <Tel>{contactList[1]}</Tel>
-          )}
-        </Font>
-        <Font>
-          TF3{')'}
-          {isMobile ? (
-            <NavLink to={`tel:${contactList[2]}`}>
-              <Tel>{contactList[2]}</Tel>
-            </NavLink>
-          ) : (
-            <Tel>{contactList[2]}</Tel>
           )}
         </Font>
       </Content>

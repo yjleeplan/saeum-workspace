@@ -11,6 +11,8 @@ import NehemRoadReservePlan from 'pages/retreat/nehem-road/reserve-plan/ReserveP
 import NehemRoadReserveMap from 'pages/retreat/nehem-road/reserve-map/ReserveMap';
 import NehemRoadReserveCheck from 'pages/retreat/nehem-road/reserve-check/ReserveCheck';
 import NehemRoadContact from 'pages/retreat/nehem-road/contact/Contact';
+import NehemRoadAdmin from 'pages/retreat/nehem-road/admin/Admin';
+import NehemRoadReserveByGame from 'pages/retreat/nehem-road/admin/ReserveByGame';
 
 export const Router = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -20,14 +22,14 @@ export const Router = () => {
 
   return (
     <Routes>
-      <Route element={<MainRoute isLoading={isLoading} setIsLoading={setIsLoading} />}>
+      {/* <Route element={<MainRoute isLoading={isLoading} setIsLoading={setIsLoading} />}>
         <Route path={'/'} element={<Main setIsLoading={setIsLoading} />} />
         <Route path={'/main'} element={<Main setIsLoading={setIsLoading} />} />
-      </Route>
+      </Route> */}
 
-      <Route element={<AdminRoute isLoading={isLoading} setIsLoading={setIsLoading} />}>
+      {/* <Route element={<AdminRoute isLoading={isLoading} setIsLoading={setIsLoading} />}>
         <Route path={'/admin'} element={<Admin setIsLoading={setIsLoading} />} />
-      </Route>
+      </Route> */}
 
       <Route element={<NehemRoadRoute isMobile={mobileCheck()} isLoading={isLoading} setIsLoading={setIsLoading} />}>
         <Route path={'/nehem-road/home'} element={<NehemRoadHome isMobile={mobileCheck()} />} />
@@ -48,6 +50,11 @@ export const Router = () => {
           element={<NehemRoadReserveCheck isMobile={mobileCheck()} setIsLoading={setIsLoading} />}
         />
         <Route path={'/nehem-road/contact'} element={<NehemRoadContact isMobile={mobileCheck()} />} />
+        <Route path={'/nehem-road/admin'} element={<NehemRoadAdmin isMobile={mobileCheck()} />} />
+        <Route
+          path={'/nehem-road/admin/reserve'}
+          element={<NehemRoadReserveByGame isMobile={mobileCheck()} setIsLoading={setIsLoading} />}
+        />
       </Route>
 
       {/* <Route path='*' element={<NotFound />} /> */}
