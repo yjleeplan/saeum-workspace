@@ -12,6 +12,7 @@ export interface ReserveData extends Reserve {
   game_name: string;
   game_date: string;
   game_start_time: string;
+  game_end_time: string;
   category: string | undefined | null;
   people: string | undefined | null;
   play_time: number | undefined | null;
@@ -28,6 +29,12 @@ export type GetReserveListRequest = {
 };
 
 export type GetReserveListResponse = ReserveData[];
+
+export type GetReserveByGameListRequest = {
+  game_id?: number | undefined | null;
+};
+
+export type GetReserveListByGameResponse = ReserveData[];
 
 export type PostReserveRequest = {
   user_id?: string | undefined | null;

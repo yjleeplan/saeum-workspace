@@ -1,6 +1,8 @@
 import React, { ReactElement, useRef, useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { Spin } from 'antd';
+import { useAuthStore } from 'store';
 import Content from './Content';
 import Header from './Header';
 import 'assets/css/nehem-road.css';
@@ -25,6 +27,7 @@ interface NehemRoadLayoutProps {
 }
 
 const NehemRoadLayout = ({ isMobile, isLoading, setIsLoading, children }: NehemRoadLayoutProps) => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const headerRef = useRef<HTMLDivElement>(null);
   const [headerHeight, setHeaderHeight] = useState(0);
 
@@ -33,6 +36,20 @@ const NehemRoadLayout = ({ isMobile, isLoading, setIsLoading, children }: NehemR
     // IOS 에서는 vh 적용이 되지 않는 문제
     const vh = window.innerHeight;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+    // 토큰이 있다면 admin 계정으로 판단
+    if (searchParams?.get('token')) {
+      useAuthStore?.setState({
+        isLogged: true,
+        userInfo: {
+          userId: 0,
+          email: '',
+          startTime: 0,
+          endTime: 0,
+          token: searchParams.get('token') ?? '',
+        },
+      });
+    }
   }, []);
 
   useEffect(() => {
