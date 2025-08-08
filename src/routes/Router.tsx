@@ -12,6 +12,7 @@ import NehemRoadReserveMap from 'pages/retreat/nehem-road/reserve-map/ReserveMap
 import NehemRoadReserveCheck from 'pages/retreat/nehem-road/reserve-check/ReserveCheck';
 import NehemRoadContact from 'pages/retreat/nehem-road/contact/Contact';
 import NehemRoadAdmin from 'pages/retreat/nehem-road/admin/Admin';
+import NehemRoadReserveByGame from 'pages/retreat/nehem-road/admin/ReserveByGame';
 
 export const Router = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -50,6 +51,10 @@ export const Router = () => {
         />
         <Route path={'/nehem-road/contact'} element={<NehemRoadContact isMobile={mobileCheck()} />} />
         <Route path={'/nehem-road/admin'} element={<NehemRoadAdmin isMobile={mobileCheck()} />} />
+        <Route
+          path={'/nehem-road/admin/reserve'}
+          element={<NehemRoadReserveByGame isMobile={mobileCheck()} setIsLoading={setIsLoading} />}
+        />
       </Route>
 
       {/* <Route path='*' element={<NotFound />} /> */}
