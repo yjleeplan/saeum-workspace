@@ -1,6 +1,6 @@
 import { createQueryKeys } from '@lukemorales/query-key-factory';
 import { BaseAxiosInstance } from 'api/requestApi';
-import type { GetGameListRequest, GetGameListResponse, GetGameInfoResponse } from 'types';
+import type { GetGameListRequest, GetGameListResponse, GetGameInfoResponse, GetGameTimeListResponse } from 'types';
 
 const { request } = BaseAxiosInstance();
 
@@ -19,6 +19,11 @@ const getGameInfo: (id: string) => Promise<GetGameInfoResponse> = async (id) => 
   return data;
 };
 
+const getGameTimeList: () => Promise<GetGameTimeListResponse> = async () => {
+  const { data } = await request.get(`/game_time`, {});
+  return data;
+};
+
 export const gameQueries = createQueryKeys('game', {
   list: (params) => ({
     queryKey: [params.location_id],
@@ -27,5 +32,9 @@ export const gameQueries = createQueryKeys('game', {
   info: (params) => ({
     queryKey: [params.id],
     queryFn: () => getGameInfo(params.id),
+  }),
+  timeList: () => ({
+    queryKey: ['no-cache'],
+    queryFn: () => getGameTimeList(),
   }),
 });

@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom';
 import { MenuOutlined } from '@ant-design/icons';
 import { Drawer, Button } from 'antd';
 import { Wrapper, Previous, Title, TitleBlack, Content, Menu, Extra } from './Header.styles';
+import { useAuthStore } from 'store';
+import { NEHEMROAD_ADMIN_TOKEN } from 'context/Context';
 
 interface HeaderProps {
   isMobile: boolean;
@@ -10,6 +12,7 @@ interface HeaderProps {
 }
 
 const Header = ({ isMobile, headerRef }: HeaderProps) => {
+  const token = useAuthStore?.getState()?.userInfo?.token;
   const [open, setOpen] = useState(false);
 
   const showDrawer = () => {
@@ -45,6 +48,11 @@ const Header = ({ isMobile, headerRef }: HeaderProps) => {
             <NavLink to='/nehem-road/contact'>
               {(props) => <Menu style={{ color: props.isActive ? '#f0a721' : '#fff' }}>문의</Menu>}
             </NavLink>
+            {token === NEHEMROAD_ADMIN_TOKEN && (
+              <NavLink to='/nehem-road/admin'>
+                {(props) => <Menu style={{ color: props.isActive ? '#f0a721' : '#fff' }}>관리자</Menu>}
+              </NavLink>
+            )}
           </>
         )}
       </Content>

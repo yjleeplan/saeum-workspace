@@ -41,6 +41,9 @@ export const IS_NOT_COMPLETE = (index: number, today: number) => {
   }
 };
 
+// 네헴로드 관리자 토큰
+export const NEHEMROAD_ADMIN_TOKEN = '86b2dbddf10defbdf9af847bb62c1da0b9faefb1';
+
 // 장소 목록
 export const LOCATION_LIST = [
   { label: '전체', value: 0 },
