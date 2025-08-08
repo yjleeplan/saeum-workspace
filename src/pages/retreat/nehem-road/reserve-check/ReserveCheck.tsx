@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
 import { AgGridReact } from 'ag-grid-react';
-import { Input, Steps, message } from 'antd';
+import { Input, Steps, message, Modal } from 'antd';
 import { isEmpty, sortBy } from 'lodash';
+import { useAuthStore } from 'store';
+import { NEHEMROAD_ADMIN_TOKEN } from 'context/Context';
 import styled from 'styled-components';
 import { queries } from 'api/queries';
+import { useDeleteReserve } from 'api/useReserveApi';
 import { ReserveData } from 'types';
 import { USER_LIST, USER_LIST_DEV } from 'context/Context';
+import GridCellButton from './GridCellButton';
 
 const { Search } = Input;
 
@@ -104,6 +108,8 @@ interface NehemRoadCheckProps {
 }
 
 const NehemRoadCheck = ({ isMobile, setIsLoading }: NehemRoadCheckProps) => {
+  const token = useAuthStore?.getState()?.userInfo?.token;
+
   // 그리드 컬럼 정의
   const columnDefs = [
     {
@@ -116,7 +122,7 @@ const NehemRoadCheck = ({ isMobile, setIsLoading }: NehemRoadCheckProps) => {
         fontSize: '16px',
         padding: '0 4px',
       },
-      width: 60,
+      width: 100,
     },
     {
       headerName: '예약 시간',
@@ -128,7 +134,7 @@ const NehemRoadCheck = ({ isMobile, setIsLoading }: NehemRoadCheckProps) => {
         fontSize: '16px',
         padding: '0 4px',
       },
-      width: 120,
+      width: 200,
     },
     {
       headerName: '조 이름',
@@ -140,7 +146,7 @@ const NehemRoadCheck = ({ isMobile, setIsLoading }: NehemRoadCheckProps) => {
         fontSize: '16px',
         padding: '0 4px',
       },
-      width: 60,
+      width: 100,
     },
     {
       headerName: '시작 시간',
@@ -152,7 +158,7 @@ const NehemRoadCheck = ({ isMobile, setIsLoading }: NehemRoadCheckProps) => {
         fontSize: '16px',
         padding: '0 4px',
       },
-      width: 60,
+      width: 100,
     },
     {
       headerName: '소요 시간',
@@ -164,7 +170,7 @@ const NehemRoadCheck = ({ isMobile, setIsLoading }: NehemRoadCheckProps) => {
         fontSize: '16px',
         padding: '0 4px',
       },
-      width: 60,
+      width: 100,
     },
     {
       headerName: '게임',
@@ -176,6 +182,7 @@ const NehemRoadCheck = ({ isMobile, setIsLoading }: NehemRoadCheckProps) => {
         fontSize: '16px',
         padding: '0 4px',
       },
+      width: 334,
     },
     {
       headerName: '위치',
@@ -187,9 +194,30 @@ const NehemRoadCheck = ({ isMobile, setIsLoading }: NehemRoadCheckProps) => {
         fontSize: '16px',
         padding: '0 4px',
       },
-      width: 160,
+      width: 267,
+    },
+    {
+      field: '',
+      cellStyle: {
+        display: token !== NEHEMROAD_ADMIN_TOKEN ? 'none' : 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        fontSize: '16px',
+        padding: '0 4px',
+      },
+      cellRendererFramework: GridCellButton,
+      cellRendererParams: (params: any) => ({
+        data: params.data,
+        onClick: handleCellClicked,
+      }),
+      width: 100,
     },
   ];
+
+  // 그리드 셀 클릭
+  const handleCellClicked = ({ data }: { data: ReserveData }) => {
+    handleReserveDelete(data);
+  };
 
   // 그리드 Row Height
   const rowHeight = 37;
@@ -240,6 +268,59 @@ const NehemRoadCheck = ({ isMobile, setIsLoading }: NehemRoadCheckProps) => {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  // 예약 삭제 API
+  const { mutate: deleteReserve } = useDeleteReserve();
+  const handleDeleteReserve = async (payload: ReserveData) => {
+    setIsLoading(true);
+
+    deleteReserve(payload, {
+      onSuccess: () => {
+        message.success('정상적으로 삭제되었습니다');
+      },
+      onError: (error: any) => {
+        // 공통 처리
+      },
+      onSettled(data, error, variables, context) {
+        handleSearch(payload.user_name.split('조')[0]);
+        setIsLoading(false);
+      },
+    });
+  };
+
+  // 예약 삭제
+  const handleReserveDelete = async (data: ReserveData) => {
+    Modal.confirm({
+      wrapClassName: 'reserve-confirm-modal-wrap',
+      title: '예약 삭제',
+      content: (
+        <div>
+          <div style={{ marginTop: '10px' }}>
+            <span style={{ color: '#808080' }}>- </span>
+            {data?.game_name}
+          </div>
+          <div>
+            <span style={{ color: '#808080' }}>- </span>
+            {data?.location_name_display}
+          </div>
+          <div>
+            <span style={{ color: '#808080' }}>- </span>
+            {data?.game_start_time}
+          </div>
+          <div style={{ marginTop: '20px' }}>
+            <span style={{ color: '#f50', fontWeight: 'bold', fontSize: '16px' }}>{data?.user_name}</span>{' '}
+            삭제하시겠습니까?
+          </div>
+        </div>
+      ),
+      okText: '확인',
+      cancelText: '취소',
+      onOk: async () => {
+        handleDeleteReserve(data);
+      },
+      maskStyle: { zIndex: 1008, backgroundColor: 'rgba(0, 0, 0, 0.8)' },
+    });
   };
 
   return (
@@ -293,7 +374,7 @@ const NehemRoadCheck = ({ isMobile, setIsLoading }: NehemRoadCheckProps) => {
                 rowHeight={rowHeight}
                 headerHeight={headerHeight}
                 suppressMovableColumns={true}
-                onGridReady={(params) => params.api.sizeColumnsToFit()}
+                // onGridReady={(params) => params.api.sizeColumnsToFit()}
               />
             </div>
           )}
