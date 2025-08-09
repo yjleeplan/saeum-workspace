@@ -99,7 +99,29 @@ const NehemRoadReserveByGame = ({ isMobile, setIsLoading }: NehemRoadReserveByGa
   // 예약 목록 데이터 세팅
   const reserveList = useMemo(() => {
     if (reserveListQuerySuccess) {
-      return reserveListQueryData;
+      let result: { game_start_time: string; user_name: string }[] = [];
+      const sortList = sortBy(reserveListQueryData, ['game_date', 'game_start_time', 'user_name']);
+
+      sortList.forEach((item, index) => {
+        if (index === 0) {
+          result.push(item);
+          return;
+        }
+
+        if (sortList[index - 1].game_start_time === item.game_start_time) {
+          result.forEach((data) => {
+            if (data.game_start_time === item.game_start_time) {
+              data.user_name = `${data.user_name} / ${item.user_name}`;
+            }
+          });
+          return;
+        } else {
+          result.push(item);
+          return;
+        }
+      });
+
+      return result;
     } else {
       return [];
     }
