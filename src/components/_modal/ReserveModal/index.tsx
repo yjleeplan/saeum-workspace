@@ -40,7 +40,7 @@ const GameTimeBox = styled.div<{ $enable?: number }>`
   padding: 8px;
   background: ${({ $enable }) => ($enable === 1 ? '#F0A721' : '#808080')};
   border: ${({ $enable }) => ($enable === 1 ? '1px solid #F0A721' : '1px solid #808080')};
-  cursor: pointer;
+  cursor: ${({ $enable }) => ($enable === 1 ? 'pointer' : 'not-allowed')};
   margin-bottom: 0.5%;
 
   ${(props) =>
@@ -179,8 +179,10 @@ const ReserveModal = ({ visible, onCancel, isMobile, selectedId }: ModalProps) =
 
   // 조 입력 모달 열기
   const handleUserNameModalOpen = (data: GameTime) => {
-    setSelectedGameTime(data);
-    setUserNameModal(true);
+    if (data?.is_possible) {
+      setSelectedGameTime(data);
+      setUserNameModal(true);
+    }
   };
 
   // 조 입력 모달 닫기
