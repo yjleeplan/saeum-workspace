@@ -1,6 +1,7 @@
 import { useState, useMemo, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Modal, Image, message, Spin } from 'antd';
+import moment from 'moment';
 import styled from 'styled-components';
 import { queries } from 'api/queries';
 import { usePostReserve } from 'api/useReserveApi';
@@ -155,7 +156,7 @@ const ReserveModal = ({ visible, onCancel, isMobile, selectedId }: ModalProps) =
           </div>
           <div>
             <span style={{ color: '#808080' }}>- </span>
-            {`${data?.game_start_time} ~ ${data?.game_end_time}`}
+            {`${data?.game_start_time} ~ ${moment(data?.game_end_time, 'HH:mm')?.subtract(10, 'minutes')?.format('HH:mm')}`}
           </div>
           <div style={{ marginTop: '20px' }}>
             <span style={{ color: '#f50', fontWeight: 'bold', fontSize: '16px' }}>{data?.user_name}</span>{' '}
