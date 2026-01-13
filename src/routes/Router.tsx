@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import AdminRoute from './AdminRoute';
 import MainRoute from './MainRoute';
+import MapRoute from './MapRoute';
+import MapStatusRoute from './MapStatusRoute';
 import NehemRoadRoute from './NehemRoadRoute';
 import Admin from 'pages/admin/Admin';
 import Main from 'pages/main/Main';
@@ -13,6 +15,8 @@ import NehemRoadReserveCheck from 'pages/retreat/nehem-road/reserve-check/Reserv
 import NehemRoadContact from 'pages/retreat/nehem-road/contact/Contact';
 import NehemRoadAdmin from 'pages/retreat/nehem-road/admin/Admin';
 import NehemRoadReserveByGame from 'pages/retreat/nehem-road/admin/ReserveByGame';
+import Map from 'pages/others/map/Map';
+import MapStatus from 'pages/others/map-status/MapStatus';
 
 export const Router = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -55,6 +59,14 @@ export const Router = () => {
           path={'/nehem-road/admin/reserve'}
           element={<NehemRoadReserveByGame isMobile={mobileCheck()} setIsLoading={setIsLoading} />}
         />
+      </Route>
+
+      <Route element={<MapRoute isLoading={isLoading} setIsLoading={setIsLoading} />}>
+        <Route path={'/map'} element={<Map setIsLoading={setIsLoading} />} />
+      </Route>
+
+      <Route element={<MapStatusRoute isLoading={isLoading} setIsLoading={setIsLoading} />}>
+        <Route path={'/map-status'} element={<MapStatus setIsLoading={setIsLoading} />} />
       </Route>
 
       {/* <Route path='*' element={<NotFound />} /> */}
