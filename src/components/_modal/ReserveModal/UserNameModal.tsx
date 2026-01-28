@@ -1,32 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Modal, message, Input } from 'antd';
-import styled from 'styled-components';
 import type { PostReserveRequest, GameTime } from 'types';
 import { USER_LIST, USER_LIST_DEV } from 'context/Context';
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-`;
-
-const TextWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 16px;
-  color: #808080;
-`;
-
-const InputWrapper = styled.div`
-  width: 200px;
-  height: 40px;
-
-  & input {
-    height: 100%;
-    font-size: 16px;
-  }
-`;
+import { Wrapper, TextWrapper, InputWrapper } from './UserNameModal.styles';
 
 interface UserNameModalProps {
   visible: boolean;

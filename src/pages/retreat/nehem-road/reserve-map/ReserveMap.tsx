@@ -8,7 +8,7 @@ import IconBethel from 'assets/images/nehem-road/icon_bethel.png';
 import IconPlayground from 'assets/images/nehem-road/icon_playground.png';
 import IconBasketball from 'assets/images/nehem-road/icon_basketball.png';
 import BuildingModal from 'components/_modal/BuildingModal';
-import { Wrapper, TitleWrapper, Title, Content, BgWrapper, IconWrapper, Comment } from './ReserveMap.style';
+import { Wrapper, TitleWrapper, Title, Content, BgWrapper, IconWrapper, Comment } from './ReserveMap.styles';
 
 interface NehemRoadReserveSkyViewProps {
   isMobile: boolean;

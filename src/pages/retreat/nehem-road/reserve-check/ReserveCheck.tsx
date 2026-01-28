@@ -11,7 +11,7 @@ import { useDeleteReserve } from 'api/useReserveApi';
 import { ReserveData } from 'types';
 import { USER_LIST, USER_LIST_DEV } from 'context/Context';
 import GridCellButton from './GridCellButton';
-import { Wrapper, TitleWrapper, Title, SearchWrapper, StepsWrapper, GridWrapper } from './ReserveCheck.style';
+import { Wrapper, TitleWrapper, Title, SearchWrapper, StepsWrapper, GridWrapper } from './ReserveCheck.styles';
 
 const { Search } = Input;
 
