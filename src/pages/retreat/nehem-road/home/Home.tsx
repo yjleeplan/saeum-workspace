@@ -1,3 +1,4 @@
+import { useOutletContext } from 'react-router-dom';
 import {
   Wrapper,
   PosterWrapper,
@@ -16,7 +17,9 @@ interface NehemRoadHomeProps {
   isMobile: boolean;
 }
 
-const NehemRoadHome = ({ isMobile }: NehemRoadHomeProps) => {
+const NehemRoadHome = () => {
+  const { isMobile }: NehemRoadHomeProps = useOutletContext();
+
   return (
     <Wrapper $ismobile={isMobile.toString()}>
       <PosterWrapper>{isMobile ? <Poster /> : <PosterPc />}</PosterWrapper>

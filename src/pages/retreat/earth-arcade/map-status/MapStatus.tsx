@@ -1,6 +1,7 @@
 import { Col, Row, Image, Tabs, Button } from 'antd';
 import _ from 'lodash';
 import React, { useState, useEffect, useMemo } from 'react';
+import { useOutletContext } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import title from 'assets/images/title_mapstatus.png';
 import FlagImage from 'components/FlagImage';
@@ -11,7 +12,9 @@ interface MapStatusProps {
   setIsLoading: (data: boolean) => void;
 }
 
-const MapStatus = ({ setIsLoading }: MapStatusProps) => {
+const MapStatus = () => {
+  const { setIsLoading }: MapStatusProps = useOutletContext();
+
   // Tab Items
   const tabItems = [
     {

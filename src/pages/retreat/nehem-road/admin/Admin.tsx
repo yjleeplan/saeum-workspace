@@ -1,4 +1,5 @@
 import { useMemo, useEffect } from 'react';
+import { useOutletContext } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { message } from 'antd';
 import styled from 'styled-components';
@@ -90,7 +91,8 @@ interface NehemRoadAdminProps {
   isMobile: boolean;
 }
 
-const NehemRoadAdmin = ({ isMobile }: NehemRoadAdminProps) => {
+const NehemRoadAdmin = () => {
+  const { isMobile }: NehemRoadAdminProps = useOutletContext();
   const token = useAuthStore?.getState()?.userInfo?.token;
 
   // 클립보드에 복사

@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useOutletContext, useSearchParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { Steps } from 'antd';
 import { isEmpty, sortBy } from 'lodash';
@@ -53,8 +53,9 @@ interface NehemRoadReserveByGameProps {
   setIsLoading: (data: boolean) => void;
 }
 
-const NehemRoadReserveByGame = ({ isMobile, setIsLoading }: NehemRoadReserveByGameProps) => {
+const NehemRoadReserveByGame = () => {
   /** Hook */
+  const { isMobile, setIsLoading }: NehemRoadReserveByGameProps = useOutletContext();
   const [searchParams, setSearchParams] = useSearchParams();
 
   /** State */

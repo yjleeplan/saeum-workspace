@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useOutletContext } from 'react-router-dom';
 import { Image } from 'antd';
 import styled from 'styled-components';
 import Map from 'assets/images/nehem-road/map_background.jpg';
@@ -80,7 +81,10 @@ interface NehemRoadReserveSkyViewProps {
   setIsLoading: (data: boolean) => void;
 }
 
-const NehemRoadReserveMap = ({ isMobile, setIsLoading }: NehemRoadReserveSkyViewProps) => {
+const NehemRoadReserveMap = () => {
+  const { isMobile, setIsLoading }: NehemRoadReserveSkyViewProps = useOutletContext();
+
+  /** State */
   const [buildingKey, setBuildingKey] = useState<number | undefined>(undefined);
   const [buildingModalVisible, setBuildingModalVisible] = useState<boolean>(false);
 

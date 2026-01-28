@@ -10,7 +10,7 @@ interface NehemRoadRouteProps {
 const NehemRoadRoute = ({ isMobile, isLoading, setIsLoading }: NehemRoadRouteProps) => {
   return (
     <NehemRoadLayout isMobile={isMobile} isLoading={isLoading} setIsLoading={setIsLoading}>
-      <Outlet />
+      <Outlet context={{ isMobile, isLoading, setIsLoading }} />
     </NehemRoadLayout>
   );
 };

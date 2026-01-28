@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useOutletContext } from 'react-router-dom';
 import { useQueryClient } from '@tanstack/react-query';
 import { AgGridReact } from 'ag-grid-react';
 import { Input, Steps, message, Modal } from 'antd';
@@ -107,7 +108,8 @@ interface NehemRoadCheckProps {
   setIsLoading: (data: boolean) => void;
 }
 
-const NehemRoadCheck = ({ isMobile, setIsLoading }: NehemRoadCheckProps) => {
+const NehemRoadCheck = () => {
+  const { isMobile, setIsLoading }: NehemRoadCheckProps = useOutletContext();
   const token = useAuthStore?.getState()?.userInfo?.token;
 
   // 그리드 컬럼 정의

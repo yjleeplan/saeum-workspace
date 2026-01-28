@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useOutletContext } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Wrapper = styled.div<{ $ismobile: string }>`
@@ -51,7 +51,8 @@ interface NehemRoadContactProps {
   isMobile: boolean;
 }
 
-const NehemRoadContact = ({ isMobile }: NehemRoadContactProps) => {
+const NehemRoadContact = () => {
+  const { isMobile }: NehemRoadContactProps = useOutletContext();
   const contactList = ['010-3912-3314', '010-7471-5520'];
 
   return (
