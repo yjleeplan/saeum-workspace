@@ -1,6 +1,6 @@
 import { Col, Row, Image, Tabs, Button } from 'antd';
 import _ from 'lodash';
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { ReactNode, useState, useEffect, useMemo } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import title from 'assets/images/title_mapstatus.png';
@@ -19,28 +19,23 @@ const MapStatus = () => {
   const tabItems = [
     {
       label: '조별',
-      children: '',
+      children: [],
       key: 'team',
     },
     {
       label: '나라별',
-      children: '',
+      children: [],
       key: 'country',
     },
   ];
 
-  let timer;
+  let timer: ReturnType<typeof setTimeout>;
 
   /** State */
   const [activeKey, setActiveKey] = useState('team');
 
   // 팀 목록 조회 API
-  const {
-    data: teamListQueryData = [],
-    refetch: refetchTeamList,
-    isSuccess: teamListQuerySuccess,
-    isFetching: teamListFetching,
-  } = useQuery({
+  const { data: teamListQueryData = [], isSuccess: teamListQuerySuccess } = useQuery({
     ...queries.map.teamList({
       order_by_column: 'team_total',
       order_by_value: 'desc',
@@ -53,16 +48,13 @@ const MapStatus = () => {
   const teamList = useMemo(() => {
     if (teamListQuerySuccess) {
       return teamListQueryData;
+    } else {
+      return [];
     }
   }, [teamListQueryData]);
 
   // 나라 목록 조회 API
-  const {
-    data: countryListQueryData = [],
-    refetch: refetchCountryList,
-    isSuccess: countryListQuerySuccess,
-    isFetching: countryListFetching,
-  } = useQuery({
+  const { data: countryListQueryData = [], isSuccess: countryListQuerySuccess } = useQuery({
     ...queries.map.countryList({}),
     staleTime: 500,
     cacheTime: 1000,
@@ -72,15 +64,17 @@ const MapStatus = () => {
   const countryList = useMemo(() => {
     if (countryListQuerySuccess) {
       return countryListQueryData;
+    } else {
+      return [];
     }
   }, [countryListQueryData]);
 
   // 탭 내용 생성
   const generateItems = () => {
-    let children = '';
+    let children: ReactNode = [];
 
     if (activeKey === 'team') {
-      children = _.map(teamList, (item, index) => {
+      children = teamList?.map((item, index) => {
         return (
           <Row
             key={index}
@@ -103,7 +97,7 @@ const MapStatus = () => {
         );
       });
     } else {
-      children = _.map(countryList, (item, index) => {
+      children = countryList?.map((item, index) => {
         return (
           <Row key={index} className='country-info-row'>
             <Col span={20} className='country-info-col-1'>
@@ -118,7 +112,7 @@ const MapStatus = () => {
       });
     }
 
-    tabItems[_.findIndex(tabItems, { key: activeKey })].children = children;
+    tabItems[_.findIndex(tabItems, { key: activeKey })].children = children as [];
 
     return tabItems;
   };

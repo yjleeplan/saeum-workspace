@@ -3,9 +3,10 @@ import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react'
 import { useOutletContext } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { MapContainer, GeoJSON, Marker, Popup, useMapEvents } from 'react-leaflet';
+import { FeatureCollection } from 'geojson';
 import countries from './data/countries.json';
 import 'leaflet/dist/leaflet.css';
-import { Icon } from 'leaflet';
+import { Icon, Map as LeafletMapType, GeoJSON as LeafletGeoJSON, Path } from 'leaflet';
 import { Col, Row, Input, Modal, message } from 'antd';
 import { FullscreenOutlined, SettingOutlined } from '@ant-design/icons';
 import TeamDeleteModal from 'components/_modal/TeamDeleteModal';
@@ -13,6 +14,8 @@ import FlagImage from 'components/FlagImage';
 import { queries } from 'api/queries';
 import { usePutTeamCurrent, usePostCountry } from 'api/useMapApi';
 import type { Team, PutTeamCurrentRequest, PostCountryRequest } from 'types';
+
+const jsonData = countries as FeatureCollection;
 
 const { Search } = Input;
 
@@ -26,15 +29,14 @@ const Map = () => {
   /** State */
   const [selectedTeam, setSelectedTeam] = useState<Team>();
   const [teamDeleteModalVisible, setTeamDeleteModalVisible] = useState(false);
-  const mapRef = useRef();
-  const geoJsonRef = useRef();
+  const mapRef = useRef<LeafletMapType>(null);
+  const geoJsonRef = useRef<LeafletGeoJSON>(null!);
 
   // 팀 목록 조회 API
   const {
     data: teamListQueryData = [],
     refetch: refetchTeamList,
     isSuccess: teamListQuerySuccess,
-    isFetching: teamListFetching,
   } = useQuery({
     ...queries.map.teamList({
       order_by_column: 'team_no',
@@ -49,6 +51,8 @@ const Map = () => {
     if (teamListQuerySuccess) {
       !selectedTeam && setSelectedTeam(teamListQueryData[0]);
       return teamListQueryData;
+    } else {
+      return [];
     }
   }, [teamListQueryData]);
 
@@ -57,7 +61,6 @@ const Map = () => {
     data: countryListQueryData = [],
     refetch: refetchCountryList,
     isSuccess: countryListQuerySuccess,
-    isFetching: countryListFetching,
   } = useQuery({
     ...queries.map.countryList({}),
     staleTime: 500,
@@ -68,15 +71,15 @@ const Map = () => {
   const countryList = useMemo(() => {
     if (countryListQuerySuccess) {
       const layers = geoJsonRef.current.getLayers();
-      let searchedLayer = {};
+      let searchedLayer = {} as Path;
 
       _.map(countryListQueryData, (item, index) => {
         searchedLayer = _.chain(layers)
-          .filter((o) => {
-            return item.country_name === o.feature.properties.NAME;
+          .filter((o: any) => {
+            return item.country_name === o?.feature?.properties.NAME;
           })
           .head()
-          .value();
+          .value() as Path;
 
         if (searchedLayer) {
           searchedLayer.setStyle({ fillColor: item.country_team_color ? item.country_team_color : '#F9F9F9' });
@@ -84,6 +87,8 @@ const Map = () => {
       });
 
       return countryListQueryData;
+    } else {
+      return [];
     }
   }, [countryListQueryData]);
 
@@ -132,12 +137,12 @@ const Map = () => {
   };
 
   // 팀 선택
-  const onSelectedTeam = (event, item, index) => {
+  const onSelectedTeam = (item: Team, index: number) => {
     setSelectedTeam(item);
   };
 
   // 나라 선택
-  const onSelectedCountry = (event) => {
+  const onSelectedCountry = (event: any) => {
     console.log(event.target);
 
     event.target.setStyle({
@@ -147,8 +152,8 @@ const Map = () => {
   };
 
   // 지도에 그려지는 각 Feature에 대한 설정
-  const onEachFeature = (feature, layer) => {
-    layer.bindPopup(feature.properties.NAME);
+  const onEachFeature = (feature: GeoJSON.Feature, layer: any) => {
+    layer.bindPopup(feature?.properties?.NAME);
     layer.setStyle({
       color: '#000',
       fillColor: '#F9F9F9',
@@ -182,17 +187,17 @@ const Map = () => {
   const onSearch = (value: string) => {
     const layers = geoJsonRef.current.getLayers();
     const searchedLayer = _.chain(layers)
-      .filter((o) => {
-        return value === o.feature.properties.NAME;
+      .filter((o: any) => {
+        return value === o?.feature?.properties.NAME;
       })
       .head()
-      .value();
+      .value() as any;
     // 검색 결과가 존재하는 경우
     if (searchedLayer) {
       //console.log(searchedLayer.getCenter());
 
       // 좌표로 이동
-      mapRef.current.flyTo(searchedLayer.feature.properties.CENTER, searchedLayer.feature.properties.ZOOM);
+      mapRef?.current?.flyTo(searchedLayer?.feature?.properties?.CENTER, searchedLayer?.feature?.properties?.ZOOM);
 
       // Confirm 창 오픈
       Modal.confirm({
@@ -238,7 +243,7 @@ const Map = () => {
             <Row
               key={index}
               className={selectedTeam?.team_no === item.team_no ? 'team-info-row selected' : 'team-info-row'}
-              onClick={(event) => onSelectedTeam(event, item, index)}
+              onClick={(event) => onSelectedTeam(item, index)}
             >
               <Col span={4} className='team-info-col-1'>
                 <input className='team-color-input' type='color' value={item.team_color} disabled />
@@ -269,7 +274,7 @@ const Map = () => {
           style={{ height: '100%', background: '#FFF' }}
           zoomControl={false}
         >
-          <GeoJSON ref={geoJsonRef} data={countries.features} onEachFeature={onEachFeature} />
+          <GeoJSON ref={geoJsonRef} data={jsonData} onEachFeature={onEachFeature} />
         </MapContainer>
       </div>
       <div id='teamDeleteModal'>

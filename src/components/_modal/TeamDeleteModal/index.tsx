@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Modal, Button, Col, Row, message, Image } from 'antd';
 import { DeleteOutlined } from '@ant-design/icons';
@@ -35,6 +35,8 @@ const TeamDeleteModal = ({ visible, onCancel, setIsLoading, selectedTeam, onDele
   const resultList = useMemo(() => {
     if (resultListQuerySuccess) {
       return resultListQueryData;
+    } else {
+      return [];
     }
   }, [resultListQueryData]);
 
@@ -81,6 +83,14 @@ const TeamDeleteModal = ({ visible, onCancel, setIsLoading, selectedTeam, onDele
     });
   };
 
+  /** Effect */
+  useEffect(() => {
+    // 모달이 열릴 때마다 목록 새로 조회
+    if (visible) {
+      refetchResultList();
+    }
+  }, [visible]);
+
   return (
     <Modal
       wrapClassName='team-delete-modal-wrap'
@@ -93,7 +103,7 @@ const TeamDeleteModal = ({ visible, onCancel, setIsLoading, selectedTeam, onDele
         </Button>,
       ]}
       maskClosable={false}
-      getContainer={document.getElementById('teamDeleteModal')}
+      getContainer={document.getElementById('teamDeleteModal') || ''}
       destroyOnClose
     >
       {resultList?.length > 0 ? (
