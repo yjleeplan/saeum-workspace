@@ -1,6 +1,7 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import EarthArcadeMapLayout from 'layout/EarthArcadeMapLayout';
 import EarthArcadeMapStatusLayout from 'layout/EarthArcadeMapStatusLayout';
+import 'assets/css/earth-arcade.css';
 
 const PC_PAGE_LIST = ['/earth-arcade/map'];
 const MOBILE_PAGE_LIST = ['/earth-arcade/map-status'];

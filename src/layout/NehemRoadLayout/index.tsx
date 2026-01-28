@@ -5,7 +5,6 @@ import { Spin } from 'antd';
 import { useAuthStore } from 'store';
 import Content from './Content';
 import Header from './Header';
-import 'assets/css/nehem-road.css';
 
 const Wrapper = styled.div`
   width: 100%;

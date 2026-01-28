@@ -1,5 +1,6 @@
 import NehemRoadLayout from 'layout/NehemRoadLayout';
 import { Outlet } from 'react-router-dom';
+import 'assets/css/nehem-road.css';
 
 interface NehemRoadRouteProps {
   isMobile: boolean;
