@@ -1,5 +1,6 @@
 import { Col, Image, Row } from 'antd';
 import React, { useState } from 'react';
+import { useOutletContext } from 'react-router-dom';
 import iconAttendance from 'assets/images/icon_attendance.png';
 import iconPicture from 'assets/images/icon_picture.png';
 import iconUserAdd from 'assets/images/icon_user_add.png';
@@ -13,7 +14,9 @@ interface MainProps {
   setIsLoading: (data: boolean) => void;
 }
 
-const Main = ({ setIsLoading }: MainProps) => {
+const Main = () => {
+  const { setIsLoading }: MainProps = useOutletContext();
+
   /** State */
   const [userAddModalVisible, setUserAddModalVisible] = useState<boolean>(false);
   const [searchAttendanceModalVisible, setSearchAttendanceModalVisible] = useState<boolean>(false);

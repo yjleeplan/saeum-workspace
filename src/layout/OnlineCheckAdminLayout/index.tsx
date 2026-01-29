@@ -3,13 +3,13 @@ import { Spin } from 'antd';
 import Content from './Content';
 import Header from './Header';
 
-interface MainLayoutProps {
+interface OnlineCheckAdminLayoutProps {
   isLoading: boolean;
   setIsLoading: (data: boolean) => void;
   children: ReactElement;
 }
 
-const MainLayout = ({ isLoading, setIsLoading, children }: MainLayoutProps) => {
+const OnlineCheckAdminLayout = ({ isLoading, setIsLoading, children }: OnlineCheckAdminLayoutProps) => {
   // const [isLoading, setIsLoading] = useState<boolean>(false);
 
   return (
@@ -22,4 +22,4 @@ const MainLayout = ({ isLoading, setIsLoading, children }: MainLayoutProps) => {
   );
 };
 
-export default MainLayout;
+export default OnlineCheckAdminLayout;

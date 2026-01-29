@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import AdminRoute from './AdminRoute';
-import MainRoute from './MainRoute';
+import OnlineCheckRoute from './OnlineCheckRoute';
 import EarthArcadeRoute from './EarthArcadeRoute';
 import NehemRoadRoute from './NehemRoadRoute';
-import Admin from 'pages/admin/Admin';
-import Main from 'pages/main/Main';
+import BibleWalk2023Admin from 'pages/bible-walk/bible-walk-2023/admin/Admin';
+import BibleWalk2023Main from 'pages/bible-walk/bible-walk-2023/main/Main';
 import NehemRoadHome from 'pages/retreat/nehem-road/home/Home';
 import NehemRoadReserveTheme from 'pages/retreat/nehem-road/reserve-theme/ReserveTheme';
 import NehemRoadReservePlan from 'pages/retreat/nehem-road/reserve-plan/ReservePlan';
@@ -25,22 +24,19 @@ export const Router = () => {
 
   return (
     <Routes>
-      {/* <Route element={<MainRoute isLoading={isLoading} setIsLoading={setIsLoading} />}>
-        <Route path={'/'} element={<Main setIsLoading={setIsLoading} />} />
-        <Route path={'/main'} element={<Main setIsLoading={setIsLoading} />} />
-      </Route> */}
+      {/* 온라인 출석 (특새/가을성경산책) */}
+      <Route element={<OnlineCheckRoute isLoading={isLoading} setIsLoading={setIsLoading} />}>
+        <Route path={'/bible-walk/2023'} element={<BibleWalk2023Main />} />
+        <Route path={'/bible-walk/2023/admin'} element={<BibleWalk2023Admin />} />
+      </Route>
 
-      {/* <Route element={<AdminRoute isLoading={isLoading} setIsLoading={setIsLoading} />}>
-        <Route path={'/admin'} element={<Admin setIsLoading={setIsLoading} />} />
-      </Route> */}
-
-      {/* 지구오락실 (2023년 8월 청년부 여름수련회) */}
+      {/* 지구오락실 (2023년 청년부 여름수련회) */}
       <Route element={<EarthArcadeRoute isLoading={isLoading} setIsLoading={setIsLoading} />}>
         <Route path={'/earth-arcade/map'} element={<EarthArcadeMap />} />
         <Route path={'/earth-arcade/map-status'} element={<EarthArcadeMapStatus />} />
       </Route>
 
-      {/* 네헴로드 (2025년 8월 청년부 여름수련회) */}
+      {/* 네헴로드 (2025년 청년부 여름수련회) */}
       <Route element={<NehemRoadRoute isMobile={mobileCheck()} isLoading={isLoading} setIsLoading={setIsLoading} />}>
         <Route path={'/nehem-road/home'} element={<NehemRoadHome />} />
         <Route path={'/nehem-road/reserve-theme'} element={<NehemRoadReserveTheme />} />
