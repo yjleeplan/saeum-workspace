@@ -1,5 +1,4 @@
 import { Col, Image, Row } from 'antd';
-import React, { useState } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import iconAttendance from 'assets/images/icon_attendance.png';
 import iconPicture from 'assets/images/icon_picture.png';
@@ -8,48 +7,30 @@ import iconVideo from 'assets/images/icon_video.png';
 import title from 'assets/images/title.png';
 import Comments from 'components/Comments';
 import SearchAttendanceModal from 'components/_modal/SearchAttendanceModal';
+import AdminSearchAttendanceModal from 'components/_modal/AdminSearchAttendanceModal';
 import UserAddModal from 'components/_modal/UserAddModal';
+import { useBibleWalk2023 } from './hooks/useBibleWalk2023';
 
-interface MainProps {
+interface OutletContextProps {
   setIsLoading: (data: boolean) => void;
 }
 
-const Main = () => {
-  const { setIsLoading }: MainProps = useOutletContext();
+interface MainProps {
+  isAdmin?: boolean;
+}
 
-  /** State */
-  const [userAddModalVisible, setUserAddModalVisible] = useState<boolean>(false);
-  const [searchAttendanceModalVisible, setSearchAttendanceModalVisible] = useState<boolean>(false);
-
-  // 사용자 등록 모달 오픈
-  const handleUserAddModalOpen = () => {
-    setUserAddModalVisible(true);
-  };
-
-  // 사용자 등록 모달 닫기
-  const handleUserAddModalClose = () => {
-    setUserAddModalVisible(false);
-  };
-
-  // 출석체크 모달 오픈
-  const handleSearchAttendanceModalOpen = () => {
-    setSearchAttendanceModalVisible(true);
-  };
-
-  // 출석체크 모달 닫기
-  const handleSearchAttendanceModalClose = () => {
-    setSearchAttendanceModalVisible(false);
-  };
-
-  // 영상 링크
-  const handleVideoClick = () => {
-    window.open('https://youtube.com/playlist?list=PLFdkyNDzHdpNlm75HRaCUV2uWuNxg76vw&si=da9Qbd75NIKciFeG');
-  };
-
-  // 사진 링크
-  const handlePictureClick = () => {
-    window.open('https://m.post.naver.com/viewer/postView.naver?volumeNo=36765325&memberNo=28453879');
-  };
+const Main = ({ isAdmin }: MainProps) => {
+  const { setIsLoading }: OutletContextProps = useOutletContext();
+  const {
+    userAddModalVisible,
+    searchAttendanceModalVisible,
+    handleUserAddModalOpen,
+    handleUserAddModalClose,
+    handleSearchAttendanceModalOpen,
+    handleSearchAttendanceModalClose,
+    handleVideoClick,
+    handlePictureClick,
+  } = useBibleWalk2023();
 
   return (
     <>
@@ -75,11 +56,19 @@ const Main = () => {
           <UserAddModal visible={userAddModalVisible} onCancel={handleUserAddModalClose} setIsLoading={setIsLoading} />
         </div>
         <div id='searchAttendanceModal'>
-          <SearchAttendanceModal
-            visible={searchAttendanceModalVisible}
-            onCancel={handleSearchAttendanceModalClose}
-            setIsLoading={setIsLoading}
-          />
+          {isAdmin ? (
+            <AdminSearchAttendanceModal
+              visible={searchAttendanceModalVisible}
+              onCancel={handleSearchAttendanceModalClose}
+              setIsLoading={setIsLoading}
+            />
+          ) : (
+            <SearchAttendanceModal
+              visible={searchAttendanceModalVisible}
+              onCancel={handleSearchAttendanceModalClose}
+              setIsLoading={setIsLoading}
+            />
+          )}
         </div>
       </Row>
       {/* <VideoPlayer /> */}

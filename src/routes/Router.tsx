@@ -3,8 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import OnlineCheckRoute from './OnlineCheckRoute';
 import EarthArcadeRoute from './EarthArcadeRoute';
 import NehemRoadRoute from './NehemRoadRoute';
-import BibleWalk2023Admin from 'pages/bible-walk/bible-walk-2023/admin/Admin';
-import BibleWalk2023Main from 'pages/bible-walk/bible-walk-2023/main/Main';
+import BibleWalk2023 from 'pages/bible-walk/bible-walk-2023/BibleWalk2023';
 import NehemRoadHome from 'pages/retreat/nehem-road/home/Home';
 import NehemRoadReserveTheme from 'pages/retreat/nehem-road/reserve-theme/ReserveTheme';
 import NehemRoadReservePlan from 'pages/retreat/nehem-road/reserve-plan/ReservePlan';
@@ -26,8 +25,8 @@ export const Router = () => {
     <Routes>
       {/* 온라인 출석 (특새/가을성경산책) */}
       <Route element={<OnlineCheckRoute isLoading={isLoading} setIsLoading={setIsLoading} />}>
-        <Route path={'/bible-walk/2023'} element={<BibleWalk2023Main />} />
-        <Route path={'/bible-walk/2023/admin'} element={<BibleWalk2023Admin />} />
+        <Route path={'/bible-walk/2023'} element={<BibleWalk2023 />} />
+        <Route path={'/bible-walk/2023/admin'} element={<BibleWalk2023 isAdmin />} />
       </Route>
 
       {/* 지구오락실 (2023년 청년부 여름수련회) */}

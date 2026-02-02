@@ -1,6 +1,5 @@
 import { Outlet, useLocation } from 'react-router-dom';
-import OnlineCheckMainLayout from 'layout/OnlineCheckMainLayout';
-import OnlineCheckAdminLayout from 'layout/OnlineCheckAdminLayout';
+import OnlineCheckLayout from 'layout/OnlineCheckLayout';
 import 'assets/css/online-check.css';
 
 const MAIN_PAGE_LIST = ['/bible-walk/2023'];
@@ -18,18 +17,13 @@ const OnlineCheckRoute = ({ isLoading, setIsLoading }: OnlineCheckRouteProps) =>
   const currentPath = location.pathname;
 
   return (
-    <>
-      {MAIN_PAGE_LIST.includes(currentPath) && (
-        <OnlineCheckMainLayout isLoading={isLoading} setIsLoading={setIsLoading}>
-          <Outlet context={{ isLoading, setIsLoading }} />
-        </OnlineCheckMainLayout>
-      )}
-      {ADMIN_PAGE_LIST.includes(currentPath) && (
-        <OnlineCheckAdminLayout isLoading={isLoading} setIsLoading={setIsLoading}>
-          <Outlet context={{ isLoading, setIsLoading }} />
-        </OnlineCheckAdminLayout>
-      )}
-    </>
+    <OnlineCheckLayout
+      isLoading={isLoading}
+      isAdmin={ADMIN_PAGE_LIST.includes(currentPath)}
+      setIsLoading={setIsLoading}
+    >
+      <Outlet context={{ isLoading, setIsLoading }} />
+    </OnlineCheckLayout>
   );
 };
 
