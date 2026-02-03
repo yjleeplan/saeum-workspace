@@ -1,18 +1,18 @@
 import React from 'react';
 import { Image, Modal } from 'antd';
 import { usePutAttendance } from 'api/useAttendanceApi';
-import btn1 from 'assets/images/btn_1.png';
-import btn2 from 'assets/images/btn_2.png';
-import btn3 from 'assets/images/btn_3.png';
-import btn4 from 'assets/images/btn_4.png';
-import btn5 from 'assets/images/btn_5.png';
-import btn6 from 'assets/images/btn_6.png';
-import complete1 from 'assets/images/btn_1_complete.png';
-import complete2 from 'assets/images/btn_2_complete.png';
-import complete3 from 'assets/images/btn_3_complete.png';
-import complete4 from 'assets/images/btn_4_complete.png';
-import complete5 from 'assets/images/btn_5_complete.png';
-import complete6 from 'assets/images/btn_6_complete.png';
+import btn1 from 'assets/images/bible-walk-2023/btn_1.png';
+import btn2 from 'assets/images/bible-walk-2023/btn_2.png';
+import btn3 from 'assets/images/bible-walk-2023/btn_3.png';
+import btn4 from 'assets/images/bible-walk-2023/btn_4.png';
+import btn5 from 'assets/images/bible-walk-2023/btn_5.png';
+import btn6 from 'assets/images/bible-walk-2023/btn_6.png';
+import complete1 from 'assets/images/bible-walk-2023/btn_1_complete.png';
+import complete2 from 'assets/images/bible-walk-2023/btn_2_complete.png';
+import complete3 from 'assets/images/bible-walk-2023/btn_3_complete.png';
+import complete4 from 'assets/images/bible-walk-2023/btn_4_complete.png';
+import complete5 from 'assets/images/bible-walk-2023/btn_5_complete.png';
+import complete6 from 'assets/images/bible-walk-2023/btn_6_complete.png';
 import { IS_COMPLETE } from 'context/Context';
 
 interface AdminStampProps {

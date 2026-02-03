@@ -1,9 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useMemo, useState, useEffect } from 'react';
-import { Col, Image, Modal, Row, Typography } from 'antd';
+import { Col, Modal, Row, Typography } from 'antd';
 import { isEmpty, map } from 'lodash';
 import { queries } from 'api/queries';
-import title from 'assets/images/title.png';
 import AdminStamp from 'components/AdminStamp';
 import { UserAttendance } from 'types';
 
@@ -80,7 +79,7 @@ const AdminUserAttendanceModal = ({ visible, selectedUserInfo, onCancel, setIsLo
     >
       <Row className='user-attendance-modal-title'>
         <Col span={24}>
-          <Image width={192} height={160} src={title} preview={false} />
+          <div className='main-title' />
         </Col>
       </Row>
       <Row className='user-attendance-modal-info'>

@@ -23,8 +23,9 @@ export const Router = () => {
 
   return (
     <Routes>
-      {/* 온라인 출석 (특새/가을성경산책) */}
+      {/* 온라인 출석 */}
       <Route element={<OnlineCheckRoute isLoading={isLoading} setIsLoading={setIsLoading} />}>
+        {/* 가을성경산책 (2023년) */}
         <Route path={'/bible-walk/2023'} element={<BibleWalk2023 />} />
         <Route path={'/bible-walk/2023/admin'} element={<BibleWalk2023 isAdmin />} />
       </Route>

@@ -1,10 +1,9 @@
 import { Col, Image, Row } from 'antd';
 import { useOutletContext } from 'react-router-dom';
-import iconAttendance from 'assets/images/icon_attendance.png';
-import iconPicture from 'assets/images/icon_picture.png';
-import iconUserAdd from 'assets/images/icon_user_add.png';
-import iconVideo from 'assets/images/icon_video.png';
-import title from 'assets/images/title.png';
+import iconAttendance from 'assets/images/bible-walk-2023/icon_attendance.png';
+import iconPicture from 'assets/images/bible-walk-2023/icon_picture.png';
+import iconUserAdd from 'assets/images/bible-walk-2023/icon_user_add.png';
+import iconVideo from 'assets/images/bible-walk-2023/icon_video.png';
 import Comments from 'components/Comments';
 import SearchAttendanceModal from 'components/_modal/SearchAttendanceModal';
 import AdminSearchAttendanceModal from 'components/_modal/AdminSearchAttendanceModal';
@@ -36,7 +35,7 @@ const Main = ({ isAdmin }: MainProps) => {
     <>
       <Row className='user-attendance-modal-title'>
         <Col span={24}>
-          <Image width={186} height={150} src={title} preview={false} />
+          <div className='main-title' />
         </Col>
       </Row>
       <Row className='user-attendance-modal-icon'>

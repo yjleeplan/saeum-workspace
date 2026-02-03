@@ -1,3 +1,7 @@
+/*
+ * 온라인 체크 공통 스타일 
+ */
+
 /* Main Layout */
 #main-layout {
   height: 100%;
@@ -5,8 +9,7 @@
   display: flex;
   flex: auto;
   flex-direction: column;
-  background-image: url(/src/assets/images/background.jpg);
-  /* background-image: url(/src/assets/images/happysun_190218__030.jpg); */
+  /* background-image: url(/src/assets/images/background.jpg); */
   background-repeat: no-repeat;
   background-position-x: left;
   background-position-y: top;
@@ -35,6 +38,13 @@
   font-size: 14px;
   padding-top: 3px;
   height: 29px;
+}
+
+#main-layout .main-title {
+  position: relative;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .user-attendance-modal-icon {
@@ -112,7 +122,7 @@
 
 .ant-modal-wrap.user-attendance-modal-wrap .ant-modal-body {
   min-height: 500px;
-  background-image: url(/src/assets/images/attendance_bg.png);
+  /* background-image: url(/src/assets/images/attendance_bg.png); */
   background-repeat: no-repeat;
   background-size: cover;
 }
