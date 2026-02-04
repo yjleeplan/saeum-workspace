@@ -127,10 +127,6 @@
   background-size: cover;
 }
 
-.ant-modal-wrap.user-attendance-modal-wrap button.ant-modal-close {
-  color: #9496a2;
-}
-
 .user-attendance-modal-title {
   height: 160px;
   text-align: center;
@@ -146,7 +142,6 @@
 }
 
 .user-attendance-modal-info .user-name {
-  color: #c1b08f;
   font-size: 18px;
   font-weight: bold;
 }

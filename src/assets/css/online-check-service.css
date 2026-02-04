@@ -14,15 +14,22 @@
     height: 150px;
   }
 
-  /* 출석체크판 */
-  .ant-modal-wrap.user-attendance-modal-wrap .ant-modal-body {
-    background-image: url(/src/assets/images/bible-walk-2022/attendance_bg.png);
+  .ant-modal-wrap.user-attendance-modal-wrap {
+    /* 출석체크판 */
+    .ant-modal-body {
+      background-image: url(/src/assets/images/bible-walk-2022/attendance_bg.png);
 
-    /* 출석체크판 타이틀 */
-    .main-title {
-      background-image: url(/src/assets/images/bible-walk-2022/title.png);
-      width: 192px;
-      height: 160px;
+      /* 출석체크판 타이틀 */
+      .main-title {
+        background-image: url(/src/assets/images/bible-walk-2022/title.png);
+        width: 192px;
+        height: 160px;
+      }
+
+      /* 출석체크판 사용자명 */
+      .user-attendance-modal-info .user-name {
+        color: #6f2629;
+      }
     }
   }
 }
@@ -39,15 +46,27 @@
     height: 150px;
   }
 
-  /* 출석체크판 */
-  .ant-modal-wrap.user-attendance-modal-wrap .ant-modal-body {
-    background-image: url(/src/assets/images/bible-walk-2023/attendance_bg.png);
+  .ant-modal-wrap.user-attendance-modal-wrap {
+    /* 출석체크판 닫기 버튼 */
+    button.ant-modal-close {
+      color: #9496a2;
+    }
 
-    /* 출석체크판 타이틀 */
-    .main-title {
-      background-image: url(/src/assets/images/bible-walk-2023/title.png);
-      width: 192px;
-      height: 160px;
+    /* 출석체크판 */
+    .ant-modal-body {
+      background-image: url(/src/assets/images/bible-walk-2023/attendance_bg.png);
+
+      /* 출석체크판 타이틀 */
+      .main-title {
+        background-image: url(/src/assets/images/bible-walk-2023/title.png);
+        width: 192px;
+        height: 160px;
+      }
+
+      /* 출석체크판 사용자명 */
+      .user-attendance-modal-info .user-name {
+        color: #c1b08f;
+      }
     }
   }
 }

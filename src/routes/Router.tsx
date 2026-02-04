@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import OnlineCheckRoute from './OnlineCheckRoute';
 import EarthArcadeRoute from './EarthArcadeRoute';
 import NehemRoadRoute from './NehemRoadRoute';
+import BibleWalk2022 from 'pages/online-check/bible-walk-2022/BibleWalk2022';
 import BibleWalk2023 from 'pages/online-check/bible-walk-2023/BibleWalk2023';
 import NehemRoadHome from 'pages/retreat/nehem-road/home/Home';
 import NehemRoadReserveTheme from 'pages/retreat/nehem-road/reserve-theme/ReserveTheme';
@@ -25,6 +26,9 @@ export const Router = () => {
     <Routes>
       {/* 온라인 출석 */}
       <Route element={<OnlineCheckRoute isLoading={isLoading} setIsLoading={setIsLoading} />}>
+        {/* 가을성경산책 (2022년) */}
+        <Route path={'/bible-walk-2022'} element={<BibleWalk2022 />} />
+        <Route path={'/bible-walk-2022/admin'} element={<BibleWalk2022 isAdmin />} />
         {/* 가을성경산책 (2023년) */}
         <Route path={'/bible-walk-2023'} element={<BibleWalk2023 />} />
         <Route path={'/bible-walk-2023/admin'} element={<BibleWalk2023 isAdmin />} />

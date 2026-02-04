@@ -3,8 +3,8 @@ import OnlineCheckLayout from 'layout/OnlineCheckLayout';
 import 'assets/css/online-check.css';
 import 'assets/css/online-check-service.css';
 
-const MAIN_PAGE_LIST = ['/bible-walk-2023'];
-const ADMIN_PAGE_LIST = ['/bible-walk-2023/admin'];
+const MAIN_PAGE_LIST = ['/bible-walk-2022', '/bible-walk-2023'];
+const ADMIN_PAGE_LIST = ['/bible-walk-2022/admin', '/bible-walk-2023/admin'];
 
 interface OnlineCheckRouteProps {
   isLoading: boolean;
