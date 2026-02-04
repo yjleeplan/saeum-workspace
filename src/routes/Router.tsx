@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import OnlineCheckRoute from './OnlineCheckRoute';
 import EarthArcadeRoute from './EarthArcadeRoute';
 import NehemRoadRoute from './NehemRoadRoute';
-import BibleWalk2023 from 'pages/bible-walk/bible-walk-2023/BibleWalk2023';
+import BibleWalk2023 from 'pages/online-check/bible-walk-2023/BibleWalk2023';
 import NehemRoadHome from 'pages/retreat/nehem-road/home/Home';
 import NehemRoadReserveTheme from 'pages/retreat/nehem-road/reserve-theme/ReserveTheme';
 import NehemRoadReservePlan from 'pages/retreat/nehem-road/reserve-plan/ReservePlan';
