@@ -4,7 +4,7 @@ import { Col, Modal, Row, Typography } from 'antd';
 import { isEmpty, map } from 'lodash';
 import moment from 'moment';
 import { queries } from 'api/queries';
-import Stamp from 'components/Stamp';
+import Stamp from './Stamp';
 import { UserAttendance } from 'types';
 
 const { Text } = Typography;

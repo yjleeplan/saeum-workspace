@@ -13,7 +13,7 @@ import complete3 from 'assets/images/bible-walk-2023/btn_3_complete.png';
 import complete4 from 'assets/images/bible-walk-2023/btn_4_complete.png';
 import complete5 from 'assets/images/bible-walk-2023/btn_5_complete.png';
 import complete6 from 'assets/images/bible-walk-2023/btn_6_complete.png';
-import { IS_COMPLETE } from 'context/Context';
+import { IS_COMPLETE } from './config/config';
 
 interface AdminStampProps {
   index: number;

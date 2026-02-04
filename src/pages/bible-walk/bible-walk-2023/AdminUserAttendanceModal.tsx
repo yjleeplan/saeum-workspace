@@ -3,7 +3,7 @@ import React, { useMemo, useState, useEffect } from 'react';
 import { Col, Modal, Row, Typography } from 'antd';
 import { isEmpty, map } from 'lodash';
 import { queries } from 'api/queries';
-import AdminStamp from 'components/AdminStamp';
+import AdminStamp from './AdminStamp';
 import { UserAttendance } from 'types';
 
 const { Text } = Typography;
