@@ -10,10 +10,11 @@ import { usePostComment } from 'api/useCommentApi';
 import { CommentData, CommentOptions, PostCommentRequest } from 'types';
 
 interface CommentsProps {
+  title: string;
   setIsLoading: (data: boolean) => void;
 }
 
-const Comments = ({ setIsLoading }: CommentsProps) => {
+const Comments = ({ title, setIsLoading }: CommentsProps) => {
   const colorCodeList = [
     '#08080',
     '#ADD8E6',
@@ -163,7 +164,7 @@ const Comments = ({ setIsLoading }: CommentsProps) => {
 
   return (
     <div className='comment-wrap'>
-      <Card className='comment-add-wrap' bordered={false} title={`"가을성경산책을 통해 받은 은혜를 나눠주세요!"`}>
+      <Card className='comment-add-wrap' bordered={false} title={title}>
         <Comment
           content={
             <>

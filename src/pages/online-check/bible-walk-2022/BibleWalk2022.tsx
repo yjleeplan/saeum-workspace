@@ -103,7 +103,7 @@ const Main = ({ isAdmin }: MainProps) => {
         )}
       </Row>
       {/* <VideoPlayer /> */}
-      <Comments setIsLoading={setIsLoading} />
+      <Comments title={`"가을성경산책을 통해 받은 은혜를 나눠주세요!"`} setIsLoading={setIsLoading} />
     </>
   );
 };

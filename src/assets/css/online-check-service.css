@@ -55,6 +55,59 @@
   }
 }
 
+/* 특새 (20차) */
+#main-layout.main-layout-dawn-worship-20th {
+  /* 메인 화면 */
+  background-image: url(/src/assets/images/dawn-worship-20th/background.jpg);
+
+  /* 메인 화면 타이틀 */
+  .main-title {
+    background-image: url(/src/assets/images/dawn-worship-20th/title.png);
+    width: 300px;
+    height: 160px;
+  }
+
+  .ant-modal-wrap.user-attendance-modal-wrap {
+    /* 출석체크판 */
+    .ant-modal-body {
+      background-image: url(/src/assets/images/dawn-worship-20th/attendance_bg.png);
+
+      /* 출석체크판 타이틀 */
+      .main-title {
+        background-image: url(/src/assets/images/dawn-worship-20th/attendance_title.png);
+        width: 300px;
+        height: 160px;
+      }
+
+      .user-attendance-modal-info {
+        font-family: 'Eulyoo1945-SemiBold';
+        font-weight: bold;
+
+        /* 출석체크판 사용자명 */
+        .user-name {
+          color: #5d70a0;
+        }
+      }
+
+      /* 출석체크판 박스 */
+      .user-attendance-modal-attendance {
+        background-color: #f1f1f1;
+
+        .stamp-col div {
+          font-family: 'Eulyoo1945-Regular';
+          font-weight: bold;
+        }
+      }
+
+      /* 출석체크판 Footer */
+      .user-attendance-modal-attendance-footer {
+        font-family: 'Eulyoo1945-Regular';
+        font-weight: bold;
+      }
+    }
+  }
+}
+
 /* 가을성경산책 (2022년)*/
 #main-layout.main-layout-bible-walk-2022 {
   /* 메인 화면 */

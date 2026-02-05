@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import OnlineCheckRoute from './OnlineCheckRoute';
 import EarthArcadeRoute from './EarthArcadeRoute';
 import NehemRoadRoute from './NehemRoadRoute';
+import DawnWorship20th from 'pages/online-check/dawn-worship-20th/DawnWorship20th';
 import DawnWorship17th from 'pages/online-check/dawn-worship-17th/DawnWorship17th';
 import BibleWalk2022 from 'pages/online-check/bible-walk-2022/BibleWalk2022';
 import BibleWalk2023 from 'pages/online-check/bible-walk-2023/BibleWalk2023';
@@ -30,6 +31,9 @@ export const Router = () => {
         {/* 특새 (17차) */}
         <Route path={'/dawn-worship-17th'} element={<DawnWorship17th />} />
         <Route path={'/dawn-worship-17th/admin'} element={<DawnWorship17th isAdmin />} />
+        {/* 특새 (20차) */}
+        <Route path={'/dawn-worship-20th'} element={<DawnWorship20th />} />
+        <Route path={'/dawn-worship-20th/admin'} element={<DawnWorship20th isAdmin />} />
         {/* 가을성경산책 (2022년) */}
         <Route path={'/bible-walk-2022'} element={<BibleWalk2022 />} />
         <Route path={'/bible-walk-2022/admin'} element={<BibleWalk2022 isAdmin />} />
