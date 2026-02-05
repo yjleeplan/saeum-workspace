@@ -5,7 +5,6 @@ import { Spin } from 'antd';
 import { useAuthStore } from 'store';
 import Content from './Content';
 import Header from './Header';
-import 'assets/css/nehem-road.css';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -26,7 +25,7 @@ interface NehemRoadLayoutProps {
   children: ReactElement;
 }
 
-const NehemRoadLayout = ({ isMobile, isLoading, setIsLoading, children }: NehemRoadLayoutProps) => {
+const NehemRoadLayout = ({ isMobile, isLoading, children }: NehemRoadLayoutProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const headerRef = useRef<HTMLDivElement>(null);
   const [headerHeight, setHeaderHeight] = useState(0);
@@ -79,7 +78,7 @@ const NehemRoadLayout = ({ isMobile, isLoading, setIsLoading, children }: NehemR
       <Spin spinning={isLoading} tip='잠시만 기다려주세요..'>
         <div id='nehem-road-layout' style={{ background: '#0d0a09' }}>
           <Header isMobile={isMobile} headerRef={headerRef} />
-          <Content headerHeight={headerHeight}>{React.cloneElement(children, { setIsLoading })}</Content>
+          <Content headerHeight={headerHeight}>{children}</Content>
         </div>
       </Spin>
     </Wrapper>
