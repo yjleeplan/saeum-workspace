@@ -70,7 +70,9 @@
   .ant-modal-wrap.user-attendance-modal-wrap {
     /* 출석체크판 */
     .ant-modal-body {
-      background-image: url(/src/assets/images/dawn-worship-20th/attendance_bg.png);
+      /* background-image: url(/src/assets/images/dawn-worship-20th/attendance_bg.png); */
+      background-color: #fff;
+      border-radius: 10px;
 
       /* 출석체크판 타이틀 */
       .main-title {
