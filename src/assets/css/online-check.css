@@ -48,7 +48,7 @@
 }
 
 .user-attendance-modal-icon {
-  margin-bottom: 30px;
+  margin-bottom: 24px;
 }
 .user-attendance-modal-icon .icon-wrap {
   text-align: center;
@@ -137,6 +137,7 @@
 .user-attendance-modal-info {
   text-align: center;
   font-size: 16px;
+  margin-bottom: 8px;
 }
 
 .user-attendance-modal-info .user-name {
