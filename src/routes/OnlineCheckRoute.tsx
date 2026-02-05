@@ -3,8 +3,8 @@ import OnlineCheckLayout from 'layout/OnlineCheckLayout';
 import 'assets/css/online-check.css';
 import 'assets/css/online-check-service.css';
 
-const MAIN_PAGE_LIST = ['/bible-walk-2022', '/bible-walk-2023'];
-const ADMIN_PAGE_LIST = ['/bible-walk-2022/admin', '/bible-walk-2023/admin'];
+const MAIN_PAGE_LIST = ['/dawn-worship-17th', '/bible-walk-2022', '/bible-walk-2023'];
+const ADMIN_PAGE_LIST = ['/dawn-worship-17th/admin', '/bible-walk-2022/admin', '/bible-walk-2023/admin'];
 
 interface OnlineCheckRouteProps {
   isLoading: boolean;
@@ -21,12 +21,16 @@ const OnlineCheckRoute = ({ isLoading, setIsLoading }: OnlineCheckRouteProps) =>
   const getServiceName = () => {
     let className = '';
 
+    // 특새 (17차)
+    if (['/dawn-worship-17th', '/dawn-worship-17th/admin'].includes(currentPath)) {
+      className = 'dawn-worship-17th';
+    }
     // 가을성경산책 (2022년)
     if (['/bible-walk-2022', '/bible-walk-2022/admin'].includes(currentPath)) {
       className = 'bible-walk-2022';
     }
     // 가을성경산책 (2023년)
-    else if (['/bible-walk-2023', '/bible-walk-2023/admin'].includes(currentPath)) {
+    if (['/bible-walk-2023', '/bible-walk-2023/admin'].includes(currentPath)) {
       className = 'bible-walk-2023';
     }
 
