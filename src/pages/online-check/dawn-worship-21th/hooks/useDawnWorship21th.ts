@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { UserAttendance } from 'types';
+import { message } from 'antd';
 
 export const useDawnWorship21th = () => {
   /** State */
@@ -40,7 +41,9 @@ export const useDawnWorship21th = () => {
   };
 
   // 출석현황 페이지 이동
-  const handleRankClick = () => {};
+  const handleRankClick = () => {
+    message.warning('준비중입니다.', 1.2);
+  };
 
   return {
     userAddModalVisible,
