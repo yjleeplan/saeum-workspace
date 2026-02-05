@@ -6,16 +6,16 @@ import { isEmpty } from 'lodash';
 import React, { useState } from 'react';
 import { queries } from 'api/queries';
 import GridCellButton from 'components/GridCellButton';
-import UserAttendanceModal from 'components/_modal/UserAttendanceModal';
 import { UserAttendance } from 'types';
 
 interface ModalProps {
   visible: boolean;
+  onSelect: (data: UserAttendance) => void;
   onCancel: () => void;
   setIsLoading: (data: boolean) => void;
 }
 
-const SearchAttendanceModal = ({ visible, onCancel, setIsLoading }: ModalProps) => {
+const SearchAttendanceModal = ({ visible, onSelect, onCancel, setIsLoading }: ModalProps) => {
   // Form Init
   const initialValues = {
     keyword: '',
@@ -56,8 +56,6 @@ const SearchAttendanceModal = ({ visible, onCancel, setIsLoading }: ModalProps) 
 
   /** State */
   const [resultList, setResultList] = useState<UserAttendance[]>([]);
-  const [selectedRowData, setSelectedRowData] = useState<UserAttendance | undefined>(undefined);
-  const [userAttendanceModalVisible, setUserAttendanceModalVisible] = useState<boolean>(false);
 
   // 검색결과 그리드 Height
   const getAgGridHeight = () => {
@@ -67,8 +65,7 @@ const SearchAttendanceModal = ({ visible, onCancel, setIsLoading }: ModalProps) 
 
   // 그리드 셀 클릭
   const handleCellClicked = ({ data }: { data: UserAttendance }) => {
-    setSelectedRowData(data);
-    handleUserAttendanceModalOpen();
+    onSelect(data);
   };
 
   // 검색
@@ -102,16 +99,6 @@ const SearchAttendanceModal = ({ visible, onCancel, setIsLoading }: ModalProps) 
     } finally {
       setIsLoading(false);
     }
-  };
-
-  // 사용자 출석체크 모달 오픈
-  const handleUserAttendanceModalOpen = () => {
-    setUserAttendanceModalVisible(true);
-  };
-
-  // 사용자 출석체크 모달 닫기
-  const handleUserAttendanceModalClose = () => {
-    setUserAttendanceModalVisible(false);
   };
 
   // 닫기
@@ -149,14 +136,6 @@ const SearchAttendanceModal = ({ visible, onCancel, setIsLoading }: ModalProps) 
               />
             </div>
           )}
-        </div>
-        <div id='userAttendanceModal'>
-          <UserAttendanceModal
-            visible={userAttendanceModalVisible}
-            onCancel={handleUserAttendanceModalClose}
-            selectedUserInfo={selectedRowData}
-            setIsLoading={setIsLoading}
-          />
         </div>
       </Form>
     </Modal>

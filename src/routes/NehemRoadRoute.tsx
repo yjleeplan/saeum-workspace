@@ -1,5 +1,6 @@
 import NehemRoadLayout from 'layout/NehemRoadLayout';
 import { Outlet } from 'react-router-dom';
+import 'assets/css/nehem-road.css';
 
 interface NehemRoadRouteProps {
   isMobile: boolean;
@@ -10,7 +11,7 @@ interface NehemRoadRouteProps {
 const NehemRoadRoute = ({ isMobile, isLoading, setIsLoading }: NehemRoadRouteProps) => {
   return (
     <NehemRoadLayout isMobile={isMobile} isLoading={isLoading} setIsLoading={setIsLoading}>
-      <Outlet />
+      <Outlet context={{ isMobile, isLoading, setIsLoading }} />
     </NehemRoadLayout>
   );
 };

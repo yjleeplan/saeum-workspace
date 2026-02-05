@@ -1,15 +1,15 @@
-export type Team = {
+export interface Team {
   team_no: number;
   team_color: string;
   team_total: number;
   team_current: string;
-};
+}
 
-export type Country = {
+export interface Country {
   country_name: string;
   country_team_color: string;
   country_team_no: number;
-};
+}
 
 export type GetTeamListRequest = {
   order_by_column: string;

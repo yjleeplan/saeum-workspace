@@ -10,16 +10,16 @@ import * as xlsx from 'xlsx';
 import excelBtn from 'assets/images/btn_excel.png';
 import { addComma } from 'utils/formatNumber';
 import GridCellButton from 'components/GridCellButton';
-import AdminUserAttendanceModal from 'components/_modal/AdminUserAttendanceModal';
 import { UserAttendance } from 'types';
 
 interface ModalProps {
   visible: boolean;
+  onSelect: (data: UserAttendance) => void;
   onCancel: () => void;
   setIsLoading: (data: boolean) => void;
 }
 
-const AdminSearchAttendanceModal = ({ visible, onCancel, setIsLoading }: ModalProps) => {
+const AdminSearchAttendanceModal = ({ visible, onSelect, onCancel, setIsLoading }: ModalProps) => {
   // Form Init
   const initialValues = {
     department: null,
@@ -28,32 +28,15 @@ const AdminSearchAttendanceModal = ({ visible, onCancel, setIsLoading }: ModalPr
 
   // 소속 리스트
   const deptOptions = [
-    { label: '전체', value: '' },
-    { label: '교역자', value: '교역자' },
-    { label: '믿음1', value: '믿음1' },
-    { label: '믿음2', value: '믿음2' },
-    { label: '믿음3', value: '믿음3' },
-    { label: '믿음4', value: '믿음4' },
-    { label: '소망1', value: '소망1' },
-    { label: '소망2', value: '소망2' },
-    { label: '소망3', value: '소망3' },
-    { label: '소망4', value: '소망4' },
-    { label: '사랑1', value: '사랑1' },
-    { label: '사랑2', value: '사랑2' },
-    { label: '사랑3', value: '사랑3' },
-    { label: '사랑4', value: '사랑4' },
+    { label: '소담마을', value: '소담마을' },
+    { label: '도담마을', value: '도담마을' },
+    { label: '어울림마을', value: '어울림마을' },
+    { label: '울림마을', value: '울림마을' },
+    { label: '이음마을', value: '이음마을' },
     { label: '에하드', value: '에하드' },
     { label: '세붐마을', value: '세붐마을' },
-    { label: '이음마을', value: '이음마을' },
-    { label: '청년부', value: '청년부' },
-    { label: '고등부', value: '고등부' },
-    { label: '중등부', value: '중등부' },
-    { label: '초등부', value: '초등부' },
-    { label: '유년부', value: '유년부' },
-    { label: '유치부', value: '유치부' },
-    { label: '영아부', value: '영아부' },
-    { label: '해외', value: '해외' },
-    { label: '기타', value: '기타' },
+    { label: '새움청년부', value: '새움청년부' },
+    { label: '주일학교', value: '주일학교' },
   ];
 
   // 검색결과 그리드 컬럼 정의
@@ -92,8 +75,6 @@ const AdminSearchAttendanceModal = ({ visible, onCancel, setIsLoading }: ModalPr
 
   /** State */
   const [resultList, setResultList] = useState<UserAttendance[]>([]);
-  const [selectedRowData, setSelectedRowData] = useState<UserAttendance | undefined>(undefined);
-  const [userAttendanceModalVisible, setUserAttendanceModalVisible] = useState<boolean>(false);
 
   // 검색결과 그리드 Height
   const getAgGridHeight = () => {
@@ -103,8 +84,7 @@ const AdminSearchAttendanceModal = ({ visible, onCancel, setIsLoading }: ModalPr
 
   // 그리드 셀 클릭
   const handleCellClicked = ({ data }: { data: UserAttendance }) => {
-    setSelectedRowData(data);
-    handleUserAttendanceModalOpen();
+    onSelect(data);
   };
 
   // 검색
@@ -138,16 +118,6 @@ const AdminSearchAttendanceModal = ({ visible, onCancel, setIsLoading }: ModalPr
     } finally {
       setIsLoading(false);
     }
-  };
-
-  // 사용자 출석체크 모달 오픈
-  const handleUserAttendanceModalOpen = () => {
-    setUserAttendanceModalVisible(true);
-  };
-
-  // 사용자 출석체크 모달 닫기
-  const handleUserAttendanceModalClose = () => {
-    setUserAttendanceModalVisible(false);
   };
 
   // 닫기
@@ -245,14 +215,6 @@ const AdminSearchAttendanceModal = ({ visible, onCancel, setIsLoading }: ModalPr
               </div> */}
             </>
           )}
-        </div>
-        <div id='userAttendanceModal'>
-          <AdminUserAttendanceModal
-            visible={userAttendanceModalVisible}
-            onCancel={handleUserAttendanceModalClose}
-            selectedUserInfo={selectedRowData}
-            setIsLoading={setIsLoading}
-          />
         </div>
       </Form>
     </Modal>

@@ -1,60 +1,19 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useOutletContext, useSearchParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { Steps } from 'antd';
 import { isEmpty, sortBy } from 'lodash';
-import styled from 'styled-components';
 import { queries } from 'api/queries';
-
-const Wrapper = styled.div<{ $ismobile: string }>`
-  display: flex;
-  flex-direction: column;
-  width: ${({ $ismobile }) => ($ismobile === 'true' ? '100%' : '70%')};
-  margin: 0 auto;
-  padding: 20px 20px;
-  color: #fff;
-`;
-
-const TitleWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 40px;
-`;
-
-const Title = styled.div`
-  font-size: 1.5rem;
-  color: #fff;
-  border-bottom: 1px solid #f0a721;
-`;
-
-const StepsWrapper = styled.div`
-  color: #fff;
-  margin-top: 20px;
-
-  & .ant-steps-item-icon {
-    width: fit-content;
-  }
-
-  & .ant-steps-item-content {
-    > .ant-steps-item-title {
-      color: #fff !important;
-    }
-    > .ant-steps-item-description {
-      color: #fff !important;
-    }
-  }
-`;
+import { Wrapper, TitleWrapper, Title, StepsWrapper } from './ReserveByGame.styles';
 
 interface NehemRoadReserveByGameProps {
   isMobile: boolean;
   setIsLoading: (data: boolean) => void;
 }
 
-const NehemRoadReserveByGame = ({ isMobile, setIsLoading }: NehemRoadReserveByGameProps) => {
+const NehemRoadReserveByGame = () => {
   /** Hook */
+  const { isMobile, setIsLoading }: NehemRoadReserveByGameProps = useOutletContext();
   const [searchParams, setSearchParams] = useSearchParams();
 
   /** State */
