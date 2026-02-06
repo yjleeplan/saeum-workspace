@@ -6,6 +6,7 @@ import { locationQueries } from './useLocationApi';
 import { gameQueries } from './useGameApi';
 import { reserveQueries } from './useReserveApi';
 import { mapQueries } from './useMapApi';
+import { departmentQueries } from './useDepartmentApi';
 
 export const queries = mergeQueryKeys(
   userQueries,
@@ -15,6 +16,7 @@ export const queries = mergeQueryKeys(
   gameQueries,
   reserveQueries,
   mapQueries,
+  departmentQueries,
 );
 
 export type QueryKeys = inferQueryKeyStore<typeof queries>;

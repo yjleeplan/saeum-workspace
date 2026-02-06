@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useOutletContext } from 'react-router-dom';
 import { Switch } from 'antd';
 import styled from 'styled-components';
 import ReserveModal from 'components/_modal/ReserveModal';
@@ -26,13 +25,11 @@ const Section = styled.div<{ width: number }>`
 `;
 
 interface NehemRoadReservePlanProps {
-  isMobile: boolean;
-  setIsLoading: (data: boolean) => void;
+  isMobile?: boolean;
+  setIsLoading?: (data: boolean) => void;
 }
 
-const NehemRoadReservePlan = () => {
-  const { isMobile, setIsLoading }: NehemRoadReservePlanProps = useOutletContext();
-
+const NehemRoadReservePlan = ({ isMobile = false, setIsLoading = () => {} }: NehemRoadReservePlanProps) => {
   /** State */
   const [isRotate, setIsRotate] = useState<boolean>(!isMobile);
   const [selectedGameId, setSelectedGameId] = useState<number | undefined>(undefined);

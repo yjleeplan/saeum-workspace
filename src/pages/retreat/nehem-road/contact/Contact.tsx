@@ -1,12 +1,11 @@
-import { NavLink, useOutletContext } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Wrapper, TitleWrapper, Title, Content, Font, Tel } from './Contact.styles';
 
 interface NehemRoadContactProps {
-  isMobile: boolean;
+  isMobile?: boolean;
 }
 
-const NehemRoadContact = () => {
-  const { isMobile }: NehemRoadContactProps = useOutletContext();
+const NehemRoadContact = ({ isMobile = false }: NehemRoadContactProps) => {
   const contactList = ['010-3912-3314', '010-7471-5520'];
 
   return (

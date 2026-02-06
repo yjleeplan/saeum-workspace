@@ -1,5 +1,4 @@
 import { Col, Image, Row } from 'antd';
-import { useOutletContext } from 'react-router-dom';
 import iconAttendance from 'assets/images/bible-walk-2023/icon_attendance.png';
 import iconPicture from 'assets/images/bible-walk-2023/icon_picture.png';
 import iconUserAdd from 'assets/images/bible-walk-2023/icon_user_add.png';
@@ -12,16 +11,12 @@ import AdminUserAttendanceModal from './AdminUserAttendanceModal';
 import UserAttendanceModal from './UserAttendanceModal';
 import { useBibleWalk2023 } from './hooks/useBibleWalk2023';
 
-interface OutletContextProps {
-  setIsLoading: (data: boolean) => void;
-}
-
 interface MainProps {
   isAdmin?: boolean;
+  setIsLoading?: (data: boolean) => void;
 }
 
-const Main = ({ isAdmin }: MainProps) => {
-  const { setIsLoading }: OutletContextProps = useOutletContext();
+const Main = ({ isAdmin = false, setIsLoading = () => {} }: MainProps) => {
   const {
     userAddModalVisible,
     searchAttendanceModalVisible,

@@ -1,6 +1,5 @@
 import _ from 'lodash';
 import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react';
-import { useOutletContext } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { MapContainer, GeoJSON, Marker, Popup, useMapEvents } from 'react-leaflet';
 import { FeatureCollection } from 'geojson';
@@ -20,12 +19,10 @@ const jsonData = countries as FeatureCollection;
 const { Search } = Input;
 
 interface MapProps {
-  setIsLoading: (data: boolean) => void;
+  setIsLoading?: (data: boolean) => void;
 }
 
-const Map = () => {
-  const { setIsLoading }: MapProps = useOutletContext();
-
+const Map = ({ setIsLoading = () => {} }: MapProps) => {
   /** State */
   const [selectedTeam, setSelectedTeam] = useState<Team>();
   const [teamDeleteModalVisible, setTeamDeleteModalVisible] = useState(false);

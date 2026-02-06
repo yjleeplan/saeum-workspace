@@ -1,7 +1,6 @@
 import { Col, Row, Image, Tabs, Button } from 'antd';
 import _ from 'lodash';
 import React, { ReactNode, useState, useEffect, useMemo } from 'react';
-import { useOutletContext } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import title from 'assets/images/title_mapstatus.png';
 import FlagImage from 'components/FlagImage';
@@ -9,12 +8,10 @@ import { SyncOutlined } from '@ant-design/icons';
 import { queries } from 'api/queries';
 
 interface MapStatusProps {
-  setIsLoading: (data: boolean) => void;
+  setIsLoading?: (data: boolean) => void;
 }
 
-const MapStatus = () => {
-  const { setIsLoading }: MapStatusProps = useOutletContext();
-
+const MapStatus = ({ setIsLoading = () => {} }: MapStatusProps) => {
   // Tab Items
   const tabItems = [
     {

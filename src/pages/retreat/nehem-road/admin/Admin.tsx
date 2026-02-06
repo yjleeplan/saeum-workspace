@@ -1,5 +1,4 @@
 import { useMemo, useEffect } from 'react';
-import { useOutletContext } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { message } from 'antd';
 import { sortBy } from 'lodash';
@@ -9,11 +8,10 @@ import { queries } from 'api/queries';
 import { Wrapper, TitleWrapper, Title, Content, Row, Col, GameTimeBox } from './Admin.styles';
 
 interface NehemRoadAdminProps {
-  isMobile: boolean;
+  isMobile?: boolean;
 }
 
-const NehemRoadAdmin = () => {
-  const { isMobile }: NehemRoadAdminProps = useOutletContext();
+const NehemRoadAdmin = ({ isMobile = false }: NehemRoadAdminProps) => {
   const token = useAuthStore?.getState()?.userInfo?.token;
 
   // 클립보드에 복사

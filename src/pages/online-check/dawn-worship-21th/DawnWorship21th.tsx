@@ -1,5 +1,4 @@
 import { Col, Image, Row } from 'antd';
-import { useOutletContext } from 'react-router-dom';
 import iconUserAdd from 'assets/images/dawn-worship-21th/icon_user_add.png';
 import iconAttendance from 'assets/images/dawn-worship-21th/icon_attendance.png';
 import iconAttendanceStatus from 'assets/images/dawn-worship-21th/icon_attendance_status.png';
@@ -11,16 +10,12 @@ import AdminUserAttendanceModal from './AdminUserAttendanceModal';
 import UserAttendanceModal from './UserAttendanceModal';
 import { useDawnWorship21th } from './hooks/useDawnWorship21th';
 
-interface OutletContextProps {
-  setIsLoading: (data: boolean) => void;
-}
-
 interface MainProps {
   isAdmin?: boolean;
+  setIsLoading?: (data: boolean) => void;
 }
 
-const Main = ({ isAdmin }: MainProps) => {
-  const { setIsLoading }: OutletContextProps = useOutletContext();
+const Main = ({ isAdmin = false, setIsLoading = () => {} }: MainProps) => {
   const {
     userAddModalVisible,
     searchAttendanceModalVisible,
