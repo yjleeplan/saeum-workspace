@@ -43,14 +43,14 @@ const Main = ({ isAdmin }: MainProps) => {
         </Col>
       </Row>
       <Row className='user-attendance-modal-icon'>
-        <Col span={7} offset={1} onClick={handleUserAddModalOpen} className='icon-wrap'>
-          <Image width={'80%'} height={'100%'} src={iconUserAdd} preview={false} />
+        <Col span={8} onClick={handleUserAddModalOpen} className='icon-wrap'>
+          <Image width={'70%'} height={'100%'} src={iconUserAdd} preview={false} />
         </Col>
-        <Col span={7} offset={1} onClick={handleSearchAttendanceModalOpen} className='icon-wrap'>
-          <Image width={'80%'} height={'100%'} src={iconAttendance} preview={false} />
+        <Col span={8} onClick={handleSearchAttendanceModalOpen} className='icon-wrap'>
+          <Image width={'70%'} height={'100%'} src={iconAttendance} preview={false} />
         </Col>
-        <Col span={7} offset={1} onClick={handleRankClick} className='icon-wrap'>
-          <Image width={'80%'} height={'100%'} src={iconAttendanceStatus} preview={false} />
+        <Col span={8} onClick={handleRankClick} className='icon-wrap'>
+          <Image width={'70%'} height={'100%'} src={iconAttendanceStatus} preview={false} />
         </Col>
         <div id='userAddModal'>
           <UserAddModal visible={userAddModalVisible} onCancel={handleUserAddModalClose} setIsLoading={setIsLoading} />
