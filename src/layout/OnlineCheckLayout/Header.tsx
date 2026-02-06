@@ -3,8 +3,16 @@ import logo from 'assets/images/logo.png';
 
 interface HeaderProps {
   isAdmin?: boolean;
+  adminButtonText?: string;
+  adminButtonLink?: string;
 }
-const Header = ({ isAdmin }: HeaderProps) => {
+const Header = ({ isAdmin, adminButtonText = '관리자 모드', adminButtonLink = '' }: HeaderProps) => {
+  const handleClick = () => {
+    if (adminButtonLink) {
+      window.location.href = adminButtonLink;
+    }
+  };
+
   return (
     <div id='header'>
       <Row>
@@ -13,7 +21,9 @@ const Header = ({ isAdmin }: HeaderProps) => {
         </Col>
         {isAdmin && (
           <Col span={6} className='header-right'>
-            <Tag color='#cd201f'>관리자 모드</Tag>
+            <Tag color='#cd201f' onClick={handleClick}>
+              {adminButtonText}
+            </Tag>
           </Col>
         )}
       </Row>

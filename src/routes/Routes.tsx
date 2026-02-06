@@ -56,7 +56,12 @@ export const Routes = () => {
       <Route
         path={'/dawn-worship-20th/admin'}
         element={
-          <OnlineCheckLayout serviceName='dawn-worship-20th' isAdmin>
+          <OnlineCheckLayout
+            serviceName='dawn-worship-20th'
+            isAdmin
+            adminButtonText='점수 입력 →'
+            adminButtonLink='/dawn-worship-20th/admin/setting'
+          >
             <DawnWorship20th />
           </OnlineCheckLayout>
         }
@@ -64,7 +69,12 @@ export const Routes = () => {
       <Route
         path={'/dawn-worship-20th/admin/setting'}
         element={
-          <OnlineCheckLayout serviceName='dawn-worship-20th' isAdmin>
+          <OnlineCheckLayout
+            serviceName='dawn-worship-20th'
+            isAdmin
+            adminButtonText='← 관리자 홈'
+            adminButtonLink='/dawn-worship-20th/admin'
+          >
             <DawnWorship20thAdminSetting />
           </OnlineCheckLayout>
         }
