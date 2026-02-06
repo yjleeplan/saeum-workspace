@@ -5,6 +5,7 @@ import { Spin } from 'antd';
 import { useAuthStore } from 'store';
 import Content from './Content';
 import Header from './Header';
+import 'assets/css/nehem-road.css';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -20,15 +21,15 @@ const Wrapper = styled.div`
 
 interface NehemRoadLayoutProps {
   isMobile: boolean;
-  isLoading: boolean;
-  setIsLoading: (data: boolean) => void;
   children: ReactElement;
 }
 
-const NehemRoadLayout = ({ isMobile, isLoading, children }: NehemRoadLayoutProps) => {
+const NehemRoadLayout = (props: NehemRoadLayoutProps) => {
+  const { isMobile, children } = props;
   const [searchParams, setSearchParams] = useSearchParams();
   const headerRef = useRef<HTMLDivElement>(null);
-  const [headerHeight, setHeaderHeight] = useState(0);
+  const [headerHeight, setHeaderHeight] = useState<number>(0);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   /** Effect */
   useEffect(() => {
@@ -78,7 +79,9 @@ const NehemRoadLayout = ({ isMobile, isLoading, children }: NehemRoadLayoutProps
       <Spin spinning={isLoading} tip='잠시만 기다려주세요..'>
         <div id='nehem-road-layout' style={{ background: '#0d0a09' }}>
           <Header isMobile={isMobile} headerRef={headerRef} />
-          <Content headerHeight={headerHeight}>{children}</Content>
+          <Content headerHeight={headerHeight}>
+            {React.cloneElement(children, { ...props, isLoading, setIsLoading })}
+          </Content>
         </div>
       </Spin>
     </Wrapper>

@@ -1,5 +1,4 @@
 import { useState, useMemo, useEffect } from 'react';
-import { useOutletContext } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { Image } from 'antd';
 import { queries } from 'api/queries';
@@ -23,13 +22,11 @@ import {
 } from './ReserveTheme.styles';
 
 interface NehemRoadReserveThemeProps {
-  isMobile: boolean;
-  setIsLoading: (data: boolean) => void;
+  isMobile?: boolean;
+  setIsLoading?: (data: boolean) => void;
 }
 
-const NehemRoadReserveTheme = () => {
-  const { isMobile, setIsLoading }: NehemRoadReserveThemeProps = useOutletContext();
-
+const NehemRoadReserveTheme = ({ isMobile = false, setIsLoading = () => {} }: NehemRoadReserveThemeProps) => {
   /** State */
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const [selected, setSelected] = useState<number>(0);

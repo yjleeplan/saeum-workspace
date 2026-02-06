@@ -16,12 +16,11 @@ import { Wrapper, TitleWrapper, Title, SearchWrapper, StepsWrapper, GridWrapper 
 const { Search } = Input;
 
 interface NehemRoadCheckProps {
-  isMobile: boolean;
-  setIsLoading: (data: boolean) => void;
+  isMobile?: boolean;
+  setIsLoading?: (data: boolean) => void;
 }
 
-const NehemRoadCheck = () => {
-  const { isMobile, setIsLoading }: NehemRoadCheckProps = useOutletContext();
+const NehemRoadCheck = ({ isMobile = false, setIsLoading = () => {} }: NehemRoadCheckProps) => {
   const token = useAuthStore?.getState()?.userInfo?.token;
 
   // 그리드 컬럼 정의

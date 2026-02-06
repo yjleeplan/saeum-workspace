@@ -2,18 +2,15 @@ import { useQuery } from '@tanstack/react-query';
 import { MinusOutlined, PlusOutlined } from '@ant-design/icons';
 import { Select, message } from 'antd';
 import React, { useState, useEffect, useMemo } from 'react';
-import { useOutletContext } from 'react-router-dom';
 import { queries } from 'api/queries';
 import { usePutDepartmentCount } from 'api/useDepartmentApi';
 import type { PutDepartmentCount } from 'types';
 
 interface OutletContextProps {
-  setIsLoading: (data: boolean) => void;
+  setIsLoading?: (data: boolean) => void;
 }
 
-const AdminSetting = () => {
-  const { setIsLoading }: OutletContextProps = useOutletContext();
-
+const AdminSetting = ({ setIsLoading = () => {} }: OutletContextProps) => {
   // 소속 리스트
   const deptOptions = [
     { label: '소담마을', value: '소담마을' },

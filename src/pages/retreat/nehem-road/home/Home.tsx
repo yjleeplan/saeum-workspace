@@ -14,12 +14,10 @@ import {
 } from './Home.styles';
 
 interface NehemRoadHomeProps {
-  isMobile: boolean;
+  isMobile?: boolean;
 }
 
-const NehemRoadHome = () => {
-  const { isMobile }: NehemRoadHomeProps = useOutletContext();
-
+const NehemRoadHome = ({ isMobile = false }: NehemRoadHomeProps) => {
   return (
     <Wrapper $ismobile={isMobile.toString()}>
       <PosterWrapper>{isMobile ? <Poster /> : <PosterPc />}</PosterWrapper>
