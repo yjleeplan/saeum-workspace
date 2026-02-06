@@ -30,7 +30,7 @@ export const usePutDepartmentCount = () => {
 
 export const departmentQueries = createQueryKeys('department', {
   count: (params) => ({
-    queryKey: [params.departmentName],
+    queryKey: [params.department],
     queryFn: () => getDepartmentCount(params),
   }),
 });

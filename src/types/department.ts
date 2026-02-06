@@ -21,7 +21,7 @@ export interface DepartmentCount {
 }
 
 export type GetDepartmentCountRequest = {
-  departmentName?: string;
+  department?: string;
 };
 
 export type GetDepartmentCountResponse = {} & DepartmentCount[];

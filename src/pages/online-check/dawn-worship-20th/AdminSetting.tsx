@@ -36,7 +36,7 @@ const AdminSetting = ({ setIsLoading = () => {} }: OutletContextProps) => {
     isFetching: departmentCountFetching,
   } = useQuery({
     ...queries.department.count({
-      departmentName: selectedKey,
+      department: selectedKey,
     }),
     staleTime: 500,
     cacheTime: 1000,
