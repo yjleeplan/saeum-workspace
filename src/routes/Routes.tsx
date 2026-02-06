@@ -3,6 +3,7 @@ import OnlineCheckLayout from 'layout/OnlineCheckLayout';
 import NehemRoadLayout from 'layout/NehemRoadLayout';
 import EarthArcadeMapLayout from 'layout/EarthArcadeMapLayout';
 import EarthArcadeMapStatusLayout from 'layout/EarthArcadeMapStatusLayout';
+import RunningRaceMobileLayout from 'layout/RunningRaceMobileLayout';
 import DawnWorship17th from 'pages/online-check/dawn-worship-17th/DawnWorship17th';
 import DawnWorship20th from 'pages/online-check/dawn-worship-20th/DawnWorship20th';
 import DawnWorship20thAdminSetting from 'pages/online-check/dawn-worship-20th/AdminSetting';
@@ -20,6 +21,7 @@ import NehemRoadAdmin from 'pages/retreat/nehem-road/admin/Admin';
 import NehemRoadReserveByGame from 'pages/retreat/nehem-road/admin/ReserveByGame';
 import EarthArcadeMap from 'pages/retreat/earth-arcade/map/Map';
 import EarthArcadeMapStatus from 'pages/retreat/earth-arcade/map-status/MapStatus';
+import RunningRaceMobile from 'pages/running-race/RunningRaceMobile';
 
 export const Routes = () => {
   // 접속 기기 체크
@@ -78,6 +80,20 @@ export const Routes = () => {
           >
             <DawnWorship20thAdminSetting />
           </OnlineCheckLayout>
+        }
+      />
+      <Route
+        path={'/dawn-worship-20th/running-race'}
+        element={
+          mobileCheck() ? (
+            <RunningRaceMobileLayout>
+              <RunningRaceMobile />
+            </RunningRaceMobileLayout>
+          ) : (
+            <RunningRaceMobileLayout>
+              <RunningRaceMobile />
+            </RunningRaceMobileLayout>
+          )
         }
       />
 

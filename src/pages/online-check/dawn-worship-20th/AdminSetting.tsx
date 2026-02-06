@@ -30,12 +30,12 @@ const AdminSetting = ({ setIsLoading = () => {} }: OutletContextProps) => {
 
   // 마을별 수기 카운트 조회 API
   const {
-    data: departmentCountQueryData,
-    refetch: refetchDepartmentCount,
-    isSuccess: departmentCountQuerSuccess,
-    isFetching: departmentCountFetching,
+    data: departmentCountListQueryData,
+    refetch: refetchDepartmentCountList,
+    isSuccess: departmentCountListQuerSuccess,
+    isFetching: departmentCountListFetching,
   } = useQuery({
-    ...queries.department.count({
+    ...queries.department.countList({
       department: selectedKey,
     }),
     staleTime: 500,
@@ -45,15 +45,15 @@ const AdminSetting = ({ setIsLoading = () => {} }: OutletContextProps) => {
 
   // 마을별 수기 카운트 데이터 세팅
   const departmentInfo = useMemo(() => {
-    if (departmentCountQuerSuccess) {
-      if (departmentCountQueryData?.length > 0) {
-        return departmentCountQueryData[0];
+    if (departmentCountListQuerSuccess) {
+      if (departmentCountListQueryData?.length > 0) {
+        return departmentCountListQueryData[0];
       } else {
         message.warning('해당 부서에 대한 정보가 없습니다');
         return undefined;
       }
     }
-  }, [departmentCountQueryData]);
+  }, [departmentCountListQueryData]);
 
   // 마을별 수기 카운트 변경 API
   const { mutate: putDepartmentCount } = usePutDepartmentCount();
@@ -62,7 +62,7 @@ const AdminSetting = ({ setIsLoading = () => {} }: OutletContextProps) => {
 
     putDepartmentCount(payload, {
       onSuccess: () => {
-        refetchDepartmentCount();
+        refetchDepartmentCountList();
       },
       onError: (error: any) => {
         // 공통 처리
@@ -105,13 +105,13 @@ const AdminSetting = ({ setIsLoading = () => {} }: OutletContextProps) => {
 
   useEffect(() => {
     if (isLoaded) {
-      if (departmentCountFetching) {
+      if (departmentCountListFetching) {
         setIsLoading(true);
       } else {
         setIsLoading(false);
       }
     }
-  }, [isLoaded, departmentCountFetching]);
+  }, [isLoaded, departmentCountListFetching]);
 
   return (
     <div id='admin-setting-wrap'>
