@@ -20,11 +20,11 @@ export interface DepartmentCount {
   total_attendance_count: number;
 }
 
-export type GetDepartmentCountRequest = {
+export type GetDepartmentCountListRequest = {
   department?: string;
 };
 
-export type GetDepartmentCountResponse = {} & DepartmentCount[];
+export type GetDepartmentCountListResponse = {} & DepartmentCount[];
 
 export type PutDepartmentCount = {
   id: string;

@@ -1,0 +1,97 @@
+/* Running Race Mobile Layout */
+#running-race-mobile-layout {
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+  background-image: url(/src/assets/images/dawn-worship-20th/background.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+  position: fixed;
+  overflow-y: scroll;
+}
+
+#running-race-mobile-layout #header {
+  width: 90%;
+  min-height: 6vh;
+  padding: 20px 0px;
+  margin: auto;
+}
+
+#running-race-mobile-layout #content .running-race-mobile-title {
+  height: 160px;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#running-race-mobile-layout #content .running-race-mobile-content {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px auto;
+}
+
+#running-race-mobile-layout #content .player-wrap {
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+}
+
+#running-race-mobile-layout #content .player-wrap .player {
+  width: fit-content;
+  transition: all 500ms linear;
+  padding: 10px 20px;
+}
+
+#running-race-mobile-layout #content .player-wrap .player-progress-wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  text-align: center;
+  position: relative;
+}
+
+#running-race-mobile-layout #content .player-wrap .player-progress-wrap .ant-progress.ant-progress-line {
+  padding: 10px 20px;
+  position: relative;
+}
+
+#running-race-mobile-layout #content .player-wrap .player-progress-wrap .player-percent {
+  font-size: 14px;
+  position: absolute;
+  width: 100%;
+  padding: 10px 20px;
+  color: #fff;
+}
+
+#running-race-mobile-layout #content .player-wrap .player-progress-wrap .ant-progress-outer {
+  padding: 0;
+  margin: 0;
+}
+
+#running-race-mobile-layout #content .player-wrap .player-progress-wrap .ant-progress-inner {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+#running-race-mobile-layout #content .player-wrap .player-progress-wrap .ant-progress-bg {
+  height: 20px !important;
+}
+
+#running-race-mobile-layout #content .player-wrap .player-progress-wrap .ant-progress-text {
+  display: none;
+}
+
+#running-race-mobile-layout #content .player-wrap .player-progress-wrap .rank-number {
+  color: #fff;
+  font-size: 40px;
+  text-shadow: 2px 2px #000;
+}
+/* Running Race Mobile Layout */

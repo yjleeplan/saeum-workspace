@@ -1,13 +1,13 @@
 import { createQueryKeys } from '@lukemorales/query-key-factory';
 import { useMutation } from '@tanstack/react-query';
 import { BaseAxiosInstance } from 'api/requestApi';
-import type { GetDepartmentCountRequest, GetDepartmentCountResponse, PutDepartmentCount } from 'types';
+import type { GetDepartmentCountListRequest, GetDepartmentCountListResponse, PutDepartmentCount } from 'types';
 
 const { request } = BaseAxiosInstance();
 
-const getDepartmentCount: (params: GetDepartmentCountRequest) => Promise<GetDepartmentCountResponse> = async (
-  params,
-) => {
+const getDepartmentCountList: (
+  params: GetDepartmentCountListRequest,
+) => Promise<GetDepartmentCountListResponse> = async (params) => {
   const { data } = await request.get('/department/count', {
     params,
   });
@@ -29,8 +29,8 @@ export const usePutDepartmentCount = () => {
 };
 
 export const departmentQueries = createQueryKeys('department', {
-  count: (params) => ({
+  countList: (params) => ({
     queryKey: [params.department],
-    queryFn: () => getDepartmentCount(params),
+    queryFn: () => getDepartmentCountList(params),
   }),
 });
