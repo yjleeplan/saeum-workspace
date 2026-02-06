@@ -5,6 +5,7 @@ import EarthArcadeRoute from './EarthArcadeRoute';
 import NehemRoadRoute from './NehemRoadRoute';
 import DawnWorship17th from 'pages/online-check/dawn-worship-17th/DawnWorship17th';
 import DawnWorship20th from 'pages/online-check/dawn-worship-20th/DawnWorship20th';
+import DawnWorship20thAdminSetting from 'pages/online-check/dawn-worship-20th/AdminSetting';
 import DawnWorship21th from 'pages/online-check/dawn-worship-21th/DawnWorship21th';
 import BibleWalk2022 from 'pages/online-check/bible-walk-2022/BibleWalk2022';
 import BibleWalk2023 from 'pages/online-check/bible-walk-2023/BibleWalk2023';
@@ -35,6 +36,7 @@ export const Router = () => {
         {/* 특새 (20차) */}
         <Route path={'/dawn-worship-20th'} element={<DawnWorship20th />} />
         <Route path={'/dawn-worship-20th/admin'} element={<DawnWorship20th isAdmin />} />
+        <Route path={'/dawn-worship-20th/admin/setting'} element={<DawnWorship20thAdminSetting />} />
         {/* 특새 (21차) */}
         <Route path={'/dawn-worship-21th'} element={<DawnWorship21th />} />
         <Route path={'/dawn-worship-21th/admin'} element={<DawnWorship21th isAdmin />} />

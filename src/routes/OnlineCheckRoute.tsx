@@ -17,6 +17,7 @@ const ADMIN_PAGE_LIST = [
   '/bible-walk-2022/admin',
   '/bible-walk-2023/admin',
 ];
+const ADMIN_SETTING_PAGE_LIST = ['/dawn-worship-20th/admin/setting', '/dawn-worship-21th/admin/setting'];
 
 interface OnlineCheckRouteProps {
   isLoading: boolean;
@@ -38,7 +39,7 @@ const OnlineCheckRoute = ({ isLoading, setIsLoading }: OnlineCheckRouteProps) =>
       className = 'dawn-worship-17th';
     }
     // 특새 (20차)
-    if (['/dawn-worship-20th', '/dawn-worship-20th/admin'].includes(currentPath)) {
+    if (['/dawn-worship-20th', '/dawn-worship-20th/admin', '/dawn-worship-20th/admin/setting'].includes(currentPath)) {
       className = 'dawn-worship-20th';
     }
     // 특새 (21차)
@@ -62,6 +63,7 @@ const OnlineCheckRoute = ({ isLoading, setIsLoading }: OnlineCheckRouteProps) =>
       serviceName={getServiceName()}
       isLoading={isLoading}
       isAdmin={ADMIN_PAGE_LIST.includes(currentPath)}
+      isAdminSetting={ADMIN_SETTING_PAGE_LIST.includes(currentPath)}
       setIsLoading={setIsLoading}
     >
       <Outlet context={{ isLoading, setIsLoading }} />

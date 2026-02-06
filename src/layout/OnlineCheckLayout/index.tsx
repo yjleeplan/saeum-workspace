@@ -7,11 +7,19 @@ interface OnlineCheckLayoutProps {
   serviceName: string;
   isLoading: boolean;
   isAdmin?: boolean;
+  isAdminSetting?: boolean;
   setIsLoading: (data: boolean) => void;
   children: ReactElement;
 }
 
-const OnlineCheckLayout = ({ serviceName, isLoading, isAdmin, setIsLoading, children }: OnlineCheckLayoutProps) => {
+const OnlineCheckLayout = ({
+  serviceName,
+  isLoading,
+  isAdmin,
+  isAdminSetting,
+  setIsLoading,
+  children,
+}: OnlineCheckLayoutProps) => {
   return (
     <Spin spinning={isLoading} tip='잠시만 기다려주세요..'>
       <div id='main-layout' className={`main-layout-${serviceName}`}>
