@@ -7,6 +7,7 @@ import DawnWorship17th from 'pages/online-check/dawn-worship-17th/DawnWorship17t
 import DawnWorship20th from 'pages/online-check/dawn-worship-20th/DawnWorship20th';
 import DawnWorship20thAdminSetting from 'pages/online-check/dawn-worship-20th/AdminSetting';
 import DawnWorship21th from 'pages/online-check/dawn-worship-21th/DawnWorship21th';
+import DawnWorship21thAdminSetting from 'pages/online-check/dawn-worship-21th/AdminSetting';
 import BibleWalk2022 from 'pages/online-check/bible-walk-2022/BibleWalk2022';
 import BibleWalk2023 from 'pages/online-check/bible-walk-2023/BibleWalk2023';
 import NehemRoadHome from 'pages/retreat/nehem-road/home/Home';
@@ -92,8 +93,26 @@ export const Routes = () => {
       <Route
         path={'/dawn-worship-21th/admin'}
         element={
-          <OnlineCheckLayout serviceName='dawn-worship-21th' isAdmin>
+          <OnlineCheckLayout
+            serviceName='dawn-worship-21th'
+            isAdmin
+            adminButtonText='점수 입력 →'
+            adminButtonLink='/dawn-worship-21th/admin/setting'
+          >
             <DawnWorship21th />
+          </OnlineCheckLayout>
+        }
+      />
+      <Route
+        path={'/dawn-worship-21th/admin/setting'}
+        element={
+          <OnlineCheckLayout
+            serviceName='dawn-worship-21th'
+            isAdmin
+            adminButtonText='← 관리자 홈'
+            adminButtonLink='/dawn-worship-21th/admin'
+          >
+            <DawnWorship21thAdminSetting />
           </OnlineCheckLayout>
         }
       />
