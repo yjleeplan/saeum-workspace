@@ -7,7 +7,7 @@ import Player from 'components/Player';
 import { queries } from 'api/queries';
 import { PLAYERS } from './config/config';
 
-// #rank-layout width -> document.getElementById("rank-layout").offsetWidth
+// #running-race-layout width -> document.getElementById("running-race-layout").offsetWidth
 // body width -> document.body.offsetWidth
 
 interface RunningRaceMobileProps {
