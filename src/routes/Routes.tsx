@@ -3,6 +3,7 @@ import OnlineCheckLayout from 'layout/OnlineCheckLayout';
 import NehemRoadLayout from 'layout/NehemRoadLayout';
 import EarthArcadeMapLayout from 'layout/EarthArcadeMapLayout';
 import EarthArcadeMapStatusLayout from 'layout/EarthArcadeMapStatusLayout';
+import RunningRaceLayout from 'layout/RunningRaceLayout';
 import RunningRaceMobileLayout from 'layout/RunningRaceMobileLayout';
 import DawnWorship17th from 'pages/online-check/dawn-worship-17th/DawnWorship17th';
 import DawnWorship20th from 'pages/online-check/dawn-worship-20th/DawnWorship20th';
@@ -21,6 +22,7 @@ import NehemRoadAdmin from 'pages/retreat/nehem-road/admin/Admin';
 import NehemRoadReserveByGame from 'pages/retreat/nehem-road/admin/ReserveByGame';
 import EarthArcadeMap from 'pages/retreat/earth-arcade/map/Map';
 import EarthArcadeMapStatus from 'pages/retreat/earth-arcade/map-status/MapStatus';
+import RunningRace from 'pages/running-race/RunningRace';
 import RunningRaceMobile from 'pages/running-race/RunningRaceMobile';
 
 export const Routes = () => {
@@ -90,9 +92,9 @@ export const Routes = () => {
               <RunningRaceMobile />
             </RunningRaceMobileLayout>
           ) : (
-            <RunningRaceMobileLayout>
-              <RunningRaceMobile />
-            </RunningRaceMobileLayout>
+            <RunningRaceLayout>
+              <RunningRace />
+            </RunningRaceLayout>
           )
         }
       />

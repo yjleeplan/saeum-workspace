@@ -1,25 +1,23 @@
 import { Spin } from 'antd';
 import React, { ReactElement, useState } from 'react';
-import Header from './Header';
 import Content from './Content';
 import 'assets/css/running-race.css';
 
-interface RunningRaceMobileLayoutProps {
+interface RunningRaceLayoutProps {
   children: ReactElement;
 }
 
-const RunningRaceMobileLayout = (props: RunningRaceMobileLayoutProps) => {
+const RunningRaceLayout = (props: RunningRaceLayoutProps) => {
   const { children } = props;
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   return (
     <Spin spinning={isLoading} tip='잠시만 기다려주세요..'>
-      <div id='running-race-mobile-layout'>
-        <Header />
+      <div id='running-race-layout'>
         <Content>{React.cloneElement(children, { ...props, isLoading, setIsLoading })}</Content>
       </div>
     </Spin>
   );
 };
 
-export default RunningRaceMobileLayout;
+export default RunningRaceLayout;
