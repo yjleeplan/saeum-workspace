@@ -4,7 +4,7 @@ import { MenuOutlined } from '@ant-design/icons';
 import { Drawer, Button } from 'antd';
 import { Wrapper, Previous, Title, TitleBlack, Content, Menu, Extra } from './Header.styles';
 import { useAuthStore } from 'store';
-import { NEHEMROAD_ADMIN_TOKEN } from 'context/Context';
+import { NEHEMROAD_ADMIN_TOKEN } from 'pages/retreat/nehem-road/config/config';
 
 interface HeaderProps {
   isMobile: boolean;

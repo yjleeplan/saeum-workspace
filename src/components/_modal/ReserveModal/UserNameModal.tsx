@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Modal, message, Input } from 'antd';
 import type { PostReserveRequest, GameTime } from 'types';
-import { USER_LIST, USER_LIST_DEV } from 'context/Context';
+import { USER_LIST, USER_LIST_DEV } from 'pages/retreat/nehem-road/config/config';
 import { Wrapper, TextWrapper, InputWrapper } from './UserNameModal.styles';
 
 interface UserNameModalProps {

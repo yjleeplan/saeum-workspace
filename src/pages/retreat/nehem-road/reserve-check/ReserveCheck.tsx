@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
-import { useOutletContext } from 'react-router-dom';
 import { useQueryClient } from '@tanstack/react-query';
 import { AgGridReact } from 'ag-grid-react';
 import { Input, Steps, message, Modal } from 'antd';
 import { isEmpty, sortBy } from 'lodash';
 import { useAuthStore } from 'store';
-import { NEHEMROAD_ADMIN_TOKEN } from 'context/Context';
 import { queries } from 'api/queries';
 import { useDeleteReserve } from 'api/useReserveApi';
 import { ReserveData } from 'types';
-import { USER_LIST, USER_LIST_DEV } from 'context/Context';
+import { NEHEMROAD_ADMIN_TOKEN, USER_LIST, USER_LIST_DEV } from 'pages/retreat/nehem-road/config/config';
 import GridCellButton from './GridCellButton';
 import { Wrapper, TitleWrapper, Title, SearchWrapper, StepsWrapper, GridWrapper } from './ReserveCheck.styles';
 

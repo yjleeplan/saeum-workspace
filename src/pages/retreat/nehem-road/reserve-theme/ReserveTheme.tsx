@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Image } from 'antd';
 import { queries } from 'api/queries';
 import ReserveModal from 'components/_modal/ReserveModal';
-import { LOCATION_LIST } from 'context/Context';
+import { LOCATION_LIST } from 'pages/retreat/nehem-road/config/config';
 import { getGamePoster } from 'utils/getGamePoster';
 import {
   Wrapper,

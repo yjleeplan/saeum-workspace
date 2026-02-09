@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Modal, Spin } from 'antd';
-import { LOCATION_LIST } from 'context/Context';
 import ReserveModal from 'components/_modal/ReserveModal';
 import Building1 from 'pages/retreat/nehem-road/reserve-plan/Building1';
 import Building2 from 'pages/retreat/nehem-road/reserve-plan/Building2';
 import Building3 from 'pages/retreat/nehem-road/reserve-plan/Building3';
 import Building4 from 'pages/retreat/nehem-road/reserve-plan/Building4';
 import Building5 from 'pages/retreat/nehem-road/reserve-plan/Building5';
+import { LOCATION_LIST } from 'pages/retreat/nehem-road/config/config';
 
 interface ModalProps {
   visible: boolean;
