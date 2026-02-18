@@ -29,7 +29,7 @@
       width: 75%;
       border: 2px solid #6e4e85;
       border-radius: 30px;
-      background-color: rgb(0, 0, 0, 0.2);
+      background-color: rgb(0, 0, 0, 0.4);
       box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 10px;
       padding: 2.2% 1% 1% 1%;
 
@@ -102,7 +102,7 @@
       width: 25%;
       border: 2px solid #6e4e85;
       border-radius: 30px;
-      background-color: rgb(0, 0, 0, 0.2);
+      background-color: rgb(0, 0, 0, 0.4);
       box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 10px;
 
       /* 채팅 타이틀 */
@@ -121,6 +121,34 @@
 
       /* 채팅 컨텐츠 */
       .chat-content {
+        .ant-comment-inner {
+          padding: 16px 24px;
+        }
+        .ant-comment-content-author-name {
+          color: #868299;
+          font-size: 16px;
+        }
+        .ant-comment-content-detail {
+          width: fit-content;
+          background: #433f57;
+          border-radius: 0px 10px 10px 10px;
+          padding: 4px 10px;
+          color: #fff;
+        }
+        .ant-comment-content-detail:after {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 50%;
+          width: 0;
+          height: 0;
+          border: 10px solid transparent;
+          border-right-color: #433f57;
+          border-left: 0;
+          border-top: 0;
+          margin-top: -3.5px;
+          margin-left: -6px;
+        }
       }
     }
   }
