@@ -5,7 +5,7 @@ interface ContentProps {
 }
 
 const Content = ({ children }: ContentProps) => {
-  return <div id='content'>{children}</div>;
+  return <div id='prayer-altar-content'>{children}</div>;
 };
 
 export default Content;
