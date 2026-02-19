@@ -167,18 +167,17 @@
           padding: 4px 10px;
           color: #fff;
         }
-        .ant-comment-content-detail:after {
+        .ant-comment-content-detail:before {
           content: '';
           position: absolute;
           left: 0;
-          top: 50%;
           width: 0;
           height: 0;
           border: 10px solid transparent;
           border-right-color: #433f57;
           border-left: 0;
           border-top: 0;
-          margin-top: -3.5px;
+          margin-top: -4px;
           margin-left: -6px;
         }
       }
