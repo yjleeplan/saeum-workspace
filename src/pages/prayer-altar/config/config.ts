@@ -1,10 +1,10 @@
 export const PRAYER_ALTAR = [
-  { lane: 1, percent: 0, status: 'base' },
-  { lane: 2, percent: 0, status: 'base' },
-  { lane: 3, percent: 0, status: 'base' },
-  { lane: 4, percent: 0, status: 'base' },
-  { lane: 5, percent: 0, status: 'base' },
-  { lane: 6, percent: 0, status: 'base' },
-  { lane: 7, percent: 0, status: 'base' },
-  { lane: 8, percent: 0, status: 'base' },
+  { lane: 1, percent: 0, status: 'base', color: '#59A48B' },
+  { lane: 2, percent: 0, status: 'base', color: '#A596C7' },
+  { lane: 3, percent: 0, status: 'base', color: '#8BBEE8' },
+  { lane: 4, percent: 0, status: 'base', color: '#DBC471' },
+  { lane: 5, percent: 0, status: 'base', color: '#E09F7B' },
+  { lane: 6, percent: 0, status: 'base', color: '#DC8A8A' },
+  { lane: 7, percent: 0, status: 'base', color: '#749B5B' },
+  { lane: 8, percent: 0, status: 'base', color: '#E79FB9' },
 ];
