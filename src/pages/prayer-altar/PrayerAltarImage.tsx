@@ -40,9 +40,10 @@ import fireSad from 'assets/images/prayer-altar/fire_sad.gif';
 interface PrayerAltarImageProps {
   laneNo: number;
   prayerStatus: string;
+  percent: number;
 }
 
-const PrayerAltarImage = ({ laneNo, prayerStatus }: PrayerAltarImageProps) => {
+const PrayerAltarImage = ({ laneNo, prayerStatus, percent }: PrayerAltarImageProps) => {
   // Prayer 이미지 소스
   const prayerSource = () => {
     const key = `prayer_${laneNo}_${prayerStatus}`;
@@ -75,6 +76,17 @@ const PrayerAltarImage = ({ laneNo, prayerStatus }: PrayerAltarImageProps) => {
     }[key];
   };
 
+  // 불 이미지 소스
+  const fireSource = () => {
+    const key = `fire_${prayerStatus}`;
+
+    return {
+      fire_base: fire,
+      fire_glad: fireGlad,
+      fire_sad: fireSad,
+    }[key];
+  };
+
   // 타이틀 이미지 소스
   const titleSource = () => {
     const key = `prayer_title_${laneNo}`;
@@ -91,6 +103,23 @@ const PrayerAltarImage = ({ laneNo, prayerStatus }: PrayerAltarImageProps) => {
     }[key];
   };
 
+  // Top 사이즈
+  const getTopSize = () => {
+    const defaultSize = 22;
+    const unitSize = 0.7;
+    const topSize = defaultSize - unitSize * percent;
+
+    return `${topSize}%`;
+  };
+
+  // Scale 사이즈
+  const getScaleSize = () => {
+    const unitSize = 0.02;
+    const scaleSize = unitSize * percent;
+
+    return `scale(${scaleSize})`;
+  };
+
   return (
     <div className='prayer-altar'>
       <div className='prayer-altar-layer-1'>
@@ -98,10 +127,10 @@ const PrayerAltarImage = ({ laneNo, prayerStatus }: PrayerAltarImageProps) => {
           <Image src={prayerSource()} width={'6vw'} preview={false} />
         </div>
         <div className='altar'>
-          <Image src={altar} width={'7vw'} preview={false} />
+          <Image src={altar} width={'5vw'} preview={false} />
         </div>
-        <div className='fire' style={{ top: '-40%', transform: 'scale(1)' }}>
-          <Image src={fire} width={'7vw'} preview={false} />
+        <div className='fire' style={{ top: getTopSize(), transform: getScaleSize() }}>
+          <Image src={fireSource()} width={'6vw'} preview={false} />
         </div>
       </div>
       <div className='prayer-altar-layer-2'>
