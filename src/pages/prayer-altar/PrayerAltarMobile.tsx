@@ -192,7 +192,7 @@ const PrayerAltarMobile = ({ setIsLoading }: PrayerAltarMobileProps) => {
   const getFireSize = (percent: number) => {
     const defaultSize = 5;
     const unitSize = 0.2;
-    const scaleSize = defaultSize + unitSize * percent;
+    const scaleSize = percent > 0 ? defaultSize + unitSize * percent : 0;
 
     return `${scaleSize}vw`;
   };
