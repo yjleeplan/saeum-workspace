@@ -76,6 +76,17 @@ const PrayerAltarImage = ({ laneNo, prayerStatus, percent }: PrayerAltarImagePro
     }[key];
   };
 
+  // 불 이미지 소스
+  const fireSource = () => {
+    const key = `fire_${prayerStatus}`;
+
+    return {
+      fire_base: fire,
+      fire_glad: fireGlad,
+      fire_sad: fireSad,
+    }[key];
+  };
+
   // 타이틀 이미지 소스
   const titleSource = () => {
     const key = `prayer_title_${laneNo}`;
@@ -119,7 +130,7 @@ const PrayerAltarImage = ({ laneNo, prayerStatus, percent }: PrayerAltarImagePro
           <Image src={altar} width={'5vw'} preview={false} />
         </div>
         <div className='fire' style={{ top: getTopSize(), transform: getScaleSize() }}>
-          <Image src={fire} width={'6vw'} preview={false} />
+          <Image src={fireSource()} width={'6vw'} preview={false} />
         </div>
       </div>
       <div className='prayer-altar-layer-2'>
