@@ -107,6 +107,7 @@ const Comments = ({ title, setIsLoading }: CommentsProps) => {
           commentListRef.current.scrollTop = 0;
         }
 
+        refetchCommentList();
         setCommentUserName('');
         setCommentContent('');
         setCommentOptions((prev) => ({

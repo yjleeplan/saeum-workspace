@@ -1,0 +1,226 @@
+/*
+ * 기도의 제단 공통 스타일 
+ */
+
+#prayer-altar-layout {
+  height: 100%;
+  box-sizing: border-box;
+  background-image: url(/src/assets/images/prayer-altar/background.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+  position: fixed;
+
+  #prayer-altar-content {
+    display: flex;
+    gap: 2%;
+    height: 100%;
+    padding: 2%;
+
+    /* 기도의 제단 영역 */
+    .prayer-altar-wrap {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 75%;
+      border: 2px solid #6e4e85;
+      border-radius: 30px;
+      background-color: rgb(0, 0, 0, 0.4);
+      box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 10px;
+      padding: 2.2% 1% 1% 1%;
+
+      /* 기도의 제단 타이틀 */
+      .prayer-altar-title {
+        background-image: url(/src/assets/images/prayer-altar/title.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        height: 15vh;
+      }
+
+      /* 기도의 제단 컨텐츠 */
+      .prayer-altar-content {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+
+        /* 기도의 제단 */
+        .prayer-altar {
+          display: flex;
+          flex-direction: column;
+          width: 25%;
+          /* border: 1px solid #fff; */
+
+          .prayer-altar-layer-1 {
+            position: relative;
+            /* height: 16vh; */
+            height: 165px;
+
+            /* 기도하는 사람 */
+            .prayer {
+              position: absolute;
+              width: fit-content;
+              left: 16%;
+              z-index: 1000;
+            }
+
+            /* 제단 */
+            .altar {
+              position: absolute;
+              top: 52%;
+              right: 20%;
+              width: fit-content;
+            }
+
+            /* 불 */
+            .fire {
+              position: absolute;
+              right: 16%;
+              width: fit-content;
+            }
+          }
+
+          .prayer-altar-layer-2 {
+            text-align: center;
+            /* padding-bottom: 4%; */
+          }
+        }
+        .prayer-altar:nth-child(-n + 4) {
+          padding-bottom: 4%;
+        }
+      }
+    }
+
+    /* 채팅 영역 */
+    .chat-wrap {
+      display: flex;
+      flex-direction: column;
+      width: 25%;
+      border: 2px solid #6e4e85;
+      border-radius: 30px;
+      background-color: rgb(0, 0, 0, 0.6);
+      box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 10px;
+
+      /* 채팅 타이틀 */
+      .chat-title-wrap {
+        border-bottom: 2px solid #6e4e85;
+        padding: 4% 1% 4% 1%;
+
+        .chat-title {
+          background-image: url(/src/assets/images/prayer-altar/chat_title.png);
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: center;
+          height: 5vh;
+        }
+      }
+
+      /* 채팅 컨텐츠 */
+      .chat-content {
+        height: 88%;
+
+        #chat-infinite-scroll {
+          min-height: 330px;
+          height: 100%;
+          overflow-y: auto;
+          margin: 4px;
+        }
+        /* 스크롤바 */
+        #chat-infinite-scroll::-webkit-scrollbar {
+          width: 12px;
+        }
+        #chat-infinite-scroll::-webkit-scrollbar-track {
+          background: unset;
+        }
+        #chat-infinite-scroll::-webkit-scrollbar-thumb {
+          background: unset;
+          border-radius: 10px;
+        }
+        /* 스크롤바 마우스 오버 */
+        #chat-infinite-scroll:hover::-webkit-scrollbar {
+          width: 12px;
+        }
+        #chat-infinite-scroll:hover::-webkit-scrollbar-track {
+          background: unset;
+        }
+        #chat-infinite-scroll:hover::-webkit-scrollbar-thumb {
+          /* background: rgb(0, 0, 0, 0.4); */
+          background: #6e4e85;
+          border-radius: 10px;
+        }
+
+        .ant-comment-inner {
+          padding: 16px 24px;
+        }
+        .ant-comment-content-author-name {
+          color: #868299;
+          font-size: 16px;
+        }
+        .ant-comment-content-detail {
+          width: fit-content;
+          background: #433f57;
+          border-radius: 0px 10px 10px 10px;
+          padding: 4px 10px;
+          color: #fff;
+        }
+        .ant-comment-content-detail:before {
+          content: '';
+          position: absolute;
+          left: 0;
+          width: 0;
+          height: 0;
+          border: 10px solid transparent;
+          border-right-color: #433f57;
+          border-left: 0;
+          border-top: 0;
+          margin-top: -4px;
+          margin-left: -6px;
+        }
+      }
+    }
+  }
+}
+
+/* 와이드 모니터 (4000px * 1500px) */
+@media screen and (min-width: 3000px) {
+  .prayer-altar-wrap {
+    width: 80% !important;
+    border-radius: 50px !important;
+
+    .prayer-altar-title {
+      height: 18vh !important;
+    }
+
+    .prayer-altar-content {
+      .prayer-altar {
+        .prayer-altar-layer-1 {
+          height: 20vh !important;
+
+          /* 기도하는 사람 */
+          .prayer {
+            left: 20% !important;
+          }
+
+          /* 제단 */
+          .altar {
+            top: 42% !important;
+            right: 24% !important;
+          }
+        }
+      }
+    }
+  }
+
+  .chat-wrap {
+    width: 20% !important;
+    border-radius: 50px !important;
+
+    .chat-title {
+      height: 6.5vh !important;
+    }
+  }
+}

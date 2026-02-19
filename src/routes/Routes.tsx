@@ -5,6 +5,8 @@ import EarthArcadeMapLayout from 'layout/EarthArcadeMapLayout';
 import EarthArcadeMapStatusLayout from 'layout/EarthArcadeMapStatusLayout';
 import RunningRaceLayout from 'layout/RunningRaceLayout';
 import RunningRaceMobileLayout from 'layout/RunningRaceMobileLayout';
+import PrayerAltarLayout from 'layout/PrayerAltarLayout';
+import PrayerAltarMobileLayout from 'layout/PrayerAltarMobileLayout';
 import DawnWorship17th from 'pages/online-check/dawn-worship-17th/DawnWorship17th';
 import DawnWorship20th from 'pages/online-check/dawn-worship-20th/DawnWorship20th';
 import DawnWorship20thAdminSetting from 'pages/online-check/dawn-worship-20th/AdminSetting';
@@ -24,6 +26,8 @@ import EarthArcadeMap from 'pages/retreat/earth-arcade/map/Map';
 import EarthArcadeMapStatus from 'pages/retreat/earth-arcade/map-status/MapStatus';
 import RunningRace from 'pages/running-race/RunningRace';
 import RunningRaceMobile from 'pages/running-race/RunningRaceMobile';
+import PrayerAltar from 'pages/prayer-altar/PrayerAltar';
+import PrayerAltarMobile from 'pages/prayer-altar/PrayerAltarMobile';
 
 export const Routes = () => {
   // 접속 기기 체크
@@ -132,6 +136,20 @@ export const Routes = () => {
           >
             <DawnWorship21thAdminSetting />
           </OnlineCheckLayout>
+        }
+      />
+      <Route
+        path={'/dawn-worship-21th/prayer-altar'}
+        element={
+          mobileCheck() ? (
+            <PrayerAltarMobileLayout>
+              <PrayerAltarMobile />
+            </PrayerAltarMobileLayout>
+          ) : (
+            <PrayerAltarLayout>
+              <PrayerAltar />
+            </PrayerAltarLayout>
+          )
         }
       />
 

@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { message } from 'antd';
 import { sortBy } from 'lodash';
 import { useAuthStore } from 'store';
-import { NEHEMROAD_ADMIN_TOKEN } from 'context/Context';
+import { NEHEMROAD_ADMIN_TOKEN } from 'pages/retreat/nehem-road/config/config';
 import { queries } from 'api/queries';
 import { Wrapper, TitleWrapper, Title, Content, Row, Col, GameTimeBox } from './Admin.styles';
 

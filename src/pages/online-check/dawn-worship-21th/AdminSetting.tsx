@@ -18,7 +18,6 @@ const AdminSetting = ({ setIsLoading = () => {} }: OutletContextProps) => {
     { label: '어울림마을', value: '어울림마을' },
     { label: '울림마을', value: '울림마을' },
     { label: '이음마을', value: '이음마을' },
-    { label: '에하드', value: '에하드' },
     { label: '세붐마을', value: '세붐마을' },
     { label: '새움청년부', value: '새움청년부' },
     { label: '주일학교', value: '주일학교' },
@@ -35,7 +34,7 @@ const AdminSetting = ({ setIsLoading = () => {} }: OutletContextProps) => {
     isSuccess: departmentCountQuerSuccess,
     isFetching: departmentCountFetching,
   } = useQuery({
-    ...queries.department.count({
+    ...queries.department.countList({
       department: selectedKey,
     }),
     staleTime: 500,
