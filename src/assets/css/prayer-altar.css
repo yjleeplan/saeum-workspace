@@ -2,6 +2,7 @@
  * 기도의 제단 공통 스타일 
  */
 
+/* PC 버전 */
 #prayer-altar-layout {
   height: 100%;
   box-sizing: border-box;
@@ -223,4 +224,117 @@
       height: 6.5vh !important;
     }
   }
+}
+
+/* 모바일 버전 */
+#prayer-altar-mobile-layout {
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+  background-image: url(/src/assets/images/dawn-worship-21th/background.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+  position: fixed;
+  overflow-y: scroll;
+}
+
+#prayer-altar-mobile-layout #header {
+  width: 90%;
+  min-height: 6vh;
+  padding: 20px 0px;
+  margin: auto;
+}
+
+#prayer-altar-mobile-layout #header .header-right {
+  color: #fff;
+  display: flex;
+  justify-content: end;
+  font-size: 14px;
+}
+
+#prayer-altar-mobile-layout #header .header-right .home-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#prayer-altar-mobile-layout #content .prayer-altar-mobile-title {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+#prayer-altar-mobile-layout #content .prayer-altar-mobile-content {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px auto;
+  margin-top: 40px;
+}
+
+#prayer-altar-mobile-layout #content .prayer-altar-wrap {
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+}
+
+#prayer-altar-mobile-layout #content .prayer-altar-wrap .prayer {
+  width: fit-content;
+  transition: all 500ms linear;
+  padding: 10px 20px;
+}
+
+#prayer-altar-mobile-layout #content .prayer-altar-wrap .prayer-altar-progress-wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  text-align: center;
+  position: relative;
+}
+
+#prayer-altar-mobile-layout #content .prayer-altar-wrap .prayer-altar-progress-wrap .ant-progress.ant-progress-line {
+  padding: 6px 20px;
+  position: relative;
+}
+
+#prayer-altar-mobile-layout #content .prayer-altar-wrap .prayer-altar-progress-wrap .prayer-altar-percent {
+  font-size: 14px;
+  position: absolute;
+  width: 100%;
+  padding: 10px 20px;
+  color: #fff;
+}
+
+#prayer-altar-mobile-layout #content .prayer-altar-wrap .prayer-altar-progress-wrap .ant-progress-outer {
+  padding: 0;
+  margin: 0;
+}
+
+#prayer-altar-mobile-layout #content .prayer-altar-wrap .prayer-altar-progress-wrap .ant-progress-inner {
+  background-color: rgba(0, 0, 0, 0.4);
+  top: -4px;
+}
+
+#prayer-altar-mobile-layout #content .prayer-altar-wrap .prayer-altar-progress-wrap .ant-progress-bg {
+  height: 20px !important;
+}
+
+#prayer-altar-mobile-layout #content .prayer-altar-wrap .prayer-altar-progress-wrap .ant-progress-text {
+  display: none;
+}
+
+#prayer-altar-mobile-layout #content .prayer-altar-wrap .prayer-altar-progress-wrap .fire {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
