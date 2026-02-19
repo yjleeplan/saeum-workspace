@@ -77,14 +77,14 @@ const PrayerAltar = () => {
       <div className='prayer-altar-wrap'>
         <div className='prayer-altar-title' />
         <div className='prayer-altar-content'>
-          <PrayerAltarImage laneNo={1} prayerStatus={'base'} />
-          <PrayerAltarImage laneNo={2} prayerStatus={'base'} />
-          <PrayerAltarImage laneNo={3} prayerStatus={'base'} />
-          <PrayerAltarImage laneNo={4} prayerStatus={'base'} />
-          <PrayerAltarImage laneNo={5} prayerStatus={'base'} />
-          <PrayerAltarImage laneNo={6} prayerStatus={'base'} />
-          <PrayerAltarImage laneNo={7} prayerStatus={'base'} />
-          <PrayerAltarImage laneNo={8} prayerStatus={'base'} />
+          <PrayerAltarImage laneNo={1} prayerStatus={'base'} percent={10} />
+          <PrayerAltarImage laneNo={2} prayerStatus={'base'} percent={20} />
+          <PrayerAltarImage laneNo={3} prayerStatus={'base'} percent={30} />
+          <PrayerAltarImage laneNo={4} prayerStatus={'base'} percent={40} />
+          <PrayerAltarImage laneNo={5} prayerStatus={'base'} percent={50} />
+          <PrayerAltarImage laneNo={6} prayerStatus={'base'} percent={60} />
+          <PrayerAltarImage laneNo={7} prayerStatus={'base'} percent={70} />
+          <PrayerAltarImage laneNo={8} prayerStatus={'base'} percent={80} />
         </div>
       </div>
       <div className='chat-wrap'>

@@ -64,15 +64,15 @@
             .prayer {
               position: absolute;
               width: fit-content;
-              left: 14%;
+              left: 16%;
               z-index: 1000;
             }
 
             /* 제단 */
             .altar {
               position: absolute;
-              top: 36%;
-              right: 16%;
+              top: 52%;
+              right: 20%;
               width: fit-content;
             }
 
