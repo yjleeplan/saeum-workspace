@@ -77,13 +77,13 @@ const PrayerAltar = () => {
       <div className='prayer-altar-wrap'>
         <div className='prayer-altar-title' />
         <div className='prayer-altar-content'>
-          <PrayerAltarImage laneNo={1} prayerStatus={'glad'} />
+          <PrayerAltarImage laneNo={1} prayerStatus={'base'} />
           <PrayerAltarImage laneNo={2} prayerStatus={'base'} />
           <PrayerAltarImage laneNo={3} prayerStatus={'base'} />
-          <PrayerAltarImage laneNo={4} prayerStatus={'sad'} />
+          <PrayerAltarImage laneNo={4} prayerStatus={'base'} />
           <PrayerAltarImage laneNo={5} prayerStatus={'base'} />
-          <PrayerAltarImage laneNo={6} prayerStatus={'glad'} />
-          <PrayerAltarImage laneNo={7} prayerStatus={'sad'} />
+          <PrayerAltarImage laneNo={6} prayerStatus={'base'} />
+          <PrayerAltarImage laneNo={7} prayerStatus={'base'} />
           <PrayerAltarImage laneNo={8} prayerStatus={'base'} />
         </div>
       </div>
@@ -92,7 +92,7 @@ const PrayerAltar = () => {
           <div className='chat-title' />
         </div>
         <div className='chat-content'>
-          <div id='infinite-scroll-comment' ref={commentListRef}>
+          <div id='chat-infinite-scroll' ref={commentListRef}>
             <InfiniteScroll
               dataLength={commentData?.comments?.length}
               next={handleScroll}
