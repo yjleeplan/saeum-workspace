@@ -38,8 +38,8 @@ import prayerTitle6 from 'assets/images/prayer-altar/prayer_title6.png';
 import prayerTitle7 from 'assets/images/prayer-altar/prayer_title7.png';
 import prayerTitle8 from 'assets/images/prayer-altar/prayer_title8.png';
 import fire from 'assets/images/prayer-altar/fire.gif';
-import fireGlad from 'assets/images/prayer-altar/fire_glad.gif';
-import fireSad from 'assets/images/prayer-altar/fire_sad.gif';
+import fireYellow from 'assets/images/prayer-altar/fire_yellow.gif';
+import fireBlue from 'assets/images/prayer-altar/fire_blue.gif';
 
 interface PrayerAltarMobileProps {
   setIsLoading?: (data: boolean) => void;
@@ -51,8 +51,6 @@ const PrayerAltarMobile = ({ setIsLoading }: PrayerAltarMobileProps) => {
 
   // Prayer width size
   const prayerWidth = Number((document.body.offsetWidth * 18) / 100).toFixed(2);
-
-  console.log(document.body.offsetWidth);
 
   // 마을별 출석 카운트 조회 API
   const {
@@ -111,26 +109,39 @@ const PrayerAltarMobile = ({ setIsLoading }: PrayerAltarMobileProps) => {
       // 평균값을 기준으로 정렬
       let orderByPercentList = _.orderBy(newData, 'percent', 'desc');
 
-      orderByPercentList[0].status = 'glad';
-      orderByPercentList[1].status = 'glad';
-      orderByPercentList[6].status = 'sad';
-      orderByPercentList[7].status = 'sad';
-
-      orderByPercentList[0].color = '#FBC738';
-      orderByPercentList[1].color = '#FBC738';
-      orderByPercentList[2].color = '#E94F32';
-      orderByPercentList[3].color = '#E94F32';
-      orderByPercentList[4].color = '#E94F32';
-      orderByPercentList[5].color = '#E94F32';
-      orderByPercentList[6].color = '#5A8CE9';
-      orderByPercentList[7].color = '#5A8CE9';
+      orderByPercentList.forEach((item) => {
+        // 출석율 85% 이상은 파란색 바
+        if (item.percent >= 85) {
+          item.color = '#5A8CE9';
+        }
+        // 출석율 65% 이상은 노란색 바
+        else if (item.percent >= 65) {
+          item.color = '#FBC738';
+        }
+        // 기본은 빨간색 바
+        else {
+          item.color = '#E94F32';
+        }
+      });
 
       setPrayerAltars(orderByPercentList);
     }
   }, [departmentCountListQueryData]);
 
   // Prayer 이미지 소스
-  const prayerSource = (lane: number, status: string) => {
+  const prayerSource = (lane: number, percent: number) => {
+    let status = 'sad';
+
+    // 출석율 40% 이상 이면서 90% 미만이면 기본 이미지
+    if (40 <= percent && percent < 90) {
+      status = 'base';
+    }
+
+    // 출석율 90% 이상이면 기쁜 이미지
+    if (90 <= percent) {
+      status = 'glad';
+    }
+
     const key = `prayer_${lane}_${status}`;
 
     return {
@@ -178,21 +189,26 @@ const PrayerAltarMobile = ({ setIsLoading }: PrayerAltarMobileProps) => {
   };
 
   // 불 이미지 소스
-  const fireSource = (status: string) => {
-    const key = `fire_${status}`;
+  const fireSource = (percent: number) => {
+    // 출석율 85% 이상은 파란색 불
+    if (percent >= 85) {
+      return fireBlue;
+    }
 
-    return {
-      fire_base: fire,
-      fire_glad: fireGlad,
-      fire_sad: fireSad,
-    }[key];
+    // 출석율 65% 이상은 노란색 불
+    if (percent >= 65) {
+      return fireYellow;
+    }
+
+    return fire;
   };
 
   // 불 이미지 사이즈
   const getFireSize = (percent: number) => {
+    const percentValue = percent > 100 ? 100 : percent;
     const defaultSize = 5;
     const unitSize = 0.2;
-    const scaleSize = percent > 0 ? defaultSize + unitSize * percent : 0;
+    const scaleSize = percentValue > 0 ? defaultSize + unitSize * percentValue : 0;
 
     return `${scaleSize}vw`;
   };
@@ -207,7 +223,7 @@ const PrayerAltarMobile = ({ setIsLoading }: PrayerAltarMobileProps) => {
           return (
             <div className='prayer-altar-wrap' key={index}>
               <div className='prayer'>
-                <Image src={prayerSource(item.lane, item.status)} width={`${prayerWidth}px`} preview={false} />
+                <Image src={prayerSource(item.lane, item.percent)} width={`${prayerWidth}px`} preview={false} />
                 <Image src={titleSource(item.lane)} width={`${prayerWidth}px`} preview={false} />
               </div>
               <div className='prayer-altar-progress-wrap'>
@@ -221,7 +237,7 @@ const PrayerAltarMobile = ({ setIsLoading }: PrayerAltarMobileProps) => {
                 />
                 <div className='prayer-altar-percent'>{item?.percent > 100 ? 100 : item?.percent}%</div>
                 <div className='fire'>
-                  <Image src={fireSource(item.status)} width={getFireSize(item.percent)} preview={false} />
+                  <Image src={fireSource(item.percent)} width={getFireSize(item.percent)} preview={false} />
                 </div>
               </div>
             </div>

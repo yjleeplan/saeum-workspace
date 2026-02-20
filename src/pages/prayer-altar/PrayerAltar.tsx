@@ -79,21 +79,6 @@ const PrayerAltar = () => {
         }
       });
 
-      // 평균값을 기준으로 정렬
-      const orderByPercentList = _.orderBy(newData, 'percent', 'desc');
-
-      _.forEach(newData, (item, key) => {
-        // 1~2등의 status 변경
-        if (item?.lane === orderByPercentList[0].lane || item?.lane === orderByPercentList[1].lane) {
-          item.status = 'glad';
-        }
-
-        // 7~8등의 status 변경
-        if (item?.lane === orderByPercentList[6].lane || item?.lane === orderByPercentList[7].lane) {
-          item.status = 'sad';
-        }
-      });
-
       setPrayerAltars(newData);
     }
   }, [departmentCountListQueryData]);
@@ -153,14 +138,14 @@ const PrayerAltar = () => {
       <div className='prayer-altar-wrap'>
         <div className='prayer-altar-title' />
         <div className='prayer-altar-content'>
-          <PrayerAltarImage laneNo={1} prayerStatus={prayerAltars[0]?.status} percent={prayerAltars[0]?.percent} />
-          <PrayerAltarImage laneNo={2} prayerStatus={prayerAltars[1]?.status} percent={prayerAltars[1]?.percent} />
-          <PrayerAltarImage laneNo={3} prayerStatus={prayerAltars[2]?.status} percent={prayerAltars[2]?.percent} />
-          <PrayerAltarImage laneNo={4} prayerStatus={prayerAltars[3]?.status} percent={prayerAltars[3]?.percent} />
-          <PrayerAltarImage laneNo={5} prayerStatus={prayerAltars[4]?.status} percent={prayerAltars[4]?.percent} />
-          <PrayerAltarImage laneNo={6} prayerStatus={prayerAltars[5]?.status} percent={prayerAltars[5]?.percent} />
-          <PrayerAltarImage laneNo={7} prayerStatus={prayerAltars[6]?.status} percent={prayerAltars[6]?.percent} />
-          <PrayerAltarImage laneNo={8} prayerStatus={prayerAltars[7]?.status} percent={prayerAltars[7]?.percent} />
+          <PrayerAltarImage laneNo={1} percent={prayerAltars[0]?.percent} />
+          <PrayerAltarImage laneNo={2} percent={prayerAltars[1]?.percent} />
+          <PrayerAltarImage laneNo={3} percent={prayerAltars[2]?.percent} />
+          <PrayerAltarImage laneNo={4} percent={prayerAltars[3]?.percent} />
+          <PrayerAltarImage laneNo={5} percent={prayerAltars[4]?.percent} />
+          <PrayerAltarImage laneNo={6} percent={prayerAltars[5]?.percent} />
+          <PrayerAltarImage laneNo={7} percent={prayerAltars[6]?.percent} />
+          <PrayerAltarImage laneNo={8} percent={prayerAltars[7]?.percent} />
         </div>
       </div>
       <div className='chat-wrap'>

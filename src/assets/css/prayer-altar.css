@@ -87,11 +87,13 @@
 
           .prayer-altar-layer-2 {
             text-align: center;
-            /* padding-bottom: 4%; */
           }
         }
         .prayer-altar:nth-child(-n + 4) {
-          padding-bottom: 4%;
+          padding-bottom: 7%;
+        }
+        .prayer-altar:nth-child(n + 5) {
+          padding-bottom: 2%;
         }
       }
     }
