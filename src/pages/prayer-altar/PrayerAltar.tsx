@@ -117,11 +117,11 @@ const PrayerAltar = () => {
           datetime: moment(item.created_at).format('YYYY-MM-DD HH:mm:ss'),
         };
       });
-      setCommentData({
-        ...commentData,
-        comments: [...((commentOptions?.offset && commentData?.comments) || []), ...newData],
+      setCommentData((prev) => ({
+        ...prev,
+        comments: commentOptions.offset === 0 ? newData : [...prev.comments, ...newData],
         totalCount: commentListQueryData?.total,
-      });
+      }));
     }
   }, [commentListQueryData]);
 
@@ -129,7 +129,7 @@ const PrayerAltar = () => {
   const handleScroll = async () => {
     setCommentOptions((prev) => ({
       ...prev,
-      offset: commentOptions.offset + commentOptions.limit,
+      offset: prev.offset + prev.limit,
     }));
   };
 
@@ -155,11 +155,12 @@ const PrayerAltar = () => {
         <div className='chat-content'>
           <div id='chat-infinite-scroll' ref={commentListRef}>
             <InfiniteScroll
+              scrollableTarget='chat-infinite-scroll'
               dataLength={commentData?.comments?.length}
               next={handleScroll}
+              scrollThreshold={'1px'}
               hasMore={commentData?.comments?.length < commentData?.totalCount}
               loader={<Skeleton avatar paragraph={{ rows: 1 }} active />}
-              scrollableTarget='infinite-scroll-comment'
             >
               <List
                 dataSource={commentData?.comments}

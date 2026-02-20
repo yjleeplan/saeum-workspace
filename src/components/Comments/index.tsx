@@ -199,6 +199,7 @@ const Comments = ({ title, setIsLoading }: CommentsProps) => {
             hasMore={commentData?.comments?.length < commentData?.totalCount}
             loader={<Skeleton avatar paragraph={{ rows: 1 }} active />}
             scrollableTarget='infinite-scroll-comment'
+            scrollThreshold={'1px'}
           >
             <List
               dataSource={commentData?.comments}
