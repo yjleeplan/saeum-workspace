@@ -42,7 +42,7 @@ export const useDawnWorship21th = () => {
 
   // 출석현황 페이지 이동
   const handleRankClick = () => {
-    message.warning('준비중입니다.', 1.2);
+    window.location.href = '/dawn-worship-21th/prayer-altar';
   };
 
   return {
