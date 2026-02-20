@@ -34,19 +34,30 @@ import prayerTitle7 from 'assets/images/prayer-altar/prayer_title7.png';
 import prayerTitle8 from 'assets/images/prayer-altar/prayer_title8.png';
 import altar from 'assets/images/prayer-altar/altar.png';
 import fire from 'assets/images/prayer-altar/fire.gif';
-import fireGlad from 'assets/images/prayer-altar/fire_glad.gif';
-import fireSad from 'assets/images/prayer-altar/fire_sad.gif';
+import fireYellow from 'assets/images/prayer-altar/fire_yellow.gif';
+import fireBlue from 'assets/images/prayer-altar/fire_blue.gif';
 
 interface PrayerAltarImageProps {
   laneNo: number;
-  prayerStatus: string;
   percent: number;
 }
 
-const PrayerAltarImage = ({ laneNo, prayerStatus, percent }: PrayerAltarImageProps) => {
+const PrayerAltarImage = ({ laneNo, percent }: PrayerAltarImageProps) => {
   // Prayer 이미지 소스
   const prayerSource = () => {
-    const key = `prayer_${laneNo}_${prayerStatus}`;
+    let status = 'sad';
+
+    // 출석율 40% 이상 이면서 90% 미만이면 기본 이미지
+    if (40 <= percent && percent < 90) {
+      status = 'base';
+    }
+
+    // 출석율 90% 이상이면 기쁜 이미지
+    if (90 <= percent) {
+      status = 'glad';
+    }
+
+    const key = `prayer_${laneNo}_${status}`;
 
     return {
       prayer_1_base: prayer1,
@@ -78,13 +89,17 @@ const PrayerAltarImage = ({ laneNo, prayerStatus, percent }: PrayerAltarImagePro
 
   // 불 이미지 소스
   const fireSource = () => {
-    const key = `fire_${prayerStatus}`;
+    // 출석율 85% 이상은 파란색 불
+    if (percent >= 85) {
+      return fireBlue;
+    }
 
-    return {
-      fire_base: fire,
-      fire_glad: fireGlad,
-      fire_sad: fireSad,
-    }[key];
+    // 출석율 65% 이상은 노란색 불
+    if (percent >= 65) {
+      return fireYellow;
+    }
+
+    return fire;
   };
 
   // 타이틀 이미지 소스
@@ -105,17 +120,19 @@ const PrayerAltarImage = ({ laneNo, prayerStatus, percent }: PrayerAltarImagePro
 
   // Top 사이즈
   const getTopSize = () => {
+    const percentValue = percent > 100 ? 100 : percent;
     const defaultSize = 22;
     const unitSize = 0.7;
-    const topSize = defaultSize - unitSize * percent;
+    const topSize = defaultSize - unitSize * percentValue;
 
     return `${topSize}%`;
   };
 
   // Scale 사이즈
   const getScaleSize = () => {
+    const percentValue = percent > 100 ? 100 : percent;
     const unitSize = 0.02;
-    const scaleSize = unitSize * percent;
+    const scaleSize = unitSize * percentValue;
 
     return `scale(${scaleSize})`;
   };
