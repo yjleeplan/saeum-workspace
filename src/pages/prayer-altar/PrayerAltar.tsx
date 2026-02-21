@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { useState, useMemo, useRef } from 'react';
+import { useState, useMemo, useRef, useEffect } from 'react';
 import { queries } from 'api/queries';
 import PrayerAltarImage from './PrayerAltarImage';
 import { Avatar, Comment, List, Skeleton } from 'antd';
@@ -7,7 +7,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { CommentData, CommentOptions } from 'types';
 import { UserOutlined } from '@ant-design/icons';
 import moment from 'moment';
-import { PRAYER_ALTAR } from './config/config';
+import { PRAYER_ALTAR, AUTO_SELECT_FLAG } from './config/config';
 import _ from 'lodash';
 
 const PrayerAltar = () => {
@@ -21,7 +21,7 @@ const PrayerAltar = () => {
   });
   const [commentOptions, setCommentOptions] = useState<CommentOptions>({
     offset: 0,
-    limit: 10,
+    limit: AUTO_SELECT_FLAG ? 20 : 10,
   });
   const [prayerAltars, setPrayerAltars] = useState(PRAYER_ALTAR);
 
@@ -134,6 +134,12 @@ const PrayerAltar = () => {
     }));
   };
 
+  /** Effect */
+  useEffect(() => {
+    setInterval(() => refetchDepartmentCountList(), 30 * 1000);
+    setInterval(() => refetchCommentList(), 10 * 1000);
+  }, []);
+
   return (
     <>
       <div className='prayer-altar-wrap'>
@@ -160,7 +166,7 @@ const PrayerAltar = () => {
               dataLength={commentData?.comments?.length}
               next={handleScroll}
               scrollThreshold={'1px'}
-              hasMore={commentData?.comments?.length < commentData?.totalCount}
+              hasMore={!AUTO_SELECT_FLAG && commentData?.comments?.length < commentData?.totalCount}
               loader={<Skeleton avatar paragraph={{ rows: 1 }} active />}
             >
               <List
