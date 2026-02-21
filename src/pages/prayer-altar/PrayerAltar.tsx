@@ -91,6 +91,7 @@ const PrayerAltar = () => {
     isFetching: commentListFetching,
   } = useQuery({
     ...queries.comment.list({
+      type: 2,
       offset: commentOptions.offset,
       limit: commentOptions.limit,
     }),

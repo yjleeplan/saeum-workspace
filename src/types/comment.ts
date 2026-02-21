@@ -1,5 +1,6 @@
 export interface Comment {
   id: string;
+  type: number;
   user_name: string;
   content: string;
   is_delete: string;
@@ -9,6 +10,7 @@ export interface Comment {
 }
 
 export type GetCommentListRequest = {
+  type: number;
   offset: number;
   limit: number;
 };
@@ -19,6 +21,7 @@ export type GetCommentListResponse = {
 };
 
 export type PostCommentRequest = {
+  type: number;
   user_name: string;
   content: string;
 };
