@@ -1,4 +1,4 @@
-import { Col, Image, Row } from 'antd';
+import { Col, Image, Row, Tabs } from 'antd';
 import iconUserAdd from 'assets/images/dawn-worship-21th/icon_user_add.png';
 import iconAttendance from 'assets/images/dawn-worship-21th/icon_attendance.png';
 import iconAttendanceStatus from 'assets/images/dawn-worship-21th/icon_attendance_status.png';
@@ -92,8 +92,36 @@ const Main = ({ isAdmin = false, setIsLoading = () => {} }: MainProps) => {
           </>
         )}
       </Row>
+      <Tabs
+        defaultActiveKey='1'
+        type='card'
+        size={'small'}
+        items={[
+          {
+            label: `은혜나눔`,
+            key: '1',
+            children: (
+              <Comments
+                type={1}
+                title={`"특별새벽부흥회를 통해 받은 은혜를 나눠주세요!"`}
+                setIsLoading={setIsLoading}
+              />
+            ),
+          },
+          {
+            label: `응원하기`,
+            key: '2',
+            children: (
+              <Comments
+                type={2}
+                title={<span style={{ color: '#6e4e85', fontWeight: 'bold' }}>"우리 마을을 응원해주세요!"</span>}
+                setIsLoading={setIsLoading}
+              />
+            ),
+          },
+        ]}
+      />
       {/* <VideoPlayer /> */}
-      <Comments title={`"특별새벽부흥회를 통해 받은 은혜를 나눠주세요!"`} setIsLoading={setIsLoading} />
     </>
   );
 };
