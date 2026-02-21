@@ -10,11 +10,12 @@ import { usePostComment } from 'api/useCommentApi';
 import { CommentData, CommentOptions, PostCommentRequest } from 'types';
 
 interface CommentsProps {
-  title: string;
+  type?: number;
+  title: React.ReactNode;
   setIsLoading: (data: boolean) => void;
 }
 
-const Comments = ({ title, setIsLoading }: CommentsProps) => {
+const Comments = ({ type = 1, title, setIsLoading }: CommentsProps) => {
   const colorCodeList = [
     '#08080',
     '#ADD8E6',
@@ -54,6 +55,7 @@ const Comments = ({ title, setIsLoading }: CommentsProps) => {
     isFetching: commentListFetching,
   } = useQuery({
     ...queries.comment.list({
+      type,
       offset: commentOptions.offset,
       limit: commentOptions.limit,
     }),
@@ -72,7 +74,7 @@ const Comments = ({ title, setIsLoading }: CommentsProps) => {
             <Avatar
               icon={<UserOutlined />}
               style={{
-                backgroundColor: colorCodeList[random(0, colorCodeList.length)],
+                backgroundColor: type === 1 ? colorCodeList[random(0, colorCodeList.length)] : undefined,
               }}
             />
           ),
@@ -135,7 +137,7 @@ const Comments = ({ title, setIsLoading }: CommentsProps) => {
       return;
     }
 
-    handlePostComment({ user_name: commentUserName, content: commentContent });
+    handlePostComment({ type, user_name: commentUserName, content: commentContent });
   };
 
   // 댓글 사용자 이름 Change
@@ -191,24 +193,51 @@ const Comments = ({ title, setIsLoading }: CommentsProps) => {
           }
         />
       </Card>
-      <Card className='comment-list-wrap' bordered={false} title={`${commentData?.totalCount} 댓글`}>
-        <div id='infinite-scroll-comment' ref={commentListRef}>
-          <InfiniteScroll
-            dataLength={commentData?.comments?.length}
-            next={handleScroll}
-            hasMore={commentData?.comments?.length < commentData?.totalCount}
-            loader={<Skeleton avatar paragraph={{ rows: 1 }} active />}
-            scrollableTarget='infinite-scroll-comment'
-            scrollThreshold={'1px'}
-          >
-            <List
-              dataSource={commentData?.comments}
-              itemLayout='horizontal'
-              renderItem={(props) => <Comment {...props} />}
-            />
-          </InfiniteScroll>
+      {type === 1 && (
+        <Card className='comment-list-wrap' bordered={false} title={`${commentData?.totalCount} 댓글`}>
+          <div id='infinite-scroll-comment' ref={commentListRef}>
+            <InfiniteScroll
+              dataLength={commentData?.comments?.length}
+              next={handleScroll}
+              hasMore={commentData?.comments?.length < commentData?.totalCount}
+              loader={<Skeleton avatar paragraph={{ rows: 1 }} active />}
+              scrollableTarget='infinite-scroll-comment'
+              scrollThreshold={'1px'}
+            >
+              <List
+                dataSource={commentData?.comments}
+                itemLayout='horizontal'
+                renderItem={(props) => <Comment {...props} />}
+              />
+            </InfiniteScroll>
+          </div>
+        </Card>
+      )}
+      {type === 2 && (
+        <div className='chat-wrap'>
+          <div className='chat-title-wrap'>
+            <div className='chat-title' />
+          </div>
+          <div className='chat-content'>
+            <div id='chat-infinite-scroll' ref={commentListRef}>
+              <InfiniteScroll
+                scrollableTarget='chat-infinite-scroll'
+                dataLength={commentData?.comments?.length}
+                next={handleScroll}
+                scrollThreshold={'1px'}
+                hasMore={commentData?.comments?.length < commentData?.totalCount}
+                loader={<Skeleton avatar paragraph={{ rows: 1 }} active />}
+              >
+                <List
+                  dataSource={commentData?.comments}
+                  itemLayout='horizontal'
+                  renderItem={(props) => <Comment {...props} />}
+                />
+              </InfiniteScroll>
+            </div>
+          </div>
         </div>
-      </Card>
+      )}
     </div>
   );
 };

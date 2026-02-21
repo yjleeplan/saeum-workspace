@@ -8,3 +8,6 @@ export const PRAYER_ALTAR = [
   { lane: 7, percent: 0, status: 'base', color: '#749B5B' },
   { lane: 8, percent: 0, status: 'base', color: '#E79FB9' },
 ];
+
+// 채팅 실시간 자동 조회 여부
+export const AUTO_SELECT_FLAG = true;

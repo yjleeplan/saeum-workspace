@@ -7,10 +7,7 @@ const { request } = BaseAxiosInstance();
 
 const getCommentList: (params: GetCommentListRequest) => Promise<GetCommentListResponse> = async (params) => {
   const { data } = await request.get('/comments', {
-    params: {
-      offset: params.offset,
-      limit: params.limit,
-    },
+    params,
   });
 
   return data;
@@ -28,8 +25,8 @@ export const usePostComment = () => {
 };
 
 export const commentQueries = createQueryKeys('comment', {
-  list: ({ offset, limit }) => ({
-    queryKey: [offset, limit],
-    queryFn: () => getCommentList({ offset, limit }),
+  list: (params) => ({
+    queryKey: [params.type, params.offset, params.limit],
+    queryFn: () => getCommentList(params),
   }),
 });
