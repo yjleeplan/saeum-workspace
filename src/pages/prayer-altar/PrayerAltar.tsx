@@ -115,7 +115,7 @@ const PrayerAltar = () => {
             />
           ),
           content: <p>{item.content}</p>,
-          datetime: moment(item.created_at).format('YYYY-MM-DD HH:mm:ss'),
+          // datetime: moment(item.created_at).format('YYYY-MM-DD HH:mm:ss'),
         };
       });
       setCommentData((prev) => ({
