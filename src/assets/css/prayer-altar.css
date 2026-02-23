@@ -161,7 +161,7 @@
         }
         .ant-comment-content-author-name {
           color: #868299;
-          font-size: 18px;
+          font-size: 20px;
         }
         .ant-comment-content-detail {
           width: fit-content;
@@ -169,7 +169,7 @@
           border-radius: 0px 10px 10px 10px;
           padding: 4px 10px;
           color: #fff;
-          font-size: 18px;
+          font-size: 22px;
         }
         .ant-comment-content-detail:before {
           content: '';
