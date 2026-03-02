@@ -52,8 +52,8 @@ const PrayerAltarImage = ({ laneNo, percent }: PrayerAltarImageProps) => {
       status = 'base';
     }
 
-    // 출석율 90% 이상이면 기쁜 이미지
-    if (90 <= percent) {
+    // 출석율 70% 이상이면 기쁜 이미지
+    if (70 <= percent) {
       status = 'glad';
     }
 
@@ -89,13 +89,13 @@ const PrayerAltarImage = ({ laneNo, percent }: PrayerAltarImageProps) => {
 
   // 불 이미지 소스
   const fireSource = () => {
-    // 출석율 85% 이상은 파란색 불
-    if (percent >= 85) {
+    // 출석율 70% 이상은 파란색 불
+    if (percent >= 70) {
       return fireBlue;
     }
 
-    // 출석율 65% 이상은 노란색 불
-    if (percent >= 65) {
+    // 출석율 55% 이상은 노란색 불
+    if (percent >= 55) {
       return fireYellow;
     }
 

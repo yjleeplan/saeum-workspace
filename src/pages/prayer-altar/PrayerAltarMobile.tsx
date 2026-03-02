@@ -110,12 +110,12 @@ const PrayerAltarMobile = ({ setIsLoading }: PrayerAltarMobileProps) => {
       let orderByPercentList = _.orderBy(newData, 'percent', 'desc');
 
       orderByPercentList.forEach((item) => {
-        // 출석율 85% 이상은 파란색 바
-        if (item.percent >= 85) {
+        // 출석율 70% 이상은 파란색 바
+        if (item.percent >= 70) {
           item.color = '#5A8CE9';
         }
-        // 출석율 65% 이상은 노란색 바
-        else if (item.percent >= 65) {
+        // 출석율 55% 이상은 노란색 바
+        else if (item.percent >= 55) {
           item.color = '#FBC738';
         }
         // 기본은 빨간색 바
@@ -137,8 +137,8 @@ const PrayerAltarMobile = ({ setIsLoading }: PrayerAltarMobileProps) => {
       status = 'base';
     }
 
-    // 출석율 90% 이상이면 기쁜 이미지
-    if (90 <= percent) {
+    // 출석율 70% 이상이면 기쁜 이미지
+    if (70 <= percent) {
       status = 'glad';
     }
 
@@ -190,13 +190,13 @@ const PrayerAltarMobile = ({ setIsLoading }: PrayerAltarMobileProps) => {
 
   // 불 이미지 소스
   const fireSource = (percent: number) => {
-    // 출석율 85% 이상은 파란색 불
-    if (percent >= 85) {
+    // 출석율 70% 이상은 파란색 불
+    if (percent >= 70) {
       return fireBlue;
     }
 
-    // 출석율 65% 이상은 노란색 불
-    if (percent >= 65) {
+    // 출석율 55% 이상은 노란색 불
+    if (percent >= 55) {
       return fireYellow;
     }
 
