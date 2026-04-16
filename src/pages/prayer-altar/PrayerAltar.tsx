@@ -6,7 +6,6 @@ import { Avatar, Comment, List, Skeleton } from 'antd';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { CommentData, CommentOptions } from 'types';
 import { UserOutlined } from '@ant-design/icons';
-import moment from 'moment';
 import { PRAYER_ALTAR, AUTO_SELECT_FLAG } from './config/config';
 import _ from 'lodash';
 
