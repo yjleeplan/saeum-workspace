@@ -10,7 +10,7 @@ interface MissionaryMarket2025Props {
 }
 
 const MissionaryMarket2025 = ({ setIsLoading }: MissionaryMarket2025Props) => {
-  const { resultData, handleGetRankList } = useMissionaryMarket();
+  const { rankList } = useMissionaryMarket();
 
   return (
     <>
@@ -26,9 +26,9 @@ const MissionaryMarket2025 = ({ setIsLoading }: MissionaryMarket2025Props) => {
         </Col>
       </Row>
       <Row className='rank-content'>
-        <Col span={8} className='rank-card rank-card-1 pl-50 pr-25'>
+        <Col span={7} offset={1} className='rank-card rank-card-1 pl-50 pr-25'>
           <Card title='농구' bordered={false}>
-            {_.map(resultData.list1, (item, index) => {
+            {_.map(rankList?.list1, (item, index) => {
               const rank = index === 0 ? 'rank rank1' : index === 1 ? 'rank rank2' : index === 2 ? 'rank rank3' : '';
 
               return (
@@ -47,9 +47,9 @@ const MissionaryMarket2025 = ({ setIsLoading }: MissionaryMarket2025Props) => {
             })}
           </Card>
         </Col>
-        <Col span={8} className='rank-card rank-card-6 pl-25 pr-25'>
+        <Col span={7} offset={1} className='rank-card rank-card-6 pl-25 pr-25'>
           <Card title='펀치' bordered={false}>
-            {_.map(resultData.list2, (item, index) => {
+            {_.map(rankList.list2, (item, index) => {
               const rank = index === 0 ? 'rank rank1' : index === 1 ? 'rank rank2' : index === 2 ? 'rank rank3' : '';
 
               return (
@@ -68,9 +68,9 @@ const MissionaryMarket2025 = ({ setIsLoading }: MissionaryMarket2025Props) => {
             })}
           </Card>
         </Col>
-        <Col span={8} className='rank-card rank-card-3 pl-25 pr-50'>
+        <Col span={7} offset={1} className='rank-card rank-card-3 pl-25 pr-50'>
           <Card title='두더지 잡기' bordered={false}>
-            {_.map(resultData.list3, (item, index) => {
+            {_.map(rankList.list3, (item, index) => {
               const rank = index === 0 ? 'rank rank1' : index === 1 ? 'rank rank2' : index === 2 ? 'rank rank3' : '';
 
               return (

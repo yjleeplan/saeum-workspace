@@ -5,7 +5,7 @@ interface ContentProps {
 }
 
 const Content = ({ children }: ContentProps) => {
-  return <div id='content'>{children}</div>;
+  return <div id='rank-layout-content'>{children}</div>;
 };
 
 export default Content;
