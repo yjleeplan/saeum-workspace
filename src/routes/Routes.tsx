@@ -7,6 +7,7 @@ import RunningRaceLayout from 'layout/RunningRaceLayout';
 import RunningRaceMobileLayout from 'layout/RunningRaceMobileLayout';
 import PrayerAltarLayout from 'layout/PrayerAltarLayout';
 import PrayerAltarMobileLayout from 'layout/PrayerAltarMobileLayout';
+import MissionaryMarketLayout from 'layout/MissionaryMarketLayout';
 import DawnWorship17th from 'pages/online-check/dawn-worship-17th/DawnWorship17th';
 import DawnWorship20th from 'pages/online-check/dawn-worship-20th/DawnWorship20th';
 import DawnWorship20thAdminSetting from 'pages/online-check/dawn-worship-20th/AdminSetting';
@@ -28,6 +29,8 @@ import RunningRace from 'pages/running-race/RunningRace';
 import RunningRaceMobile from 'pages/running-race/RunningRaceMobile';
 import PrayerAltar from 'pages/prayer-altar/PrayerAltar';
 import PrayerAltarMobile from 'pages/prayer-altar/PrayerAltarMobile';
+import MissionaryMarket2025 from 'pages/missionary-market/MissionaryMarket2025';
+import MissionaryMarket2026 from 'pages/missionary-market/MissionaryMarket2026';
 
 export const Routes = () => {
   // 접속 기기 체크
@@ -273,6 +276,25 @@ export const Routes = () => {
         }
       />
 
+      {/* 선교 바자회 (2025년) */}
+      <Route
+        path={'/missionary-market-2025'}
+        element={
+          <MissionaryMarketLayout isMobile={mobileCheck()}>
+            <MissionaryMarket2025 />
+          </MissionaryMarketLayout>
+        }
+      />
+
+      {/* 선교 바자회 (2026년) */}
+      <Route
+        path={'/missionary-market-2026'}
+        element={
+          <MissionaryMarketLayout isMobile={mobileCheck()}>
+            <MissionaryMarket2026 />
+          </MissionaryMarketLayout>
+        }
+      />
       {/* <Route path='*' element={<NotFound />} /> */}
     </ReactRoutes>
   );
