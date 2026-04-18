@@ -29,7 +29,8 @@ import RunningRace from 'pages/running-race/RunningRace';
 import RunningRaceMobile from 'pages/running-race/RunningRaceMobile';
 import PrayerAltar from 'pages/prayer-altar/PrayerAltar';
 import PrayerAltarMobile from 'pages/prayer-altar/PrayerAltarMobile';
-import MissionaryMarket2025 from 'pages/missionary-market/missionary-market-2025/MissionaryMarket2025';
+import MissionaryMarket2025 from 'pages/missionary-market/MissionaryMarket2025';
+import MissionaryMarket2026 from 'pages/missionary-market/MissionaryMarket2026';
 
 export const Routes = () => {
   // 접속 기기 체크
@@ -285,6 +286,15 @@ export const Routes = () => {
         }
       />
 
+      {/* 선교 바자회 (2026년) */}
+      <Route
+        path={'/missionary-market-2026'}
+        element={
+          <MissionaryMarketLayout isMobile={mobileCheck()}>
+            <MissionaryMarket2026 />
+          </MissionaryMarketLayout>
+        }
+      />
       {/* <Route path='*' element={<NotFound />} /> */}
     </ReactRoutes>
   );

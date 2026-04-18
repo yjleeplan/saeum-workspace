@@ -122,6 +122,18 @@
   left: 1378px;
   z-index: 100;
 }
+#missionary-market-layout .icon-game-curling {
+  position: absolute;
+  top: 190px;
+  left: 900px;
+  z-index: 100;
+}
+#missionary-market-layout .icon-game-cup-pingpong {
+  position: absolute;
+  top: 72px;
+  left: 1360px;
+  z-index: 100;
+}
 
 #missionary-market-layout .rank-header {
   font-family: 'ChangwonDangamAsac-Bold';

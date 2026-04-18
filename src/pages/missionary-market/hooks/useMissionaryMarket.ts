@@ -23,7 +23,7 @@ export const useMissionaryMarket = () => {
         list1: [
           {
             type: 1,
-            name: '김민주',
+            name: '강지원',
             age: 14,
             point: 1000,
             updated_at: '2023-05-13T07:10:19.000Z',
@@ -31,7 +31,7 @@ export const useMissionaryMarket = () => {
           },
           {
             type: 1,
-            name: '최수정',
+            name: '강민주',
             age: 33,
             point: 300,
             updated_at: '2023-05-13T05:31:47.000Z',
@@ -41,7 +41,7 @@ export const useMissionaryMarket = () => {
         list2: [
           {
             type: 2,
-            name: '이정익',
+            name: '김민영',
             age: 28,
             point: 900,
             updated_at: '2023-05-13T05:31:47.000Z',
@@ -49,7 +49,7 @@ export const useMissionaryMarket = () => {
           },
           {
             type: 2,
-            name: '이태우',
+            name: '박예림',
             age: 19,
             point: 500,
             updated_at: '2023-05-13T05:31:47.000Z',
@@ -58,18 +58,26 @@ export const useMissionaryMarket = () => {
         ],
         list3: [
           {
-            type: 2,
-            name: '이정익',
+            type: 3,
+            name: '박하은',
             age: 28,
             point: 900,
             updated_at: '2023-05-13T05:31:47.000Z',
             created_at: '2023-05-13T05:31:47.000Z',
           },
           {
-            type: 2,
-            name: '이태우',
+            type: 3,
+            name: '권순찬',
             age: 19,
             point: 500,
+            updated_at: '2023-05-13T05:31:47.000Z',
+            created_at: '2023-05-13T05:31:47.000Z',
+          },
+          {
+            type: 3,
+            name: '신찬영',
+            age: 19,
+            point: 300,
             updated_at: '2023-05-13T05:31:47.000Z',
             created_at: '2023-05-13T05:31:47.000Z',
           },
