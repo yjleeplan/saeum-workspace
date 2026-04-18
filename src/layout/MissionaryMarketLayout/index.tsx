@@ -14,7 +14,7 @@ const MissionaryMarketLayout = (props: MissionaryMarketLayoutProps) => {
 
   return (
     <Spin spinning={isLoading} tip='잠시만 기다려주세요..'>
-      <div id='rank-layout'>
+      <div id='missionary-market-layout'>
         <Content>{React.cloneElement(children, { ...props, isLoading, setIsLoading })}</Content>
       </div>
     </Spin>
