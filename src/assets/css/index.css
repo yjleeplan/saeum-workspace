@@ -123,6 +123,28 @@ body,
 }
 /* AG Grid */
 
+/* PC/Mobile Only Notice */
+#notice-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  padding: 40px 24px;
+  background-color: #f5f7fa;
+  text-align: center;
+  box-sizing: border-box;
+}
+#notice-wrap .notice-icon {
+  font-size: 72px;
+}
+#notice-wrap .notice-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a2e;
+  word-break: keep-all;
+}
+
 /* PC */
 @media (min-width: 1024px) {
   #content {
