@@ -65,12 +65,13 @@
   background-color: #7eb105 !important;
 }
 
+/* 랭킹 현황 */
 #missionary-market-layout {
   height: 100%;
   width: 100%;
   position: fixed;
   background-color: #2660ff;
-  background-image: linear-gradient(#2660af 1px, transparent 1px), linear-gradient(to right, #2660af 1px, #2660ff 1px);
+  background-image: linear-gradient(#2650af 1px, transparent 1px), linear-gradient(to right, #2650af 1px, #2660ff 1px);
   background-size: 80px 80px;
 }
 
@@ -887,4 +888,139 @@
     background: var(--color-0);
     color: #fff;
   }
+}
+
+/* 게임 점수 입력 */
+#missionary-market-game-layout {
+  height: 100%;
+  width: 100%;
+  font-family: 'ChangwonDangamAsac-Bold';
+  position: fixed;
+}
+#missionary-market-game-layout::before {
+  content: '';
+  opacity: 0.7;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: #000;
+}
+
+#missionary-market-game-layout.basketball {
+  background-image: url(/src/assets/images/missionary-market/bg_slamdunk.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+#missionary-market-game-layout.curling {
+  background-image: url(/src/assets/images/missionary-market/bg_curling.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+#missionary-market-game-layout.pingpong {
+  background-image: url(/src/assets/images/missionary-market/bg_pingpong.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+#missionary-market-game-layout .rank-game-head {
+  font-size: 32px;
+  color: #fff;
+  text-align: center;
+  padding: 40px 0;
+}
+
+#missionary-market-game-layout.basketball .rank-game-head {
+  text-shadow:
+    -2px 0 #000,
+    0 2px #000,
+    2px 0 #000,
+    0 -2px #000,
+    1px 1px #000,
+    2px 2px #000,
+    3px 3px var(--color-1-1),
+    4px 4px var(--color-1-1),
+    5px 5px var(--color-1-1),
+    6px 6px var(--color-1-1),
+    7px 7px #000,
+    8px 8px #000;
+}
+#missionary-market-game-layout.curling .rank-game-head {
+  text-shadow:
+    -2px 0 #000,
+    0 2px #000,
+    2px 0 #000,
+    0 -2px #000,
+    1px 1px #000,
+    2px 2px #000,
+    3px 3px var(--color-7-1),
+    4px 4px var(--color-7-1),
+    5px 5px var(--color-7-1),
+    6px 6px var(--color-7-1),
+    7px 7px #000,
+    8px 8px #000;
+}
+#missionary-market-game-layout.pingpong .rank-game-head {
+  text-shadow:
+    -2px 0 #000,
+    0 2px #000,
+    2px 0 #000,
+    0 -2px #000,
+    1px 1px #000,
+    2px 2px #000,
+    3px 3px var(--color-3-1),
+    4px 4px var(--color-3-1),
+    5px 5px var(--color-3-1),
+    6px 6px var(--color-3-1),
+    7px 7px #000,
+    8px 8px #000;
+}
+
+#missionary-market-game-layout .rank-game-body {
+  width: 80%;
+  margin: auto;
+}
+
+#missionary-market-game-layout .rank-game-body .form-item-wrap label {
+  font-size: 20px;
+  color: #fff;
+}
+
+#missionary-market-game-layout .rank-game-body .form-item-wrap input {
+  font-family: 'GmarketSansTTFBold';
+  font-size: 18px;
+}
+
+#missionary-market-game-layout .rank-game-body .form-item-wrap .ant-select-selector {
+  font-family: 'GmarketSansTTFBold';
+  font-size: 18px;
+}
+
+#missionary-market-game-layout .rank-game-foot {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+#missionary-market-game-layout .rank-game-foot button {
+  width: 100%;
+  height: 60px;
+  font-size: 24px;
+}
+
+#missionary-market-game-layout.basketball .rank-game-foot button {
+  background: var(--color-1-1);
+  border: 1px solid var(--color-1-1);
+}
+#missionary-market-game-layout.curling .rank-game-foot button {
+  background: var(--color-7-1);
+  border: 1px solid var(--color-7-1);
+}
+#missionary-market-game-layout.pingpong .rank-game-foot button {
+  background: var(--color-3-1);
+  border: 1px solid var(--color-3-1);
 }
