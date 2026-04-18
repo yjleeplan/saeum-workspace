@@ -8,6 +8,9 @@ import RunningRaceMobileLayout from 'layout/RunningRaceMobileLayout';
 import PrayerAltarLayout from 'layout/PrayerAltarLayout';
 import PrayerAltarMobileLayout from 'layout/PrayerAltarMobileLayout';
 import MissionaryMarketLayout from 'layout/MissionaryMarketLayout';
+import MissionaryMarketGameLayout from 'layout/MissionaryMarketGameLayout';
+import PCOnlyNotice from 'pages/common/PCOnlyNotice';
+import MobileOnlyNotice from 'pages/common/MobileOnlyNotice';
 import DawnWorship17th from 'pages/online-check/dawn-worship-17th/DawnWorship17th';
 import DawnWorship20th from 'pages/online-check/dawn-worship-20th/DawnWorship20th';
 import DawnWorship20thAdminSetting from 'pages/online-check/dawn-worship-20th/AdminSetting';
@@ -31,6 +34,9 @@ import PrayerAltar from 'pages/prayer-altar/PrayerAltar';
 import PrayerAltarMobile from 'pages/prayer-altar/PrayerAltarMobile';
 import MissionaryMarket2025 from 'pages/missionary-market/MissionaryMarket2025';
 import MissionaryMarket2026 from 'pages/missionary-market/MissionaryMarket2026';
+import FormBasketball from 'pages/missionary-market/FormBasketball';
+import FormCurling from 'pages/missionary-market/FormCurling';
+import FormCupPingpong from 'pages/missionary-market/FormCupPingpong';
 
 export const Routes = () => {
   // 접속 기기 체크
@@ -280,9 +286,13 @@ export const Routes = () => {
       <Route
         path={'/missionary-market-2025'}
         element={
-          <MissionaryMarketLayout isMobile={mobileCheck()}>
-            <MissionaryMarket2025 />
-          </MissionaryMarketLayout>
+          mobileCheck() ? (
+            <PCOnlyNotice />
+          ) : (
+            <MissionaryMarketLayout>
+              <MissionaryMarket2025 />
+            </MissionaryMarketLayout>
+          )
         }
       />
 
@@ -290,11 +300,52 @@ export const Routes = () => {
       <Route
         path={'/missionary-market-2026'}
         element={
-          <MissionaryMarketLayout isMobile={mobileCheck()}>
-            <MissionaryMarket2026 />
-          </MissionaryMarketLayout>
+          mobileCheck() ? (
+            <PCOnlyNotice />
+          ) : (
+            <MissionaryMarketLayout>
+              <MissionaryMarket2026 />
+            </MissionaryMarketLayout>
+          )
         }
       />
+      <Route
+        path={'/missionary-market-2026/basketball'}
+        element={
+          mobileCheck() ? (
+            <MissionaryMarketGameLayout gameName='basketball'>
+              <FormBasketball />
+            </MissionaryMarketGameLayout>
+          ) : (
+            <MobileOnlyNotice />
+          )
+        }
+      />
+      <Route
+        path={'/missionary-market-2026/curling'}
+        element={
+          mobileCheck() ? (
+            <MissionaryMarketGameLayout gameName='curling'>
+              <FormCurling />
+            </MissionaryMarketGameLayout>
+          ) : (
+            <MobileOnlyNotice />
+          )
+        }
+      />
+      <Route
+        path={'/missionary-market-2026/pingpong'}
+        element={
+          mobileCheck() ? (
+            <MissionaryMarketGameLayout gameName='pingpong'>
+              <FormCupPingpong />
+            </MissionaryMarketGameLayout>
+          ) : (
+            <MobileOnlyNotice />
+          )
+        }
+      />
+
       {/* <Route path='*' element={<NotFound />} /> */}
     </ReactRoutes>
   );
