@@ -37,6 +37,7 @@ import MissionaryMarket2026 from 'pages/missionary-market/MissionaryMarket2026';
 import FormBasketball from 'pages/missionary-market/FormBasketball';
 import FormCurling from 'pages/missionary-market/FormCurling';
 import FormCupPingpong from 'pages/missionary-market/FormCupPingpong';
+import EscapeRoom from 'pages/escape-room';
 
 export const Routes = () => {
   // 접속 기기 체크
@@ -346,6 +347,31 @@ export const Routes = () => {
         }
       />
 
+      {/* 방탈출 (2026년) */}
+      <Route
+        path={'/escape-room-lightless/traveler'}
+        element={
+          <EscapeRoom type='traveler' />
+        }
+      />
+      <Route
+        path={'/escape-room-lightless/boardgame'}
+        element={
+          <EscapeRoom type='boardgame' />
+        }
+      />
+      <Route
+        path={'/escape-room-lightless/piano'}
+        element={
+          <EscapeRoom type='piano' />
+        }
+      />
+      <Route
+        path={'/escape-room-lightless/my-room'}
+        element={
+          <EscapeRoom type='myRoom' />
+        }
+      />
       {/* <Route path='*' element={<NotFound />} /> */}
     </ReactRoutes>
   );
